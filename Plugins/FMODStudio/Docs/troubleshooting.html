@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>Troubleshooting</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li class="manual-current-chapter manual-active-chapter"><a href="troubleshooting.html">Troubleshooting</a><ul>
+<li><a href="#check-the-plugin-is-installed">Check the plugin is installed</a></li>
+<li><a href="#project-output-format">Project Output Format</a></li>
+<li><a href="#content-changes">Content Changes</a><ul>
+<li><a href="#asset-paths">Asset Paths</a></li>
+</ul>
+</li>
+<li><a href="#deployment-issues">Deployment Issues</a></li>
+<li><a href="#live-update">Live Update</a></li>
+<li><a href="#additional-logging">Additional Logging</a></li>
+<li><a href="#blueprint-only-projects">Blueprint only projects</a></li>
+<li><a href="#audio-not-muted-when-game-loses-focus">Audio not muted when game loses focus</a></li>
+</ul>
+</li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>9. Troubleshooting</h1>
+<p>If you are experiencing an issue with the integration and none of the topics below help, visit to our <a href="https://qa.fmod.com/c/ue4">Q&amp;A Forum</a>.</p>
+<h2 id="check-the-plugin-is-installed"><a href="#check-the-plugin-is-installed">9.1 Check the plugin is installed</a></h2>
+<p>You should see a shortcut to the manual is available under the help menu, that means the plugin is in the right place and has been enabled.</p>
+<p><img alt="Unreal Help Menu" src="images/docs-menu.png" /></p>
+<p>If you see the FMOD Help in the manual, then the plugin installed correctly. If you don't see FMOD help, it isn't installed.</p>
+<h2 id="project-output-format"><a href="#project-output-format">9.2 Project Output Format</a></h2>
+<p>If you have modified the project output format in your FMOD Studio project, you will need to update your Unreal project settings to match. <br />
+This can be found under "Edit &gt; Project Settings &gt; FMOD Studio &gt; Output Format". Keep in mind that this must match the Studio project settings in order for the mix to behave correctly.</p>
+<h2 id="content-changes"><a href="#content-changes">9.3 Content Changes</a></h2>
+<p>The editor does not mark FMOD assets as read-only, so there is nothing stopping the user from trying to rearrange the folder structure. <br />
+However any such changes aren't going to change the underlying Studio project, so the changes will be lost next time Unreal is restarted.</p>
+<h3 id="asset-paths"><a href="#asset-paths">9.3.1 Asset Paths</a></h3>
+<p>The inbuilt Unreal asset serialization stores asset by full path, not by GUID. This means that if you rename events or folders in the Studio Tool, then any references in Unreal levels will be lost. For now the only workaround is to avoid renaming events or folders once you have started using them in levels.</p>
+<h2 id="deployment-issues"><a href="#deployment-issues">9.4 Deployment Issues</a></h2>
+<p>See the <a href="user-guide.html#deployment">Deployment</a> page for information about issues with deployment.</p>
+<p>If you Launch your game and there is no sound playing or there is error loading the FMODStudio module, it an issue with Deployment.</p>
+<h2 id="live-update"><a href="#live-update">9.5 Live Update</a></h2>
+<p>If Live Update is enabled and the FMOD Studio will error when it fails to open the required network port. If this is a problem, then Live Update can be disabled in the Project Settings window.</p>
+<h2 id="additional-logging"><a href="#additional-logging">9.6 Additional Logging</a></h2>
+<p>To help track down problems, verbose logging can be turned on for FMOD For Unreal. Add the following command line to the Unreal editor:</p>
+<div class="highlight language-text"><pre><span></span>-LogCmds=&quot;LogFMOD verbose&quot;
+</pre></div>
+
+<h2 id="blueprint-only-projects"><a href="#blueprint-only-projects">9.7 Blueprint only projects</a></h2>
+<p>Packaging a blueprint only project containing FMOD for Unreal will result in an error:</p>
+<div class="highlight language-text"><pre><span></span>&quot;Plugin &#39;FMODStudio&#39; failed to load because module &#39;FMODStudio&#39; could not be found.
+</pre></div>
+
+<p>The only way to work around this is to add a blank code class to the project and build the resulting solution before packaging again.<br />
+This is mentioned by Epic on their forum: <a href="https://answers.unrealengine.com/questions/72781/unable-to-run-community-plugins-when-packaged.html">Unable to run plugins when packaged</a>.</p>
+<h2 id="audio-not-muted-when-game-loses-focus"><a href="#audio-not-muted-when-game-loses-focus">9.8 Audio not muted when game loses focus</a></h2>
+<p>FMOD will not automatically mute its audio output when your game loses focus due to the user hitting alt-tab or switching to a different app. If you would like to mute FMOD audio when your game loses focus, make an <a href="https://docs.unrealengine.com/4.27/en-US/API/Runtime/Slate/Framework/Application/FSlateApplication/OnApplicationAct-_2/">OnApplicationActivationStateChanged</a> callback and write code to mute the FMOD master bus. Here is an example :</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="n">AExampleGameMode</span><span class="o">::</span><span class="n">InitFMODFocusChangeCallback</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FSlateApplication</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">OnApplicationActivationStateChanged</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">AddUObject</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">AExampleGameMode</span><span class="o">::</span><span class="n">OnWindowFocusChanged</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">AExampleGameMode</span><span class="o">::</span><span class="n">OnWindowFocusChanged</span><span class="p">(</span><span class="kt">bool</span> <span class="n">bIsFocused</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if !WITH_EDITOR</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">IFMODStudioModule</span><span class="o">::</span><span class="n">IsAvailable</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">System</span><span class="o">*</span> <span class="n">StudioSystem</span> <span class="o">=</span> <span class="n">IFMODStudioModule</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">GetStudioSystem</span><span class="p">(</span><span class="n">EFMODSystemContext</span><span class="o">::</span><span class="n">Runtime</span><span class="p">);</span>
+        <span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">Bus</span><span class="o">*</span> <span class="n">masterBus</span><span class="p">;</span>
+        <span class="n">StudioSystem</span><span class="o">-&gt;</span><span class="n">getBus</span><span class="p">(</span><span class="s">&quot;bus:/&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">masterBus</span><span class="p">);</span>
+        <span class="n">masterBus</span><span class="o">-&gt;</span><span class="n">setMute</span><span class="p">(</span><span class="o">!</span><span class="n">bIsFocused</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+</pre></div></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

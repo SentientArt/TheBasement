@@ -1,0 +1,10 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.FFXFSR2Vulkan.cpp.obj": [
+			"FFXFSR2Vulkan.cpp.obj",
+			"FFXFSR2VulkanModule.cpp.obj",
+			"FSR2VulkanLoader.cpp.obj"
+		]
+	}
+}

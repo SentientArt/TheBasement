@@ -1,0 +1,7 @@
+{
+	"BuildId": "UE5.1-MIDGAR-ALPHA",
+	"Modules": 
+	{
+		"ConsoleCommandsHelper": "UnrealEditor-ConsoleCommandsHelper.dll"
+	}
+}

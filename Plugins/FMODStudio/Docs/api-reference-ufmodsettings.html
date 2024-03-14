@@ -1,0 +1,755 @@
+<html>
+<head>
+<title>API Reference | UFMODSettings</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="api-reference.html">API Reference</a><ul class="subchapters"><li><a href="api-reference-common.html">Common</a></li><li><a href="api-reference-ifmodstudiomodule.html">IFMODStudioModule</a></li><li><a href="api-reference-ufmodblueprintstatics.html">UFMODBlueprintStatics</a></li><li><a href="api-reference-ufmodaudiocomponent.html">UFMODAudioComponent</a></li><li><a href="api-reference-afmodambientsound.html">AFMODAmbientSound</a></li><li><a href="api-reference-ufmodanimnotifyplay.html">UFMODAnimNotifyPlay</a></li><li><a href="api-reference-ufmodbank.html">UFMODBank</a></li><li><a href="api-reference-ufmodbus.html">UFMODBus</a></li><li><a href="api-reference-ufmodvca.html">UFMODVCA</a></li><li><a href="api-reference-ufmodevent.html">UFMODEvent</a></li><li><a href="api-reference-ufmodport.html">UFMODPort</a></li><li><a href="api-reference-ufmodsnapshot.html">UFMODSnapshot</a></li><li><a href="api-reference-ufmodsnapshotreverb.html">UFMODSnapshotReverb</a></li><li><a href="api-reference-ufmodasset.html">UFMODAsset</a></li><li class="manual-current-chapter manual-active-chapter"><a href="api-reference-ufmodsettings.html">UFMODSettings</a></li></ul></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>6. API Reference | UFMODSettings</h1>
+<p>This class inherits from <a href="">UObject</a>.</p>
+<p><strong>Defines:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#efmodlogging" title="FMOD Logging level.">EFMODLogging</a> FMOD Logging level.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#efmodspeakermode" title="Project output format, should match the mode set up for the Studio project.">EFMODSpeakerMode</a> Project output format, should match the mode set up for the Studio project.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#efmodoutput" title="FMOD System Output modes.">EFMODOutput</a> FMOD System Output modes.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#efmodplatforms" title="Target Platforms.">EFMODPlatforms</a> Target Platforms.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#efmodcodec" title="Encoding formats.">EFMODCodec</a> Encoding formats.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#fcustompoolsizes" title="Use specific memory pool size for platform, in bytes. Disabled by default.">FCustomPoolSizes</a> Use specific memory pool size for platform, in bytes. Disabled by default.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ffmodprojectlocale" title="Locales for localized banks. Theses should match the project locales configured in the FMOD Studio Project.">FFMODProjectLocale</a> Locales for localized banks. Theses should match the project locales configured in the FMOD Studio Project.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#fplatformsettings" title="This section contains settings that can be set per platform.">FPlatformSettings</a> This section contains settings that can be set per platform.</span></li>
+</ul>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_bloadallbanks" title="Load all banks at startup.">UFMODSettings::bLoadAllBanks</a> Load all banks at startup.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_bloadallsampledata" title="Load all banks sample data into memory at start up.">UFMODSettings::bLoadAllSampleData</a> Load all banks sample data into memory at start up.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_benableliveupdate" title="Enable live update in non-final builds.">UFMODSettings::bEnableLiveUpdate</a> Enable live update in non-final builds.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_benableeditorliveupdate" title="Enable live update in Editor for Auditioning. Requires Restart">UFMODSettings::bEnableEditorLiveUpdate</a> Enable live update in Editor for Auditioning. <em>Requires Restart</em></span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_benableapierrorlogging" title="Will log internal API errors when enabled.">UFMODSettings::bEnableAPIErrorLogging</a> Will log internal API errors when enabled.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_benablememorytracking" title="Enables the FMOD_STUDIO_INIT_MEMORY_TRACKING flag in the FMOD Studio system.">UFMODSettings::bEnableMemoryTracking</a> Enables the FMOD_STUDIO_INIT_MEMORY_TRACKING flag in the FMOD Studio system.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_bankoutputdirectory" title="Path to find your studio bank output directory, relative to Content directory.">UFMODSettings::BankOutputDirectory</a> Path to find your studio bank output directory, relative to Content directory.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_outputformat" title="Project output format, should match the mode set up for the Studio project.">UFMODSettings::OutputFormat</a> Project output format, should match the mode set up for the Studio project.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_outputtype" title="Built-in output types that can be used to run the mixer.">UFMODSettings::OutputType</a> Built-in output types that can be used to run the mixer.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_locales" title="Locales for localized banks. These should match the project locales configured in the FMOD Studio project.">UFMODSettings::Locales</a> Locales for localized banks. These should match the project locales configured in the FMOD Studio project.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_vol0virtuallevel" title="The signal level at which to make channels virtual.">UFMODSettings::Vol0VirtualLevel</a> The signal level at which to make channels virtual.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_samplerate" title="Sample rate to use, or 0 to match system rate.eg. 0, 22050, 24000, 32000, 44100, 48000.">UFMODSettings::SampleRate</a> Sample rate to use, or 0 to match system rate.eg. 0, 22050, 24000, 32000, 44100, 48000.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_bmatchhardwaresamplerate" title="Match hardware sample rate where reasonable (44.1kHz to 48kHz).">UFMODSettings::bMatchHardwareSampleRate</a> Match hardware sample rate where reasonable (44.1kHz to 48kHz).</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_realchannelcount" title="Number of actual software voices that can be used at once.">UFMODSettings::RealChannelCount</a> Number of actual software voices that can be used at once.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_totalchannelcount" title="Total number of voices available that can be either real or virtual.">UFMODSettings::TotalChannelCount</a> Total number of voices available that can be either real or virtual.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_dspbufferlength" title="DSP mixer buffer length (eg. 512, 1024) or 0 for system default.">UFMODSettings::DSPBufferLength</a> DSP mixer buffer length (eg. 512, 1024) or 0 for system default.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_dspbuffercount" title="DSP mixer buffer count (eg. 2, 4) or 0 for system default.">UFMODSettings::DSPBufferCount</a> DSP mixer buffer count (eg. 2, 4) or 0 for system default.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_filebuffersize" title="File buffer size in bytes (2048 by default).">UFMODSettings::FileBufferSize</a> File buffer size in bytes (2048 by default).</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_studioupdateperiod" title="Studio update period in milliseconds, or 0 for default (which means 20ms).">UFMODSettings::StudioUpdatePeriod</a> Studio update period in milliseconds, or 0 for default (which means 20ms).</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_initialoutputdrivername" title="Output device to choose at system start up, or empty for default.">UFMODSettings::InitialOutputDriverName</a> Output device to choose at system start up, or empty for default.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_blockallbuses" title="Lock all mixer buses at startup, making sure they are created up front.">UFMODSettings::bLockAllBuses</a> Lock all mixer buses at startup, making sure they are created up front.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_memorypoolsizes" title="Use specified memory pool size for platform, units in bytes. Disabled by default. FMOD may become unstable if the limit is exceeded!">UFMODSettings::MemoryPoolSizes</a> Use specified memory pool size for platform, units in bytes. Disabled by default. FMOD may become unstable if the limit is exceeded!</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_liveupdateport" title="Live update port to use, or 0 for default.">UFMODSettings::LiveUpdatePort</a> Live update port to use, or 0 for default.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_editorliveupdateport" title="Live update port to use while in editor for auditioning. Requires Restart">UFMODSettings::EditorLiveUpdatePort</a> Live update port to use while in editor for auditioning. <em>Requires Restart</em></span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_reloadbanksdelay" title="Delay in seconds before automatically reloading modified banks from disk.">UFMODSettings::ReloadBanksDelay</a> Delay in seconds before automatically reloading modified banks from disk.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_benablememorytracking" title="Enables the FMOD_STUDIO_INIT_MEMORY_TRACKING flag in the FMOD Studio system.">UFMODSettings::bEnableMemoryTracking</a> Enables the FMOD_STUDIO_INIT_MEMORY_TRACKING flag in the FMOD Studio system.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_pluginfiles" title="Extra plugin files to load.  The plugin files should sit alongside the FMOD dynamic libraries in the ThirdParty directory.">UFMODSettings::PluginFiles</a> Extra plugin files to load.  The plugin files should sit alongside the FMOD dynamic libraries in the ThirdParty directory.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_contentbrowserprefix" title="Directory for content to appear in content window. Be careful changing this!">UFMODSettings::ContentBrowserPrefix</a> Directory for content to appear in content window. Be careful changing this!</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_forceplatformname" title="Force platform directory name, or leave empty for automatic (Desktop/Mobile/PS4/XBoxOne)">UFMODSettings::ForcePlatformName</a> Force platform directory name, or leave empty for automatic (Desktop/Mobile/PS4/XBoxOne)</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_masterbankname" title="Name of master bank.  The default in Studio is &quot;Master&quot;.">UFMODSettings::MasterBankName</a> Name of master bank.  The default in Studio is "Master".</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_skiploadbankname" title="Skip bank files of the given name. Can be used to load all banks except for a certain set, such as localization banks.">UFMODSettings::SkipLoadBankName</a> Skip bank files of the given name. Can be used to load all banks except for a certain set, such as localization banks.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_studiobankkey" title="Specify the key for loading sounds from encrypted banks.">UFMODSettings::StudioBankKey</a> Specify the key for loading sounds from encrypted banks.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_wavwriterpath" title="Force wav writer output, for debugging only.  Setting this will prevent normal sound output!">UFMODSettings::WavWriterPath</a> Force wav writer output, for debugging only.  Setting this will prevent normal sound output!</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_logginglevel" title="Specify the logging level to use in a debug/development build.">UFMODSettings::LoggingLevel</a> Specify the logging level to use in a debug/development build.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_occlusionparameter" title="Name of the parameter used in Studio to control occlusion effects.">UFMODSettings::OcclusionParameter</a> Name of the parameter used in Studio to control occlusion effects.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_ambientvolumeparameter" title="Name of the parameter used in Studio to control ambient volume.">UFMODSettings::AmbientVolumeParameter</a> Name of the parameter used in Studio to control ambient volume.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_ambientlpfparameter" title="Name of the parameter used in Studio to control ambient LPF effects.">UFMODSettings::AmbientLPFParameter</a> Name of the parameter used in Studio to control ambient LPF effects.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodsettings.html#ufmodsettings_platforms" title="Used to specify platform specific settings.">UFMODSettings::Platforms</a> Used to specify platform specific settings.</span></li>
+</ul>
+<h2 api="defines" id="efmodlogging"><a href="#efmodlogging">EFMODLogging</a></h2>
+<p>FMOD Logging level.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">enum</span> <span class="n">EFMODLogging</span>
+<span class="p">{</span>
+    <span class="n">LEVEL_NONE</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">LEVEL_ERROR</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">LEVEL_WARNING</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">LEVEL_LOG</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="p">};</span>
+</pre></div>
+
+<dl>
+<dt>LEVEL_NONE = 0</dt>
+<dd>No FMOD logging.</dd>
+<dt>LEVEL_ERROR = 1</dt>
+<dd>Only log errors.</dd>
+<dt>LEVEL_WARNING = 2</dt>
+<dd>Only log warnings.</dd>
+<dt>LEVEL_LOG = 4</dt>
+<dd>Log all FMOD calls.</dd>
+</dl>
+<h2 api="defines" id="efmodspeakermode"><a href="#efmodspeakermode">EFMODSpeakerMode</a></h2>
+<p>Project output format, should match the mode set up for the Studio project.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">namespace</span> <span class="n">EFMODSpeakerMode</span>
+<span class="p">{</span>
+    <span class="k">enum</span> <span class="n">Type</span>
+    <span class="p">{</span>
+        <span class="n">Stereo</span><span class="p">,</span>
+        <span class="n">Surround_5_1</span><span class="p">,</span>
+        <span class="n">Surround_7_1</span><span class="p">,</span>
+        <span class="n">Surround_7_1_4</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<dl>
+<dt>Stereo</dt>
+<dd>Speakers in a Stereo set up.</dd>
+<dt>Surround_5_1</dt>
+<dd>Speakers in a 5.1 set up.</dd>
+<dt>Surround_7_1</dt>
+<dd>Speakers in a 7.1 set up.</dd>
+<dt>Surround_7_1_4</dt>
+<dd>Speakers in a 7.1.4 set up.</dd>
+</dl>
+<p>This setting must match the corresponding project platform in the FMOD Studio build settings.</p>
+<h2 api="defines" id="efmodoutput"><a href="#efmodoutput">EFMODOutput</a></h2>
+<p>FMOD System Output modes.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">namespace</span> <span class="n">EFMODOutput</span>
+<span class="p">{</span>
+    <span class="k">enum</span> <span class="n">Type</span>
+    <span class="p">{</span>
+        <span class="n">TYPE_AUTODETECT</span><span class="p">,</span>
+        <span class="n">TYPE_NOSOUND</span><span class="p">,</span>
+        <span class="n">TYPE_WASAPI</span><span class="p">,</span>
+        <span class="n">TYPE_ASIO</span><span class="p">,</span>
+        <span class="n">TYPE_PULSEAUDIO</span><span class="p">,</span>
+        <span class="n">TYPE_ALSA</span><span class="p">,</span>
+        <span class="n">TYPE_COREAUDIO</span><span class="p">,</span>
+        <span class="n">TYPE_AUDIOTRACK</span><span class="p">,</span>
+        <span class="n">TYPE_OPENSL</span><span class="p">,</span>
+        <span class="n">TYPE_AUDIOOUT</span><span class="p">,</span>
+        <span class="n">TYPE_AUDIO3D</span><span class="p">,</span>
+        <span class="n">TYPE_NNAUDIO</span><span class="p">,</span>
+        <span class="n">TYPE_WINSONIC</span><span class="p">,</span>
+        <span class="n">TYPE_AAUDIO</span><span class="p">,</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<dl>
+<dt>TYPE_AUTODETECT</dt>
+<dd>Picks the best output mode for the platform. This is the default.</dd>
+<dt>TYPE_NOSOUND</dt>
+<dd>All - Perform all mixing but discard the final output.</dd>
+<dt>TYPE_WASAPI</dt>
+<dd>Win / UWP / Xbox One / Game Core - Windows Audio Session API. (Default on Windows, Xbox One, Game Core and UWP)</dd>
+<dt>TYPE_ASIO</dt>
+<dd>Win - Low latency ASIO 2.0.</dd>
+<dt>TYPE_PULSEAUDIO</dt>
+<dd>Linux - Pulse Audio. (Default on Linux if available)</dd>
+<dt>TYPE_ALSA</dt>
+<dd>Linux - Advanced Linux Sound Architecture. (Default on Linux if PulseAudio isn't available)</dd>
+<dt>TYPE_COREAUDIO</dt>
+<dd>Mac / iOS - Core Audio. (Default on Mac and iOS)</dd>
+<dt>TYPE_AUDIOTRACK</dt>
+<dd>Android - Java Audio Track. (Default on Android 2.2 and below)</dd>
+<dt>TYPE_OPENSL</dt>
+<dd>Android - OpenSL ES. (Default on Android 2.3 up to 7.1)</dd>
+<dt>TYPE_AUDIOOUT</dt>
+<dd>PS4 / PS5 - Audio Out. (Default on PS4, PS5)</dd>
+<dt>TYPE_AUDIO3D</dt>
+<dd>PS4 - Audio3D.</dd>
+<dt>TYPE_NNAUDIO</dt>
+<dd>Switch - nn::audio. (Default on Switch)</dd>
+<dt>TYPE_WINSONIC</dt>
+<dd>Win10 / Xbox One / Game Core - Windows Sonic.</dd>
+<dt>TYPE_AAUDIO</dt>
+<dd>Android - AAudio. (Default on Android 8.1 and above)</dd>
+</dl>
+<h2 api="defines" id="efmodplatforms"><a href="#efmodplatforms">EFMODPlatforms</a></h2>
+<p>Target Platforms.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">namespace</span> <span class="n">EFMODPlatforms</span>
+<span class="p">{</span>
+    <span class="k">enum</span> <span class="n">Type</span>
+    <span class="p">{</span>
+        <span class="n">Windows</span><span class="p">,</span>
+        <span class="n">Linux</span><span class="p">,</span>
+        <span class="n">Mac</span><span class="p">,</span>
+        <span class="n">Android</span><span class="p">,</span>
+        <span class="n">IOS</span><span class="p">,</span>
+        <span class="n">PS4</span><span class="p">,</span>
+        <span class="n">PS5</span><span class="p">,</span>
+        <span class="n">Deprecated</span><span class="p">,</span>
+        <span class="n">Switch</span><span class="p">,</span>
+        <span class="n">XboxOne</span><span class="p">,</span>
+        <span class="n">XSX</span><span class="p">,</span>
+        <span class="n">Editor</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 api="defines" id="efmodcodec"><a href="#efmodcodec">EFMODCodec</a></h2>
+<p>Encoding formats.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">namespace</span> <span class="n">EFMODCodec</span>
+<span class="p">{</span>
+    <span class="k">enum</span> <span class="n">Type</span>
+    <span class="p">{</span>
+        <span class="n">VORBIS</span><span class="p">,</span>
+        <span class="n">FADPCM</span><span class="p">,</span>
+        <span class="n">OPUS</span><span class="p">,</span>
+        <span class="n">XMA</span><span class="p">,</span>
+        <span class="n">AT9</span><span class="p">,</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<dl>
+<dt>VORBIS</dt>
+<dd>The quality maps linearly to FMOD Studio's quality property. It defaults to 37% as recommended by Vorbis for the best balance between compression and quality.</dd>
+<dt>FADPCM</dt>
+<dd>Place holder.</dd>
+<dt>OPUS</dt>
+<dd>Opus per-channel bitrates of 0.8 Kbps to 64 Kbps map linearly to the range 1% to 80% on FMOD Studio's quality slider, and per-channel bitrates of 67.2 Kbps to 128 Kbps map linearly to the range of 81% to 100%. Opus quality defaults to 63%, which corresponds to the bitrate of 50.4 Kbps used by default in the Opus reference implementation.</dd>
+<dt>XMA</dt>
+<dd>The quality maps linearly to the quality property.</dd>
+<dt>AT9</dt>
+<dd>The bitrate (Kbps) depends on channel count and the quality property steps up every 16%. For more information see the FMOD FSBank API.</dd>
+</dl>
+<h2 api="defines" id="fcustompoolsizes"><a href="#fcustompoolsizes">FCustomPoolSizes</a></h2>
+<p>Use specific memory pool size for platform, in bytes. Disabled by default.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">struct</span> <span class="n">FCustomPoolSizes</span>
+<span class="p">{</span>
+    <span class="n">int32</span> <span class="n">Desktop</span><span class="p">;</span>
+    <span class="n">int32</span> <span class="n">Mobile</span><span class="p">;</span>
+    <span class="n">int32</span> <span class="n">PS4</span><span class="p">;</span>
+    <span class="n">int32</span> <span class="n">Switch</span><span class="p">;</span>
+    <span class="n">int32</span> <span class="n">XboxOne</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<dl>
+<dt>Desktop</dt>
+<dd>
+<p>(Disabled) units in bytes.</p>
+<ul>
+<li><span class="label">Default:</span> 0</li>
+</ul>
+</dd>
+<dt>Mobile</dt>
+<dd>
+<p>(Disabled) units in bytes.</p>
+<ul>
+<li><span class="label">Default:</span> 0</li>
+</ul>
+</dd>
+<dt>PS4</dt>
+<dd>
+<p>(Disabled) units in bytes.</p>
+<ul>
+<li><span class="label">Default:</span> 0</li>
+</ul>
+</dd>
+<dt>Switch</dt>
+<dd>
+<p>(Disabled) units in bytes.</p>
+<ul>
+<li><span class="label">Default:</span> 0</li>
+</ul>
+</dd>
+<dt>XboxOne</dt>
+<dd>
+<p>(Disabled) units in bytes.</p>
+<ul>
+<li><span class="label">Default:</span> 0</li>
+</ul>
+</dd>
+</dl>
+<p>FMOD may become unstable if the limit is exceeded!</p>
+<h2 api="defines" id="ffmodprojectlocale"><a href="#ffmodprojectlocale">FFMODProjectLocale</a></h2>
+<p>Locales for localized banks. Theses should match the project locales configured in the FMOD Studio Project.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">struct</span> <span class="n">FFMOD</span><span class="o">::</span><span class="n">ProjectLocale</span>
+<span class="p">{</span>
+    <span class="n">FString</span> <span class="n">LocaleName</span><span class="p">;</span>
+    <span class="n">FString</span> <span class="n">LocaleCode</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">bDefault</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<dl>
+<dt>LocaleName</dt>
+<dd>Human readable locale name, displayed in Blueprints.</dd>
+<dt>LocaleCode</dt>
+<dd>Locale code. Must correspond to project locale codes in FMOD Studio project.</dd>
+<dt>bDefault</dt>
+<dd>Default locale at startup. Only one locale should be marked as default.</dd>
+</dl>
+<h2 api="defines" id="fplatformsettings"><a href="#fplatformsettings">FPlatformSettings</a></h2>
+<p>This section contains settings that can be set per platform.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">struct</span> <span class="n">FFMODPlatformSettings</span>
+<span class="p">{</span>
+    <span class="n">int32</span> <span class="n">RealChannelCount</span><span class="p">;</span>
+    <span class="n">int32</span> <span class="n">SampleRate</span><span class="p">;</span>
+    <span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="n">EFMODSpeakerMode</span><span class="o">::</span><span class="n">Type</span><span class="o">&gt;</span> <span class="n">SpeakerMode</span><span class="p">;</span>
+    <span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="n">EFMODOutput</span><span class="o">::</span><span class="n">Type</span><span class="o">&gt;</span> <span class="n">OutputType</span><span class="p">;</span>
+    <span class="n">int32</span> <span class="n">CustomPoolSize</span><span class="p">;</span>
+    <span class="n">TMap</span><span class="o">&lt;</span><span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="n">EFMODCodec</span><span class="o">::</span><span class="n">Type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">int32</span><span class="o">&gt;</span> <span class="n">Codecs</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<dl>
+<dt>RealChannelCount</dt>
+<dd>Real Channel Count.</dd>
+<dt>SampleRate</dt>
+<dd>Sample rate to use, or 0 to match system rate.<br />
+eg. 0, 22050, 24000, 32000, 44100, 48000.</dd>
+<dt>SpeakerMode</dt>
+<dd>Project output format, should match the mode set up for the Studio project.</dd>
+<dt>OutputType</dt>
+<dd>Built-in output types that can be used to run the mixer.</dd>
+<dt>CustomPoolSize</dt>
+<dd>Use specified memory pool size, units in bytes. Disabled by default.<br />
+FMOD may become unstable if the limit is exceeded!</dd>
+<dt>Codecs</dt>
+<dd>Encoding formats.</dd>
+</dl>
+<h2 api="property" id="ufmodsettings_bloadallbanks"><a href="#ufmodsettings_bloadallbanks">UFMODSettings::bLoadAllBanks</a></h2>
+<p>Load all banks at startup.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bLoadAllBanks</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_bloadallsampledata"><a href="#ufmodsettings_bloadallsampledata">UFMODSettings::bLoadAllSampleData</a></h2>
+<p>Load all banks sample data into memory at start up.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bLoadAllSampleData</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_benableliveupdate"><a href="#ufmodsettings_benableliveupdate">UFMODSettings::bEnableLiveUpdate</a></h2>
+<p>Enable live update in non-final builds.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bEnableLiveUpdate</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_benableeditorliveupdate"><a href="#ufmodsettings_benableeditorliveupdate">UFMODSettings::bEnableEditorLiveUpdate</a></h2>
+<p>Enable live update in Editor for Auditioning. <em>Requires Restart</em></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bEnableEditorLiveUpdate</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_benableapierrorlogging"><a href="#ufmodsettings_benableapierrorlogging">UFMODSettings::bEnableAPIErrorLogging</a></h2>
+<p>Will log internal API errors when enabled.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bEnableAPIErrorLogging</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_benablememorytracking"><a href="#ufmodsettings_benablememorytracking">UFMODSettings::bEnableMemoryTracking</a></h2>
+<p>Enables the FMOD_STUDIO_INIT_MEMORY_TRACKING flag in the FMOD Studio system.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bEnableMemoryTracking</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>See Also</strong>: <a href="https://fmod.com/docs/2.02/api/studio-api-system.html#fmod_studio_init_memory_tracking">FMOD_STUDIO_INIT_MEMORY_TRACKING</a></p>
+<h2 api="property" id="ufmodsettings_bankoutputdirectory"><a href="#ufmodsettings_bankoutputdirectory">UFMODSettings::BankOutputDirectory</a></h2>
+<p>Path to find your studio bank output directory, relative to Content directory.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FDirectoryPath</span> <span class="n">BankOutputDirectory</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_outputformat"><a href="#ufmodsettings_outputformat">UFMODSettings::OutputFormat</a></h2>
+<p>Project output format, should match the mode set up for the Studio project.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="n">EFMODSpeakerMode</span><span class="o">::</span><span class="n">Type</span><span class="o">&gt;</span> <span class="n">OutputFormat</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_outputtype"><a href="#ufmodsettings_outputtype">UFMODSettings::OutputType</a></h2>
+<p>Built-in output types that can be used to run the mixer.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="n">EFMODOutput</span><span class="o">::</span><span class="n">Type</span><span class="o">&gt;</span> <span class="n">OutputType</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_locales"><a href="#ufmodsettings_locales">UFMODSettings::Locales</a></h2>
+<p>Locales for localized banks. These should match the project locales configured in the FMOD Studio project.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FFMODProjectLocale</span><span class="o">&gt;</span> <span class="n">Locales</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_vol0virtuallevel"><a href="#ufmodsettings_vol0virtuallevel">UFMODSettings::Vol0VirtualLevel</a></h2>
+<p>The signal level at which to make channels virtual.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">float</span> <span class="n">Vol0VirtualLevel</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_samplerate"><a href="#ufmodsettings_samplerate">UFMODSettings::SampleRate</a></h2>
+<p>Sample rate to use, or 0 to match system rate.eg. 0, 22050, 24000, 32000, 44100, 48000.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">SampleRate</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_bmatchhardwaresamplerate"><a href="#ufmodsettings_bmatchhardwaresamplerate">UFMODSettings::bMatchHardwareSampleRate</a></h2>
+<p>Match hardware sample rate where reasonable (44.1kHz to 48kHz).</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bMatchHardwareSampleRate</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_realchannelcount"><a href="#ufmodsettings_realchannelcount">UFMODSettings::RealChannelCount</a></h2>
+<p>Number of actual software voices that can be used at once.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">RealChannelCount</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_totalchannelcount"><a href="#ufmodsettings_totalchannelcount">UFMODSettings::TotalChannelCount</a></h2>
+<p>Total number of voices available that can be either real or virtual.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">TotalChannelCount</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_dspbufferlength"><a href="#ufmodsettings_dspbufferlength">UFMODSettings::DSPBufferLength</a></h2>
+<p>DSP mixer buffer length (eg. 512, 1024) or 0 for system default.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">DSPBufferLength</span><span class="p">;</span>
+</pre></div>
+
+<p>When changing the Buffer Length, Buffer Count also needs to be set.</p>
+<h2 api="property" id="ufmodsettings_dspbuffercount"><a href="#ufmodsettings_dspbuffercount">UFMODSettings::DSPBufferCount</a></h2>
+<p>DSP mixer buffer count (eg. 2, 4) or 0 for system default.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">DSPBufferCount</span><span class="p">;</span>
+</pre></div>
+
+<p>When changing the Buffer Count, Buffer Length also needs to be set.</p>
+<h2 api="property" id="ufmodsettings_filebuffersize"><a href="#ufmodsettings_filebuffersize">UFMODSettings::FileBufferSize</a></h2>
+<p>File buffer size in bytes (2048 by default).</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">FileBufferSize</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_studioupdateperiod"><a href="#ufmodsettings_studioupdateperiod">UFMODSettings::StudioUpdatePeriod</a></h2>
+<p>Studio update period in milliseconds, or 0 for default (which means 20ms).</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">StudioUpdatePeriod</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_initialoutputdrivername"><a href="#ufmodsettings_initialoutputdrivername">UFMODSettings::InitialOutputDriverName</a></h2>
+<p>Output device to choose at system start up, or empty for default.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">InitialOutputDriverName</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_blockallbuses"><a href="#ufmodsettings_blockallbuses">UFMODSettings::bLockAllBuses</a></h2>
+<p>Lock all mixer buses at startup, making sure they are created up front.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bLockAllBuses</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_memorypoolsizes"><a href="#ufmodsettings_memorypoolsizes">UFMODSettings::MemoryPoolSizes</a></h2>
+<p>Use specified memory pool size for platform, units in bytes. Disabled by default. FMOD may become unstable if the limit is exceeded!</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FCustomPoolSizes</span> <span class="n">MemoryPoolSizes</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_liveupdateport"><a href="#ufmodsettings_liveupdateport">UFMODSettings::LiveUpdatePort</a></h2>
+<p>Live update port to use, or 0 for default.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">LiveUpdatePort</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_editorliveupdateport"><a href="#ufmodsettings_editorliveupdateport">UFMODSettings::EditorLiveUpdatePort</a></h2>
+<p>Live update port to use while in editor for auditioning. <em>Requires Restart</em></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">EditorLiveUpdatePort</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_reloadbanksdelay"><a href="#ufmodsettings_reloadbanksdelay">UFMODSettings::ReloadBanksDelay</a></h2>
+<p>Delay in seconds before automatically reloading modified banks from disk.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="n">ReloadBanksDelay</span><span class="p">;</span>
+</pre></div>
+
+<p>This can be extended if building banks takes a long time and UE4 tries to reload banks before building is completed. Set to 0 to disable automatic bank reloading.</p>
+<h2 api="property" id="ufmodsettings_benablememorytracking_1"><a href="#ufmodsettings_benablememorytracking_1">UFMODSettings::bEnableMemoryTracking</a></h2>
+<p>Enables the FMOD_STUDIO_INIT_MEMORY_TRACKING flag in the FMOD Studio system.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">bEnableMemoryTracking</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>See Also</strong>: <a href="https://fmod.com/docs/2.02/api/studio-api-system.html#fmod_studio_init_memory_tracking">FMOD_STUDIO_INIT_MEMORY_TRACKING</a></p>
+<h2 api="property" id="ufmodsettings_pluginfiles"><a href="#ufmodsettings_pluginfiles">UFMODSettings::PluginFiles</a></h2>
+<p>Extra plugin files to load.  The plugin files should sit alongside the FMOD dynamic libraries in the ThirdParty directory.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FString</span><span class="o">&gt;</span> <span class="n">PluginFiles</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_contentbrowserprefix"><a href="#ufmodsettings_contentbrowserprefix">UFMODSettings::ContentBrowserPrefix</a></h2>
+<p>Directory for content to appear in content window. Be careful changing this!</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">ContentBrowserPrefix</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_forceplatformname"><a href="#ufmodsettings_forceplatformname">UFMODSettings::ForcePlatformName</a></h2>
+<p>Force platform directory name, or leave empty for automatic (Desktop/Mobile/PS4/XBoxOne)</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">ForcePlatformName</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_masterbankname"><a href="#ufmodsettings_masterbankname">UFMODSettings::MasterBankName</a></h2>
+<p>Name of master bank.  The default in Studio is "Master".</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">MasterBankName</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_skiploadbankname"><a href="#ufmodsettings_skiploadbankname">UFMODSettings::SkipLoadBankName</a></h2>
+<p>Skip bank files of the given name. Can be used to load all banks except for a certain set, such as localization banks.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">SkipLoadBankName</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_studiobankkey"><a href="#ufmodsettings_studiobankkey">UFMODSettings::StudioBankKey</a></h2>
+<p>Specify the key for loading sounds from encrypted banks.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">StudioBankKey</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_wavwriterpath"><a href="#ufmodsettings_wavwriterpath">UFMODSettings::WavWriterPath</a></h2>
+<p>Force wav writer output, for debugging only.  Setting this will prevent normal sound output!</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">WavWriterPath</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_logginglevel"><a href="#ufmodsettings_logginglevel">UFMODSettings::LoggingLevel</a></h2>
+<p>Specify the logging level to use in a debug/development build.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="n">EFMODLogging</span><span class="o">&gt;</span> <span class="n">LoggingLevel</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_occlusionparameter"><a href="#ufmodsettings_occlusionparameter">UFMODSettings::OcclusionParameter</a></h2>
+<p>Name of the parameter used in Studio to control occlusion effects.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">OcclusionParameter</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_ambientvolumeparameter"><a href="#ufmodsettings_ambientvolumeparameter">UFMODSettings::AmbientVolumeParameter</a></h2>
+<p>Name of the parameter used in Studio to control ambient volume.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">AmbientVolumeParameter</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_ambientlpfparameter"><a href="#ufmodsettings_ambientlpfparameter">UFMODSettings::AmbientLPFParameter</a></h2>
+<p>Name of the parameter used in Studio to control ambient LPF effects.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">AmbientLPFParameter</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="property" id="ufmodsettings_platforms"><a href="#ufmodsettings_platforms">UFMODSettings::Platforms</a></h2>
+<p>Used to specify platform specific settings.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TMap</span><span class="o">&lt;</span><span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="n">EFMODPlatforms</span><span class="o">::</span><span class="n">Type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">FFMODPlatformSettings</span><span class="o">&gt;</span> <span class="n">Platforms</span><span class="p">;</span>
+</pre></div></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

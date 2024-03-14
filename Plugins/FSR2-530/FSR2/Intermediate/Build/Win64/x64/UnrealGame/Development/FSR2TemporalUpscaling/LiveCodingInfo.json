@@ -1,0 +1,25 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.FSR2TemporalUpscaling.cpp.obj": [
+			"FSR2Settings.gen.cpp.obj",
+			"FSR2TemporalUpscaling.init.gen.cpp.obj",
+			"FSR2Settings.cpp.obj",
+			"FSR2TemporalUpscaler.cpp.obj",
+			"FSR2TemporalUpscalerHistory.cpp.obj",
+			"FSR2TemporalUpscalerProxy.cpp.obj",
+			"FSR2TemporalUpscaling.cpp.obj",
+			"FSR2ViewExtension.cpp.obj",
+			"FSR2TemporalUpscalerAccumulatePass.cpp.obj",
+			"FSR2TemporalUpscalerAutogenReactiveMaskPass.cpp.obj",
+			"FSR2TemporalUpscalerComputeLuminancePyramidPass.cpp.obj",
+			"FSR2TemporalUpscalerDepthClipPass.cpp.obj",
+			"FSR2TemporalUpscalerLockPass.cpp.obj",
+			"FSR2TemporalUpscalerRCASPass.cpp.obj",
+			"FSR2TemporalUpscalerReconstructPrevDepthPass.cpp.obj",
+			"FSR2TemporalUpscalerRHIBackend.cpp.obj",
+			"FSR2TemporalUpscalerShaders.cpp.obj",
+			"FSR2TemporalUpscalerTcrAutogenerate.cpp.obj"
+		]
+	}
+}

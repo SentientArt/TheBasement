@@ -1,0 +1,346 @@
+<html>
+<head>
+<title>API Reference | IFMODStudioModule</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="api-reference.html">API Reference</a><ul class="subchapters"><li><a href="api-reference-common.html">Common</a></li><li class="manual-current-chapter manual-active-chapter"><a href="api-reference-ifmodstudiomodule.html">IFMODStudioModule</a></li><li><a href="api-reference-ufmodblueprintstatics.html">UFMODBlueprintStatics</a></li><li><a href="api-reference-ufmodaudiocomponent.html">UFMODAudioComponent</a></li><li><a href="api-reference-afmodambientsound.html">AFMODAmbientSound</a></li><li><a href="api-reference-ufmodanimnotifyplay.html">UFMODAnimNotifyPlay</a></li><li><a href="api-reference-ufmodbank.html">UFMODBank</a></li><li><a href="api-reference-ufmodbus.html">UFMODBus</a></li><li><a href="api-reference-ufmodvca.html">UFMODVCA</a></li><li><a href="api-reference-ufmodevent.html">UFMODEvent</a></li><li><a href="api-reference-ufmodport.html">UFMODPort</a></li><li><a href="api-reference-ufmodsnapshot.html">UFMODSnapshot</a></li><li><a href="api-reference-ufmodsnapshotreverb.html">UFMODSnapshotReverb</a></li><li><a href="api-reference-ufmodasset.html">UFMODAsset</a></li><li><a href="api-reference-ufmodsettings.html">UFMODSettings</a></li></ul></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>6. API Reference | IFMODStudioModule</h1>
+<p>This class inherits from <a href="">IModuleInterface</a>.</p>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_get" title="Singleton-like access to this module's interface. Beware of calling this during the shutdown phase, though. Your module might have been unloaded already.">IFMODStudioModule::Get</a> Singleton-like access to this module's interface. Beware of calling this during the shutdown phase, though. Your module might have been unloaded already.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_isavailable" title="Checks to see if this module is loaded and ready.  It is only valid to call Get() if IsAvailable() returns true.">IFMODStudioModule::IsAvailable</a> Checks to see if this module is loaded and ready.  It is only valid to call Get() if IsAvailable() returns true.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_getstudiosystem" title="Get a pointer to the runtime studio system (only valid in-game or in PIE).">IFMODStudioModule::GetStudioSystem</a> Get a pointer to the runtime studio system (only valid in-game or in PIE).</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_setsystempaused" title="Set system paused.">IFMODStudioModule::SetSystemPaused</a> Set system paused.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_refreshsettings" title="Called when user changes any studio settings.">IFMODStudioModule::RefreshSettings</a> Called when user changes any studio settings.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_setinpie" title="Called when we enter or leave PIE mode.">IFMODStudioModule::SetInPIE</a> Called when we enter or leave PIE mode.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_findassetbyname" title="Look up an asset given its name.">IFMODStudioModule::FindAssetByName</a> Look up an asset given its name.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_findeventbyname" title="Look up an event given its name.">IFMODStudioModule::FindEventByName</a> Look up an event given its name.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_getbankpath" title="Get the disk path for a bank asset.">IFMODStudioModule::GetBankPath</a> Get the disk path for a bank asset.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_getallbankpaths" title="Get the disk paths for all Banks.">IFMODStudioModule::GetAllBankPaths</a> Get the disk paths for all Banks.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_reloadbanks" title="Called by the editor module when banks have been modified on disk.">IFMODStudioModule::ReloadBanks</a> Called by the editor module when banks have been modified on disk.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_getlocale" title="Get current locale.">IFMODStudioModule::GetLocale</a> Get current locale.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_setlocale" title="Set active locale. Locale must be the locale name of one of the configured project locales.">IFMODStudioModule::SetLocale</a> Set active locale. Locale must be the locale name of one of the configured project locales.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_geteventdescription" title="Get an event description. The system type can control which Studio system to use, or leave it as System_Max for it to choose automatically.">IFMODStudioModule::GetEventDescription</a> Get an event description. The system type can control which Studio system to use, or leave it as System_Max for it to choose automatically.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_createauditioninginstance" title="Create a single auditioning instance using the auditioning system.">IFMODStudioModule::CreateAuditioningInstance</a> Create a single auditioning instance using the auditioning system.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_stopauditioninginstance" title="Stop any auditioning instance.">IFMODStudioModule::StopAuditioningInstance</a> Stop any auditioning instance.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_haslistenermoved" title="Return whether the listener(s) have moved.">IFMODStudioModule::HasListenerMoved</a> Return whether the listener(s) have moved.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_setlistenerposition" title="Used to update a listener's position.">IFMODStudioModule::SetListenerPosition</a> Used to update a listener's position.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_finishsetlistenerposition" title="Used to update the listener positions.">IFMODStudioModule::FinishSetListenerPosition</a> Used to update the listener positions.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_getnearestlistener" title="Return the audio settings for the listener nearest the given location.">IFMODStudioModule::GetNearestListener</a> Return the audio settings for the listener nearest the given location.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_getfailedbankloads" title="Return a list of banks that failed to load due to an error.">IFMODStudioModule::GetFailedBankLoads</a> Return a list of banks that failed to load due to an error.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_banksreloadedevent" title="This event is fired after all banks were reloaded.">IFMODStudioModule::BanksReloadedEvent</a> This event is fired after all banks were reloaded.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_getrequiredplugins" title="Return a list of plugins that appear to be needed.">IFMODStudioModule::GetRequiredPlugins</a> Return a list of plugins that appear to be needed.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_addrequiredplugin" title="Register a plugin that is required.">IFMODStudioModule::AddRequiredPlugin</a> Register a plugin that is required.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_usesound" title="Returns whether sound is enabled for the game.">IFMODStudioModule::UseSound</a> Returns whether sound is enabled for the game.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_loadplugin" title="Attempts to load a plugin by name.">IFMODStudioModule::LoadPlugin</a> Attempts to load a plugin by name.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudiomodule_logerror" title="Log an FMOD error.">IFMODStudioModule::LogError</a> Log an FMOD error.</span></li>
+<li><span><a class="apilink" href="api-reference-ifmodstudiomodule.html#ifmodstudioeditormodule_arebanksloaded" title="This returns true if the plugin has loaded all required banks on startup. Depending if bLoadAllBanks is checked, this could be all banks or just the Master and Strings Bank.">IFMODStudioEditorModule::AreBanksLoaded</a> This returns true if the plugin has loaded all required banks on startup. Depending if <a href="api-reference-ufmodsettings#bloadallbanks.html">bLoadAllBanks</a> is checked, this could be all banks or just the <a href="studio-guide#loading-banks.html">Master</a> and <a href="studio-guide#loading-banks.html">Strings Bank</a>.</span></li>
+</ul>
+<h2 api="method" id="ifmodstudiomodule_get"><a href="#ifmodstudiomodule_get">IFMODStudioModule::Get</a></h2>
+<p>Singleton-like access to this module's interface. Beware of calling this during the shutdown phase, though. Your module might have been unloaded already.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">IFMODStudioModule</span> <span class="o">&amp;</span><span class="n">Get</span><span class="p">()</span>
+</pre></div>
+
+<dl>
+<dt>return</dt>
+<dd>Returns singleton instance, loading the module on demand if needed.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_isavailable"><a href="#ifmodstudiomodule_isavailable">IFMODStudioModule::IsAvailable</a></h2>
+<p>Checks to see if this module is loaded and ready.  It is only valid to call Get() if IsAvailable() returns true.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="n">IsAvailable</span><span class="p">()</span>
+</pre></div>
+
+<dl>
+<dt>return</dt>
+<dd>Returns true if the module is loaded and ready to use.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_getstudiosystem"><a href="#ifmodstudiomodule_getstudiosystem">IFMODStudioModule::GetStudioSystem</a></h2>
+<p>Get a pointer to the runtime studio system (only valid in-game or in PIE).</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">System</span> <span class="o">*</span><span class="n">GetStudioSystem</span><span class="p">(</span>
+    <span class="n">EFMODSystemContext</span><span class="o">::</span><span class="n">Type</span> <span class="n">Context</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Context</dt>
+<dd>System context to use.</dd>
+</dl>
+<p><strong>See Also:</strong> <a class="apilink" href="api-reference-common.html#efmodsystemcontext">EFMODSystemContext</a>.</p>
+<h2 api="method" id="ifmodstudiomodule_setsystempaused"><a href="#ifmodstudiomodule_setsystempaused">IFMODStudioModule::SetSystemPaused</a></h2>
+<p>Set system paused.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetSystemPaused</span><span class="p">(</span>
+    <span class="kt">bool</span> <span class="n">paused</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>paused</dt>
+<dd>Should the system be paused.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_refreshsettings"><a href="#ifmodstudiomodule_refreshsettings">IFMODStudioModule::RefreshSettings</a></h2>
+<p>Called when user changes any studio settings.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">RefreshSettings</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="method" id="ifmodstudiomodule_setinpie"><a href="#ifmodstudiomodule_setinpie">IFMODStudioModule::SetInPIE</a></h2>
+<p>Called when we enter or leave PIE mode.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetInPIE</span><span class="p">(</span>
+    <span class="kt">bool</span> <span class="n">bInPIE</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bSimulating</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>bInPIE</dt>
+<dd>Currently in PIE.</dd>
+<dt>bSimulating</dt>
+<dd>Currently simulating.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_findassetbyname"><a href="#ifmodstudiomodule_findassetbyname">IFMODStudioModule::FindAssetByName</a></h2>
+<p>Look up an asset given its name.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">UFMODAsset</span> <span class="o">*</span><span class="nf">FindAssetByName</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">FString</span> <span class="o">&amp;</span><span class="n">Name</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Name</dt>
+<dd>The asset name.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_findeventbyname"><a href="#ifmodstudiomodule_findeventbyname">IFMODStudioModule::FindEventByName</a></h2>
+<p>Look up an event given its name.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">UFMODEvent</span> <span class="o">*</span><span class="nf">FindEventByName</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">FString</span> <span class="o">&amp;</span><span class="n">Name</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Name</dt>
+<dd>The name of the event.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_getbankpath"><a href="#ifmodstudiomodule_getbankpath">IFMODStudioModule::GetBankPath</a></h2>
+<p>Get the disk path for a bank asset.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="nf">GetBankPath</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">UFMODBank</span> <span class="o">&amp;</span><span class="n">Bank</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Bank</dt>
+<dd>The bank to retrieve the disk path for.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_getallbankpaths"><a href="#ifmodstudiomodule_getallbankpaths">IFMODStudioModule::GetAllBankPaths</a></h2>
+<p>Get the disk paths for all Banks.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">GetAllBankPaths</span><span class="p">(</span>
+    <span class="n">TArray</span><span class="o">&lt;</span><span class="n">FString</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">Paths</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">IncludeMasterBank</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Paths</dt>
+<dd>An array of strings for the paths to be assigned to.</dd>
+<dt>IncludeMasterBank</dt>
+<dd>Should the Master Bank path be included.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_reloadbanks"><a href="#ifmodstudiomodule_reloadbanks">IFMODStudioModule::ReloadBanks</a></h2>
+<p>Called by the editor module when banks have been modified on disk.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">ReloadBanks</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="method" id="ifmodstudiomodule_setlocale"><a href="#ifmodstudiomodule_setlocale">IFMODStudioModule::SetLocale</a></h2>
+<p>Set active locale. Locale must be the locale name of one of the configured project locales.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="nf">SetLocale</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">FString</span><span class="o">&amp;</span> <span class="n">Locale</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Locale</dt>
+<dd>The language to use.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_getlocale"><a href="#ifmodstudiomodule_getlocale">IFMODStudioModule::GetLocale</a></h2>
+<p>Get current locale.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="nf">GetLocale</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="method" id="ifmodstudiomodule_geteventdescription"><a href="#ifmodstudiomodule_geteventdescription">IFMODStudioModule::GetEventDescription</a></h2>
+<p>Get an event description. The system type can control which Studio system to use, or leave it as System_Max for it to choose automatically.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">EventDescription</span> <span class="o">*</span><span class="n">GetEventDescription</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">UFMODEvent</span> <span class="o">*</span><span class="n">Event</span><span class="p">,</span>
+    <span class="n">FMODSystemContext</span><span class="o">::</span><span class="n">Type</span> <span class="n">Context</span> <span class="o">=</span> <span class="n">EFMODSystemContext</span><span class="o">::</span><span class="n">Max</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Event</dt>
+<dd>The event to retrieve the description of.</dd>
+<dt>Context</dt>
+<dd>System context to use.</dd>
+</dl>
+<p><strong>See Also:</strong> <a class="apilink" href="api-reference-common.html#efmodsystemcontext">EFMODSystemContext</a>.</p>
+<h2 api="method" id="ifmodstudiomodule_createauditioninginstance"><a href="#ifmodstudiomodule_createauditioninginstance">IFMODStudioModule::CreateAuditioningInstance</a></h2>
+<p>Create a single auditioning instance using the auditioning system.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">EventInstance</span> <span class="o">*</span><span class="n">CreateAuditioningInstance</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">UFMODEvent</span> <span class="o">*</span><span class="n">Event</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Event</dt>
+<dd>The event to audition.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_stopauditioninginstance"><a href="#ifmodstudiomodule_stopauditioninginstance">IFMODStudioModule::StopAuditioningInstance</a></h2>
+<p>Stop any auditioning instance.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">StopAuditioningInstance</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="method" id="ifmodstudiomodule_haslistenermoved"><a href="#ifmodstudiomodule_haslistenermoved">IFMODStudioModule::HasListenerMoved</a></h2>
+<p>Return whether the listener(s) have moved.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="nf">HasListenerMoved</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="method" id="ifmodstudiomodule_setlistenerposition"><a href="#ifmodstudiomodule_setlistenerposition">IFMODStudioModule::SetListenerPosition</a></h2>
+<p>Used to update a listener's position.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetListenerPosition</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">ListenerIndex</span><span class="p">,</span>
+    <span class="n">UWorld</span> <span class="o">*</span><span class="n">World</span><span class="p">,</span>
+    <span class="n">FTransform</span> <span class="o">&amp;</span><span class="n">ListenerTransform</span><span class="p">,</span>
+    <span class="kt">float</span> <span class="n">DeltaSeconds</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>ListenerIndex</dt>
+<dd>Which listener position to change.</dd>
+<dt>World</dt>
+<dd>The current map.</dd>
+<dt>ListenerTransform</dt>
+<dd>New transform of the listener.</dd>
+<dt>DeltaSeconds</dt>
+<dd>How many seconds it should take to get there.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_finishsetlistenerposition"><a href="#ifmodstudiomodule_finishsetlistenerposition">IFMODStudioModule::FinishSetListenerPosition</a></h2>
+<p>Used to update the listener positions.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">FinishSetListenerPosition</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">NumListeners</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>NumListeners</dt>
+<dd>The number of listeners to change the positions of.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_getnearestlistener"><a href="#ifmodstudiomodule_getnearestlistener">IFMODStudioModule::GetNearestListener</a></h2>
+<p>Return the audio settings for the listener nearest the given location.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">const</span> <span class="n">FFMODListener</span> <span class="o">&amp;</span><span class="n">GetNearestListener</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">FVector</span> <span class="o">&amp;</span><span class="n">Location</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Location</dt>
+<dd>Unreal Vector position.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_getfailedbankloads"><a href="#ifmodstudiomodule_getfailedbankloads">IFMODStudioModule::GetFailedBankLoads</a></h2>
+<p>Return a list of banks that failed to load due to an error.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FString</span><span class="o">&gt;</span> <span class="n">GetFailedBankLoads</span><span class="p">(</span>
+    <span class="n">EFMODSystemContext</span><span class="o">::</span><span class="n">Type</span> <span class="n">Context</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Context</dt>
+<dd>System context to use.</dd>
+</dl>
+<p><strong>See Also:</strong> <a class="apilink" href="api-reference-common.html#efmodsystemcontext">EFMODSystemContext</a>.</p>
+<h2 api="method" id="ifmodstudiomodule_banksreloadedevent"><a href="#ifmodstudiomodule_banksreloadedevent">IFMODStudioModule::BanksReloadedEvent</a></h2>
+<p>This event is fired after all banks were reloaded.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FSimpleMulticastDelegate</span> <span class="o">&amp;</span><span class="n">BanksReloadedEvent</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="method" id="ifmodstudiomodule_getrequiredplugins"><a href="#ifmodstudiomodule_getrequiredplugins">IFMODStudioModule::GetRequiredPlugins</a></h2>
+<p>Return a list of plugins that appear to be needed.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FString</span><span class="o">&gt;</span> <span class="n">GetRequiredPlugins</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="method" id="ifmodstudiomodule_addrequiredplugin"><a href="#ifmodstudiomodule_addrequiredplugin">IFMODStudioModule::AddRequiredPlugin</a></h2>
+<p>Register a plugin that is required.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">AddRequiredPlugin</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">FString</span> <span class="o">&amp;</span><span class="n">Plugin</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Plugin</dt>
+<dd>The plugin to be registered.</dd>
+</dl>
+<h2 api="method" id="ifmodstudiomodule_usesound"><a href="#ifmodstudiomodule_usesound">IFMODStudioModule::UseSound</a></h2>
+<p>Returns whether sound is enabled for the game.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="nf">UseSound</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="method" id="ifmodstudiomodule_loadplugin"><a href="#ifmodstudiomodule_loadplugin">IFMODStudioModule::LoadPlugin</a></h2>
+<p>Attempts to load a plugin by name.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="nf">LoadPlugin</span><span class="p">(</span>
+    <span class="n">EFMODSystemContext</span><span class="o">::</span><span class="n">Type</span> <span class="n">Context</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">TCHAR</span> <span class="o">*</span><span class="n">ShortName</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Context</dt>
+<dd>System context to use.</dd>
+<dt>ShortName</dt>
+<dd>Name of the plugin.</dd>
+</dl>
+<p><strong>See Also:</strong> <a class="apilink" href="api-reference-common.html#efmodsystemcontext">EFMODSystemContext</a>.</p>
+<h2 api="method" id="ifmodstudiomodule_logerror"><a href="#ifmodstudiomodule_logerror">IFMODStudioModule::LogError</a></h2>
+<p>Log an FMOD error.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">LogError</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">result</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">function</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>result</dt>
+<dd>Result of FMOD function call.</dd>
+<dt>function</dt>
+<dd>The name of the function.</dd>
+</dl>
+<h2 api="method" id="ifmodstudioeditormodule_arebanksloaded"><a href="#ifmodstudioeditormodule_arebanksloaded">IFMODStudioEditorModule::AreBanksLoaded</a></h2>
+<p>This returns true if the plugin has loaded all required banks on startup. Depending if <a href="api-reference-ufmodsettings#bloadallbanks.html">bLoadAllBanks</a> is checked, this could be all banks or just the <a href="studio-guide#loading-banks.html">Master</a> and <a href="studio-guide#loading-banks.html">Strings Bank</a>.</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="nf">AreBanksLoaded</span><span class="p">();</span>
+</pre></div></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

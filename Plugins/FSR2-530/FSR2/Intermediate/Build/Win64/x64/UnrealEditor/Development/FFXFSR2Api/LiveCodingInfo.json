@@ -1,0 +1,9 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.FFXFSR2Api.cpp.obj": [
+			"FFXFSR2.cpp.obj",
+			"FFXFSR2Module.cpp.obj"
+		]
+	}
+}

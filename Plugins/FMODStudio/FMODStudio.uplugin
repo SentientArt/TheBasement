@@ -1,0 +1,28 @@
+{
+    "FileVersion" : 3,
+	
+	"FriendlyName" : "FMOD Studio Integration",
+	"Version" : 20220,
+	"VersionName" : "2.02.20",
+	"CreatedBy" : "Firelight Technologies",
+	"CreatedByURL" : "http://fmod.com",
+	"Description" : "FMOD Studio Integration.",
+	"Category" : "Audio",
+	"EnabledByDefault" : true,
+
+	"Modules": [
+		{
+			"Name": "FMODStudio",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+		{
+			"Name": "FMODStudioEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	],
+
+	"CanContainContent" : true,
+	"Installed" : true
+}

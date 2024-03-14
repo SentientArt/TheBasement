@@ -1,0 +1,10 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.DLSSUtility.cpp.obj": [
+			"DLSSUtility.cpp.obj",
+			"GBufferResolvePass.cpp.obj",
+			"VelocityCombinePass.cpp.obj"
+		]
+	}
+}

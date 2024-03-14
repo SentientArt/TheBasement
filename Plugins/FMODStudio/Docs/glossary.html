@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Glossary</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li class="manual-current-chapter manual-active-chapter"><a href="glossary.html">Glossary</a><ul>
+<li><a href="#documentation-conventions">Documentation Conventions</a><ul>
+<li><a href="#parameter-tokens">Parameter Tokens</a></li>
+</ul>
+</li>
+<li><a href="#version">Version</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>11. Glossary</h1>
+<p>This page includes definitions for various common FMOD Studio terms, along with references to related terms and documentation.</p>
+<h2 id="documentation-conventions"><a href="#documentation-conventions">11.1 Documentation Conventions</a></h2>
+<h3 id="parameter-tokens"><a href="#parameter-tokens">11.1.1 Parameter Tokens</a></h3>
+<table>
+<thead>
+<tr>
+<th align="center">Token</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><span><span class="token" title="Output">Out</span></span></td>
+<td>The API function will fill in information in this parameter.</td>
+</tr>
+<tr>
+<td align="center"><span><span class="token" title="Optional">Opt</span></span></td>
+<td>This parameter is optional, specify null or zero to ignore.</td>
+</tr>
+<tr>
+<td align="center"><span><span class="token" title="Read-only">R/O</span></span></td>
+<td>This token applies to members of various structures which FMOD passes to user callbacks. User callbacks must not modify the values of these members. Modifying the values of these members will cause undefined behavior.</td>
+</tr>
+<tr>
+<td align="center"><span><span class="token" title="C#only">C#</span></span></td>
+<td>This is only available in C#.</td>
+</tr>
+<tr>
+<td align="center"><span><span class="token" title="Javscript-only">JS</span></span></td>
+<td>This is only available in Javascript.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version"><a href="#version">11.2 Version</a></h2>
+<p>The version number of FMOD Studio. Version numbers are split into three parts, in the format: productVersion.majorVersion.minorVersion. For example, the version 1.23.45 would indicate product version 1, major version 23, and minor version 45 of that major version.</p>
+<p>Major versions contain significant changes, add new features, and may affect bank compatibility. Updating to a new major version usually requires project migration. New major versions may change playback behavior in some cases.</p>
+<p>Minor versions, also known as patch versions, contain bug fixes and smaller workflow improvements.</p></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

@@ -1,0 +1,131 @@
+// This file is part of the FidelityFX Super Resolution 2.2 Unreal Engine Plugin.
+//
+// Copyright (c) 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/ScreenPass.ush"
+#include "/Engine/Private/DeferredShadingCommon.ush"
+
+
+// =====================================================================================
+//
+// SHADER RESOURCES
+//
+// =====================================================================================
+Texture2D GBufferB;
+Texture2D SceneColor;
+RWTexture2D<float4> BlendSceneColor;
+uint FullDeDither;
+
+// =====================================================================================
+//
+// ENTRY POINTS
+//
+// =====================================================================================
+[numthreads(THREADGROUP_SIZEX, THREADGROUP_SIZEY, THREADGROUP_SIZEZ)] 
+void MainCS(uint3 LocalThreadId : SV_GroupThreadID, uint3 WorkGroupId : SV_GroupID, uint3 DispatchThreadId : SV_DispatchThreadID)
+{
+	uint Width = View.ViewSizeAndInvSize.x;
+	uint Height = View.ViewSizeAndInvSize.y;
+	uint2 ThreadId = DispatchThreadId.xy + View.ViewRectMin.xy;
+
+	if (Width > DispatchThreadId.x && Height > DispatchThreadId.y)
+	{
+		float4 BufferB = GBufferB[ThreadId];
+		float4 Sample = SceneColor[ThreadId];
+		FGBufferData GBuffer = DecodeGBufferData(float4(0.f, 0.f, 0.f, 0.f),
+													BufferB,
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													0.f,
+													0,
+													0.f,
+													false,
+													false);
+
+		if (GBuffer.ShadingModelID != SHADINGMODELID_HAIR)
+		{
+			uint2 Above = max(ThreadId + uint2(0, -1), View.ViewRectMin.xy);
+			uint2 Left = max(ThreadId + uint2(-1, 0), View.ViewRectMin.xy);
+			uint2 Below = min(ThreadId + uint2(0, 1), View.ViewRectMin.xy + View.ViewSizeAndInvSize.xy);
+			uint2 Right = min(ThreadId + uint2(1, 0), View.ViewRectMin.xy + View.ViewSizeAndInvSize.xy);
+
+			float4 Samples[4];
+			float4 BufferBs[4];
+			uint ShadingModel[4];
+			uint2 Locations[4] = { Above, Left, Right, Below };
+			for (uint i = 0; i < 4; i++)
+			{
+				Samples[i] = SceneColor[Locations[i]];
+				BufferBs[i] = GBufferB[Locations[i]];
+				FGBufferData GBufferData = DecodeGBufferData(float4(0.f, 0.f, 0.f, 0.f),
+													BufferBs[i],
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													0.f,
+													0,
+													0.f,
+													false,
+													false);
+				ShadingModel[i] = GBufferData.ShadingModelID;
+			}
+
+			// Prefer hair-dithering which is intentionally always dithered.
+			bool ShadingModelAboveBelow = (ShadingModel[0] == SHADINGMODELID_HAIR && ShadingModel[3] == SHADINGMODELID_HAIR);
+			bool ShadingModelLeftRight = (ShadingModel[1] == SHADINGMODELID_HAIR && ShadingModel[2] == SHADINGMODELID_HAIR);
+			if (ShadingModelAboveBelow || ShadingModelLeftRight)
+			{
+				if (ShadingModelAboveBelow)
+				{
+					Sample = (Samples[0] + Samples[3] + Sample) / 3.f;
+				}
+				if (ShadingModelLeftRight)
+				{
+					Sample = (Samples[1] + Samples[2] + Sample) / 3.f;
+				}
+			}
+			else if (FullDeDither != 0)
+			{
+				float4 DiffAboveBelow = abs(Samples[0] - Samples[3]);
+				float4 DiffLeftRight = abs(Samples[1] - Samples[2]);
+				bool SameAboveBelow = all(DiffAboveBelow < 0.1f);
+				bool SameLeftRight = all(DiffLeftRight < 0.1f);
+				float4 AvgAboveBelow = (Samples[0] + Samples[3]) / 2.0f;
+				float4 AvgLeftRight = (Samples[1] + Samples[2]) / 2.0f;
+				float4 Diff = abs(AvgAboveBelow - AvgLeftRight);
+				bool Same = all(Diff < 0.1f);
+				if (Same)
+				{
+					float4 Avg = (AvgAboveBelow + AvgLeftRight) / 2.0f;
+					if (any(abs(Sample - Avg) > 0.2f))
+					{
+						Sample = lerp(Sample, Avg, 0.75f);
+					}
+				}
+			}
+		}
+		BlendSceneColor[DispatchThreadId.xy] = Sample;
+	}
+}

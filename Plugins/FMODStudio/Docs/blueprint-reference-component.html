@@ -1,0 +1,355 @@
+<html>
+<head>
+<title>Blueprint Reference | Component</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="blueprint-reference.html">Blueprint Reference</a><ul class="subchapters"><li><a href="blueprint-reference-bus.html">Bus</a></li><li><a href="blueprint-reference-common.html">Common</a></li><li class="manual-current-chapter manual-active-chapter"><a href="blueprint-reference-component.html">Component</a></li><li><a href="blueprint-reference-eventinstance.html">Event Instance</a></li><li><a href="blueprint-reference-asynchronous-loading.html">Asynchronous Loading</a></li><li><a href="blueprint-reference-enums.html">Enums</a></li><li><a href="blueprint-reference-structs.html">Structs</a></li><li><a href="blueprint-reference-utilities.html">Utilities</a></li></ul></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>7. Blueprint Reference | Component</h1>
+<p>These methods are used to control the state of Audio Components.</p>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><span><a class="apilink" href="blueprint-reference-component.html#add-audio-component" title="Creates a new Audio Component.">Add Audio Component</a> Creates a new Audio Component.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#get-length" title="Get the event length in milliseconds.">Get Length</a> Get the event length in milliseconds.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#get-parameter" title="Get parameter value from the Event.">Get Parameter</a> Get parameter value from the Event.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#get-parameter-value" title="Get parameter value from the Event.">Get Parameter Value</a> Get parameter value from the Event.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#get-paused" title="Get the paused state of the audio component.">Get Paused</a> Get the paused state of the audio component.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#get-property" title="Get a property of the Event.">Get Property</a> Get a property of the Event.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#get-timeline-position" title="Get the timeline position in milliseconds.">Get Timeline Position</a> Get the timeline position in milliseconds.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#is-playing" title="Return true if this component is currently playing an event.">Is Playing</a> Return true if this component is currently playing an event.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#key-off" title="Allow an event to continue past a sustain point.">Key Off</a> Allow an event to continue past a sustain point.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#play" title="Start a sound playing on an audio component.">Play</a> Start a sound playing on an audio component.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#release" title="Release the current Studio Instance.">Release</a> Release the current Studio Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#set-event" title="New Event to be used by the FMODAudioComponent.">Set Event</a> New Event to be used by the FMODAudioComponent.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#set-parameter" title="Set a parameter of the Event.">Set Parameter</a> Set a parameter of the Event.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#set-paused" title="Pause/Unpause an audio component.">Set Paused</a> Pause/Unpause an audio component.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#set-pitch" title="Set pitch on an audio component.">Set Pitch</a> Set pitch on an audio component.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#set-programmer-sound-name" title="Set the sound name to use for programmer sound.">Set Programmer Sound Name</a> Set the sound name to use for programmer sound.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#set-property" title="Set a property of the Event.">Set Property</a> Set a property of the Event.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#set-timeline-position" title="Set the timeline position in milliseconds">Set Timeline Position</a> Set the timeline position in milliseconds</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#set-volume" title="Set volume on an audio component.">Set Volume</a> Set volume on an audio component.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-component.html#stop" title="Stop an audio component playing.">Stop</a> Stop an audio component playing.</span></li>
+</ul>
+<h2 api="function" id="add-audio-component"><a href="#add-audio-component">Add Audio Component</a></h2>
+<p>Creates a new Audio Component.</p>
+<p><img alt="Add Audio Component" src="images/add-audio-component.png" /></p>
+<dl>
+<dt>Manual Attachment</dt>
+<dd>Whether manual or automatic attachment is to be used.</dd>
+<dt>Relative Transform</dt>
+<dd>The relative transform between the new Audio Component and its attached parent (automatic only).</dd>
+</dl>
+<h2 api="function" id="get-length"><a href="#get-length">Get Length</a></h2>
+<p>Get the event length in milliseconds.</p>
+<p><img alt="Get Length" src="images/get-length.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="nf">GetLength</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="function" id="get-parameter"><a href="#get-parameter">Get Parameter</a></h2>
+<p>Get parameter value from the Event.</p>
+<p><img alt="Get Parameter" src="images/get-parameter.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">float</span> <span class="nf">GetParameter</span><span class="p">(</span>
+  <span class="n">FName</span> <span class="n">Name</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Name</dt>
+<dd>Name of the parameter.</dd>
+</dl>
+<h2 api="function" id="get-parameter-value"><a href="#get-parameter-value">Get Parameter Value</a></h2>
+<p>Get parameter value from the Event.</p>
+<p><img alt="Get Parameter Value" src="images/get-parameter-value.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">GetParameterValue</span><span class="p">(</span><span class="n">FName</span> <span class="n">Name</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">UserValue</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">FinalValue</span><span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Name</dt>
+<dd>Name of parameter.</dd>
+<dt>UserValue</dt>
+<dd>Parameter value as set from the public API.</dd>
+<dt>FinalValue</dt>
+<dd>Final combined parameter value.</dd>
+</dl>
+<h2 api="struct" id="get-paused"><a href="#get-paused">Get Paused</a></h2>
+<p>Get the paused state of the audio component.</p>
+<p><img alt="Set Paused" src="images/get-paused.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="nf">GetPaused</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="function" id="get-property"><a href="#get-property">Get Property</a></h2>
+<p>Get a property of the Event.</p>
+<p><img alt="Get Property" src="images/get-property.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">float</span> <span class="nf">GetProperty</span><span class="p">(</span>
+  <span class="n">EFMODEventProperty</span><span class="o">::</span><span class="n">Type</span> <span class="n">Property</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Property</dt>
+<dd>Enum to describe built-in event properties.</dd>
+</dl>
+<p><strong>See Also:</strong> <a href="https://fmod.com/docs/2.02/api/studio-api-eventinstance.html#fmod_studio_event_property">EFMODEventProperty</a></p>
+<h2 api="function" id="get-timeline-position"><a href="#get-timeline-position">Get Timeline Position</a></h2>
+<p>Get the timeline position in milliseconds.</p>
+<p><img alt="Get Timeline Position" src="images/get-timeline-position.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">int32</span> <span class="nf">GetTimelinePosition</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="struct" id="is-playing"><a href="#is-playing">Is Playing</a></h2>
+<p>Return true if this component is currently playing an event.</p>
+<p><img alt="Is Playing" src="images/is-playing.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="nf">IsPlaying</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="function" id="key-off"><a href="#key-off">Key Off</a></h2>
+<p>Allow an event to continue past a sustain point.</p>
+<p><img alt="Key Off" src="images/key-off.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">KeyOff</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="function" id="play"><a href="#play">Play</a></h2>
+<p>Start a sound playing on an audio component.</p>
+<p><img alt="Play" src="images/play.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">Play</span><span class="p">();</span>
+</pre></div>
+
+<h2 api="struct" id="release"><a href="#release">Release</a></h2>
+<p>Release the current Studio Instance.</p>
+<p><img alt="Release" src="images/release.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">Release</span><span class="p">();</span>
+</pre></div>
+
+<p><strong>See Also:</strong> <a class="apilink" href="api-reference-ufmodaudiocomponent.html#ufmodaudiocomponent_studioinstance">UFMODAudioComponent::StudioInstance</a></p>
+<h2 api="function" id="set-event"><a href="#set-event">Set Event</a></h2>
+<p>New Event to be used by the FMODAudioComponent.</p>
+<p><img alt="Set Event" src="images/set-event.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetEvent</span><span class="p">(</span>
+  <span class="n">UFMODEvent</span> <span class="o">*</span><span class="n">NewEvent</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>NewEvent</dt>
+<dd>New Event Asset reference to use.</dd>
+</dl>
+<p>If an Event is currently playing, it will be stopped and the new Event passed in will be started.</p>
+<p><strong>See Also:</strong> <a class="apilink" href="api-reference-ufmodevent.html">UFMODEvent</a></p>
+<h2 api="function" id="set-parameter"><a href="#set-parameter">Set Parameter</a></h2>
+<p>Set a parameter of the Event.</p>
+<p><img alt="Set Parameter" src="images/set-parameter.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetParameter</span><span class="p">(</span>
+  <span class="n">FName</span> <span class="n">Name</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="n">Value</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Name</dt>
+<dd>Name of the parameter.</dd>
+<dt>Value</dt>
+<dd>Value to apply to the parameter.</dd>
+</dl>
+<h2 api="struct" id="set-paused"><a href="#set-paused">Set Paused</a></h2>
+<p>Pause/Unpause an audio component.</p>
+<p><img alt="Set Paused" src="images/set-paused.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetPaused</span><span class="p">(</span>
+  <span class="kt">bool</span> <span class="n">paused</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt id="set-paused_paused">paused</dt>
+<dd>The paused state to apply.</dd>
+</dl>
+<h2 api="struct" id="set-pitch"><a href="#set-pitch">Set Pitch</a></h2>
+<p>Set pitch on an audio component.</p>
+<p><img alt="Set Pitch" src="images/set-pitch.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetPitch</span><span class="p">(</span>
+  <span class="kt">float</span> <span class="n">pitch</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt id="set-pitch_pitch">pitch</dt>
+<dd>New pitch multiplier to apply.</dd>
+</dl>
+<p>The pitch multiplier is used to modulate the event instance's pitch. It can be set to any value greater than or equal to zero but the final combined pitch is clamped to the range [0, 100] before being applied.</p>
+<h2 api="function" id="set-programmer-sound-name"><a href="#set-programmer-sound-name">Set Programmer Sound Name</a></h2>
+<p>Set the sound name to use for programmer sound.</p>
+<p><img alt="Set Programmer Sound Name" src="images/set-programmer-sound-name.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetProgrammerSoundName</span><span class="p">(</span>
+  <span class="n">FString</span> <span class="n">Value</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Value</dt>
+<dd>Name of sound or file to use.</dd>
+</dl>
+<p>The integration will look up the name in any loaded audio table.</p>
+<h2 api="function" id="set-property"><a href="#set-property">Set Property</a></h2>
+<p>Set a property of the Event.</p>
+<p><img alt="Set Property" src="images/set-property.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetProperty</span><span class="p">(</span>
+  <span class="n">EFMODEventProperty</span><span class="o">::</span><span class="n">Type</span> <span class="n">Property</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="n">Value</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Property</dt>
+<dd>Enum to describe built-in event properties.</dd>
+<dt>Value</dt>
+<dd>Value to apply to the property.</dd>
+</dl>
+<p><strong>See Also:</strong> <a href="https://fmod.com/docs/2.02/api/studio-api-eventinstance.html#fmod_studio_event_property">EFMODEventProperty</a></p>
+<h2 api="function" id="set-timeline-position"><a href="#set-timeline-position">Set Timeline Position</a></h2>
+<p>Set the timeline position in milliseconds</p>
+<p><img alt="Set Timeline Position" src="images/set-timeline-position.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetTimelinePosition</span><span class="p">(</span>
+  <span class="n">int32</span> <span class="n">Time</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Time</dt>
+<dd>Time in milliseconds.</dd>
+</dl>
+<h2 api="struct" id="set-volume"><a href="#set-volume">Set Volume</a></h2>
+<p>Set volume on an audio component.</p>
+<p><img alt="Set Volume" src="images/set-volume.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">SetVolume</span><span class="p">(</span>
+  <span class="kt">float</span> <span class="n">volume</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt id="set-volume_volume">volume</dt>
+<dd>New volume level to apply.</dd>
+</dl>
+<p>This volume is applied as a scaling factor for the event volume. It does not override the volume level set in FMOD Studio, nor any internal volume automation or modulation.</p>
+<h2 api="struct" id="stop"><a href="#stop">Stop</a></h2>
+<p>Stop an audio component playing.</p>
+<p><img alt="Stop" src="images/stop.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">Stop</span><span class="p">();</span>
+</pre></div></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

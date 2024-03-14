@@ -1,0 +1,67 @@
+// This file is part of the FidelityFX Super Resolution 2.2 Unreal Engine Plugin.
+//
+// Copyright (c) 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/ScreenPass.ush"
+#include "/Engine/Private/TemporalSuperResolution/TSRCommon.ush"
+
+
+// =====================================================================================
+//
+// SHADER RESOURCES
+//
+// =====================================================================================
+Texture2D InputDepth;
+Texture2D InputVelocity;
+RWTexture2D<float2> OutputTexture;
+
+// =====================================================================================
+//
+// ENTRY POINTS
+//
+// =====================================================================================
+[numthreads(THREADGROUP_SIZEX, THREADGROUP_SIZEY, THREADGROUP_SIZEZ)] 
+void MainCS(uint3 LocalThreadId : SV_GroupThreadID, uint3 WorkGroupId : SV_GroupID, uint3 DispatchThreadId : SV_DispatchThreadID)
+{
+	uint Width = View.ViewSizeAndInvSize.x;
+	uint Height = View.ViewSizeAndInvSize.y;
+
+	if (Width > DispatchThreadId.x && Height > DispatchThreadId.y)
+	{
+		float2 Velocity = 0;
+		float4 EncodedVelocity = InputVelocity[DispatchThreadId.xy + View.ViewRectMin.xy];
+		if ( EncodedVelocity.x > 0.0 )
+		{
+			Velocity = DecodeVelocityFromTexture(EncodedVelocity).xy;
+		}
+		else
+		{
+			float Depth = InputDepth[DispatchThreadId.xy + View.ViewRectMin.xy].x;
+			// This doesn't need the viewport origin as it is a UV, not a pixel coordinate (i.e. it is relative to the origin not (0,0))
+			float2 ViewportUV = (DispatchThreadId.xy + 0.5) * View.ViewSizeAndInvSize.zw;
+			float2 ScreenPos = ViewportUVToScreenPos(ViewportUV);
+
+			Velocity = ComputeStaticVelocity(ScreenPos, Depth).xy;
+		}
+
+		// FSR2 expects negative velocity from what UE4 produces.  FSR2 also wants the absolute result multiplied by (0.5, -0.5).  Combine these steps by multiplying by (-0.5, 0.5).
+		OutputTexture[DispatchThreadId.xy] = Velocity * float2(-0.5, 0.5);
+	}
+}

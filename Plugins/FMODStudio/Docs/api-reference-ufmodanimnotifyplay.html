@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>API Reference | UFMODAnimNotifyPlay</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="api-reference.html">API Reference</a><ul class="subchapters"><li><a href="api-reference-common.html">Common</a></li><li><a href="api-reference-ifmodstudiomodule.html">IFMODStudioModule</a></li><li><a href="api-reference-ufmodblueprintstatics.html">UFMODBlueprintStatics</a></li><li><a href="api-reference-ufmodaudiocomponent.html">UFMODAudioComponent</a></li><li><a href="api-reference-afmodambientsound.html">AFMODAmbientSound</a></li><li class="manual-current-chapter manual-active-chapter"><a href="api-reference-ufmodanimnotifyplay.html">UFMODAnimNotifyPlay</a></li><li><a href="api-reference-ufmodbank.html">UFMODBank</a></li><li><a href="api-reference-ufmodbus.html">UFMODBus</a></li><li><a href="api-reference-ufmodvca.html">UFMODVCA</a></li><li><a href="api-reference-ufmodevent.html">UFMODEvent</a></li><li><a href="api-reference-ufmodport.html">UFMODPort</a></li><li><a href="api-reference-ufmodsnapshot.html">UFMODSnapshot</a></li><li><a href="api-reference-ufmodsnapshotreverb.html">UFMODSnapshotReverb</a></li><li><a href="api-reference-ufmodasset.html">UFMODAsset</a></li><li><a href="api-reference-ufmodsettings.html">UFMODSettings</a></li></ul></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>6. API Reference | UFMODAnimNotifyPlay</h1>
+<p>Used for triggering Events in Animation timelines.</p>
+<p>This class inherits from <a href="https://api.unrealengine.com/INT/API/Runtime/Engine/Animation/AnimNotifies/UAnimNotify/index.html">UAnimNotify</a></p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-ufmodanimnotifyplay.html#ufmodanimnotifyplay_bfollow" title="Should this sound follow its owner.">UFMODAnimNotifyPlay::bFollow</a> Should this sound follow its owner.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodanimnotifyplay.html#ufmodanimnotifyplay_attachname" title="Socket or bone name to attach sound to.">UFMODAnimNotifyPlay::AttachName</a> Socket or bone name to attach sound to.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodanimnotifyplay.html#ufmodanimnotifyplay_event" title="FMODEvent reference to play.">UFMODAnimNotifyPlay::Event</a> FMODEvent reference to play.</span></li>
+</ul>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-ufmodanimnotifyplay.html#ufmodanimnotifyplay_notify" title="Event triggered when the timeline crosses the notify marker.">UFMODAnimNotifyPlay::Notify</a> Event triggered when the timeline crosses the notify marker.</span></li>
+</ul>
+<h2 api="struct" id="ufmodanimnotifyplay_attachname"><a href="#ufmodanimnotifyplay_attachname">UFMODAnimNotifyPlay::AttachName</a></h2>
+<p>Socket or bone name to attach sound to.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="n">AttachName</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="struct" id="ufmodanimnotifyplay_bfollow"><a href="#ufmodanimnotifyplay_bfollow">UFMODAnimNotifyPlay::bFollow</a></h2>
+<p>Should this sound follow its owner.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">unit32</span> <span class="nl">bFollow</span> <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="struct" id="ufmodanimnotifyplay_event"><a href="#ufmodanimnotifyplay_event">UFMODAnimNotifyPlay::Event</a></h2>
+<p>FMODEvent reference to play.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">TAssetPtr</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">UFMODEvent</span><span class="o">&gt;</span> <span class="n">Event</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>See Also:</strong> <a class="apilink" href="api-reference-ufmodevent.html">UFMODEvent</a></p>
+<h2 api="function" id="ufmodanimnotifyplay_notify"><a href="#ufmodanimnotifyplay_notify">UFMODAnimNotifyPlay::Notify</a></h2>
+<p>Event triggered when the timeline crosses the notify marker.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">Notify</span><span class="p">(</span><span class="n">USkeletalMeshComponent</span> <span class="o">*</span><span class="n">MeshComp</span><span class="p">,</span> <span class="n">UAnimSequenceBase</span> <span class="o">*</span><span class="n">AnimSeq</span><span class="p">)</span> <span class="k">override</span>
+</pre></div>
+
+<dl>
+<dt>MeshComp</dt>
+<dd>USceneComponent used for the position of the Event.</dd>
+<dt>AnimSeq</dt>
+<dd>Reference to the current animation.</dd>
+</dl>
+<p>If <a class="apilink" href="api-reference-ufmodanimnotifyplay.html#ufmodanimnotifyplay_bfollow">UFMODAnimNotifyPlay::bFollow</a> is true <a class="apilink" href="blueprint-reference-common.html#play-event-attached">Play Event Attached</a> is called using the current <a class="apilink" href="api-reference-ufmodanimnotifyplay.html#ufmodanimnotifyplay_attachname">UFMODAnimNotifyPlay::AttachName</a>.<br />
+Otherwise <a class="apilink" href="blueprint-reference-common.html#play-event-at-location">Play Event At Location</a> is called using the <code>MeshComp</code> for the positional information.</p></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

@@ -1,0 +1,15 @@
+{
+	"BuildId": "27405482",
+	"Modules": 
+	{
+		"DLSS": "UnrealEditor-DLSS.dll",
+		"DLSSBlueprint": "UnrealEditor-DLSSBlueprint.dll",
+		"DLSSEditor": "UnrealEditor-DLSSEditor.dll",
+		"DLSSUtility": "UnrealEditor-DLSSUtility.dll",
+		"NGXD3D11RHI": "UnrealEditor-NGXD3D11RHI.dll",
+		"NGXD3D12RHI": "UnrealEditor-NGXD3D12RHI.dll",
+		"NGXRHI": "UnrealEditor-NGXRHI.dll",
+		"NGXVulkanRHI": "UnrealEditor-NGXVulkanRHI.dll",
+		"NGXVulkanRHIPreInit": "UnrealEditor-NGXVulkanRHIPreInit.dll"
+	}
+}

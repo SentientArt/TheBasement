@@ -1,0 +1,199 @@
+/*
+* Copyright (c) 2020 NVIDIA CORPORATION.  All rights reserved.
+*
+* NVIDIA Corporation and its licensors retain all intellectual property and proprietary
+* rights in and to this software, related documentation and any modifications thereto.
+* Any use, reproduction, disclosure or distribution of this software and related
+* documentation without an express license agreement from NVIDIA Corporation is strictly
+* prohibited.
+*
+* TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS*
+* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED,
+* INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+* PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS BE LIABLE FOR ANY
+* SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT
+* LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+* BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR
+* INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF
+* SUCH DAMAGES.
+*/
+
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/FastMath.ush"
+#include "/Engine/Private/ScreenPass.ush"
+
+#ifndef THREADGROUP_SIZEX
+#define THREADGROUP_SIZEX		8
+#endif
+#ifndef THREADGROUP_SIZEY
+#define THREADGROUP_SIZEY		8
+#endif
+#define THREADGROUP_TOTALSIZE	(THREADGROUP_SIZEX * THREADGROUP_SIZEY)
+
+#ifndef DILATE_MOTION_VECTORS
+#define DILATE_MOTION_VECTORS 0
+#endif
+
+#if DILATE_MOTION_VECTORS
+#define AA_CROSS 1
+float2 TemporalJitterPixels;
+#else
+#endif
+
+Texture2D VelocityTexture;
+SamplerState VelocityTextureSampler;
+SCREEN_PASS_TEXTURE_VIEWPORT(Velocity)
+
+Texture2D DepthTexture;
+SamplerState DepthTextureSampler;
+
+RWTexture2D<float2>	OutVelocityCombinedTexture;
+SCREEN_PASS_TEXTURE_VIEWPORT(CombinedVelocity)
+
+
+
+	
+[numthreads(THREADGROUP_SIZEX, THREADGROUP_SIZEY, 1)]
+void VelocityCombineMain(
+	uint2 GroupId : SV_GroupID,
+	uint2 DispatchThreadId : SV_DispatchThreadID,
+	uint2 GroupThreadId : SV_GroupThreadID,
+	uint GroupIndex : SV_GroupIndex)
+{
+	uint2 PixelPos = min(DispatchThreadId + Velocity_ViewportMin, Velocity_ViewportMax - 1);
+	
+	// CombinedVelocity_ViewportMin is expected to be 0, but in case it is not
+	uint2 OutputPixelPos = CombinedVelocity_ViewportMin + DispatchThreadId;
+	const bool bInsideViewport = all(PixelPos.xy < Velocity_ViewportMax);
+	
+	BRANCH
+	if (!bInsideViewport)
+		return;
+
+#if DILATE_MOTION_VECTORS // TODO: 2x2.
+
+	// Screen position of minimum depth.
+	float2 VelocityOffset = float2(0.0, 0.0);
+
+	float2 NearestBufferUV = (PixelPos + 0.5f) * Velocity_ViewportSizeInverse;
+
+	//float2 ViewportUV = NearestBufferUV;
+	float2 ViewportUV = (float2(DispatchThreadId) + 0.5f) * CombinedVelocity_ViewportSizeInverse;
+	
+	// Pixel coordinate of the center of output pixel O in the input viewport.
+	float2 PPCo = ViewportUV * Velocity_ViewportSize + TemporalJitterPixels;
+
+	// Pixel coordinate of the center of the nearest input pixel K.
+	float2 PPCk = floor(PPCo) + 0.5;
+
+	// Pixel coordinate of the center of the nearest top left input pixel T.
+	float2 PPCt = floor(PPCo - 0.5) + 0.5;
+
+	NearestBufferUV = Velocity_ExtentInverse * (Velocity_ViewportMin + PPCk);
+	
+	// FIND MOTION OF PIXEL AND NEAREST IN NEIGHBORHOOD
+	// ------------------------------------------------
+	float3 PosN; // Position of this pixel, possibly later nearest pixel in neighborhood.
+	PosN.xy = ViewportUVToScreenPos(ViewportUV);
+	PosN.z = DepthTexture.SampleLevel(DepthTextureSampler, NearestBufferUV, 0).x;
+
+	{
+		// For motion vector, use camera/dynamic motion from min depth pixel in pattern around pixel.
+		// This enables better quality outline on foreground against different motion background.
+		// Larger 2 pixel distance "x" works best (because AA dilates surface).
+		float4 Depths;
+		Depths.x = DepthTexture.SampleLevel(DepthTextureSampler, NearestBufferUV, 0, int2(-AA_CROSS, -AA_CROSS)).x;
+		Depths.y = DepthTexture.SampleLevel(DepthTextureSampler, NearestBufferUV, 0, int2(AA_CROSS, -AA_CROSS)).x;
+		Depths.z = DepthTexture.SampleLevel(DepthTextureSampler, NearestBufferUV, 0, int2(-AA_CROSS, AA_CROSS)).x;
+		Depths.w = DepthTexture.SampleLevel(DepthTextureSampler, NearestBufferUV, 0, int2(AA_CROSS, AA_CROSS)).x;
+
+		float2 DepthOffset = float2(AA_CROSS, AA_CROSS);
+		float DepthOffsetXx = float(AA_CROSS);
+#if HAS_INVERTED_Z_BUFFER
+		// Nearest depth is the largest depth (depth surface 0=far, 1=near).
+		if (Depths.x > Depths.y)
+		{
+			DepthOffsetXx = -AA_CROSS;
+		}
+		if (Depths.z > Depths.w)
+		{
+			DepthOffset.x = -AA_CROSS;
+		}
+		float DepthsXY = max(Depths.x, Depths.y);
+		float DepthsZW = max(Depths.z, Depths.w);
+		if (DepthsXY > DepthsZW)
+		{
+			DepthOffset.y = -AA_CROSS;
+			DepthOffset.x = DepthOffsetXx;
+		}
+		float DepthsXYZW = max(DepthsXY, DepthsZW);
+		if (DepthsXYZW > PosN.z)
+		{
+			// This is offset for reading from velocity texture.
+			// This supports half or fractional resolution velocity textures.
+			// With the assumption that UV position scales between velocity and color.
+			VelocityOffset = DepthOffset * Velocity_ExtentInverse;
+			// This is [0 to 1] flipped in Y.
+			//PosN.xy = ScreenPos + DepthOffset * ViewportSize.zw * 2.0;
+			PosN.z = DepthsXYZW;
+		}
+#else // !HAS_INVERTED_Z_BUFFER
+#error Fix me!
+#endif // !HAS_INVERTED_Z_BUFFER
+	}
+	// Camera motion for pixel or nearest pixel (in ScreenPos space).
+	bool OffScreen = false;
+	float Velocity = 0;
+	float HistoryBlur = 0;
+
+	float4 ThisClip = float4(PosN.xy, PosN.z, 1);
+	float4 PrevClip = mul(ThisClip, View.ClipToPrevClip);
+	float2 PrevScreen = PrevClip.xy / PrevClip.w;
+	float2 BackN = PosN.xy - PrevScreen;
+
+	float2 BackTemp = BackN * Velocity_ViewportSize;
+
+	float4 VelocityN = VelocityTexture.SampleLevel(VelocityTextureSampler, NearestBufferUV + VelocityOffset, 0);
+	bool DynamicN = VelocityN.x > 0.0;
+	if (DynamicN)
+	{
+		BackN = DecodeVelocityFromTexture(VelocityN).xy;
+	}
+	BackTemp = BackN * CombinedVelocity_ViewportSize;
+
+	OutVelocityCombinedTexture[OutputPixelPos].xy = -BackTemp * float2(0.5, -0.5);
+
+#else
+	float4 EncodedVelocity = VelocityTexture[PixelPos];
+	float Depth = DepthTexture[PixelPos].x;
+	
+	float2 Velocity;
+	if (all(EncodedVelocity.xy > 0))
+	{
+		Velocity = DecodeVelocityFromTexture(EncodedVelocity).xy;
+	}
+	else
+	{
+		float4 ClipPos;
+		ClipPos.xy = SvPositionToScreenPosition(float4(PixelPos.xy, 0, 1)).xy;
+		ClipPos.z = Depth;
+		ClipPos.w = 1;
+
+		float4 PrevClipPos = mul(ClipPos, View.ClipToPrevClip);
+
+		if (PrevClipPos.w > 0)
+		{
+			float2 PrevScreen = PrevClipPos.xy / PrevClipPos.w;
+			Velocity = ClipPos.xy - PrevScreen.xy;
+		}
+		else
+		{
+			Velocity = EncodedVelocity.xy;
+		}
+	}
+
+	float2 OutVelocity = Velocity * float2(0.5, -0.5) * View.ViewSizeAndInvSize.xy;
+
+	OutVelocityCombinedTexture[OutputPixelPos].xy = -OutVelocity;
+#endif
+}

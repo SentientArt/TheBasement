@@ -1,0 +1,304 @@
+<html>
+<head>
+<title>Blueprint Reference | Event Instance</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="blueprint-reference.html">Blueprint Reference</a><ul class="subchapters"><li><a href="blueprint-reference-bus.html">Bus</a></li><li><a href="blueprint-reference-common.html">Common</a></li><li><a href="blueprint-reference-component.html">Component</a></li><li class="manual-current-chapter manual-active-chapter"><a href="blueprint-reference-eventinstance.html">Event Instance</a></li><li><a href="blueprint-reference-asynchronous-loading.html">Asynchronous Loading</a></li><li><a href="blueprint-reference-enums.html">Enums</a></li><li><a href="blueprint-reference-structs.html">Structs</a></li><li><a href="blueprint-reference-utilities.html">Utilities</a></li></ul></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>7. Blueprint Reference | Event Instance</h1>
+<p>These methods are used to control individual Event Instances.</p>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-get-parameter" title="Get a parameter value on an FMOD Event Instance.">Event Instance Get Parameter</a> Get a parameter value on an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-get-parameter-value" title="Get a parameter value on an FMOD Event Instance.">Event Instance Get Parameter Value</a> Get a parameter value on an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-is-valid" title="Return whether this FMOD Event Instance is valid. The instance will be invalidated when the sound stops.">Event Instance Is Valid</a> Return whether this FMOD Event Instance is valid. The instance will be invalidated when the sound stops.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-play" title="Play an FMOD Event Instance.">Event Instance Play</a> Play an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-release" title="Release an FMOD Event Instance.">Event Instance Release</a> Release an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-set-parameter" title="Set a parameter on an FMOD Event Instance.">Event Instance Set Parameter</a> Set a parameter on an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-set-paused" title="Pause/Unpause an FMOD Event Instance.">Event Instance Set Paused</a> Pause/Unpause an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-set-pitch" title="Set pitch on an FMOD Event Instance.">Event Instance Set Pitch</a> Set pitch on an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-set-property" title="Set an FMOD event property on an FMOD Event Instance.">Event Instance Set Property</a> Set an FMOD event property on an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-set-transform" title="Set 3D attributes on an FMOD Event Instance.">Event Instance Set Transform</a> Set 3D attributes on an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-set-volume" title="Set volume on an FMOD Event Instance.">Event Instance Set Volume</a> Set volume on an FMOD Event Instance.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-stop" title="Mute/Unmute the bus.">Event Instance Stop</a> Mute/Unmute the bus.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-key-off" title="Allow an FMOD Event Instance to continue past a sustain point.">Event Instance Key Off</a> Allow an FMOD Event Instance to continue past a sustain point.</span></li>
+</ul>
+<h2 api="function" id="event-instance-get-parameter"><a href="#event-instance-get-parameter">Event Instance Get Parameter</a></h2>
+<p>Get a parameter value on an FMOD Event Instance.</p>
+<p><img alt="Event Instance Get Parameter" src="images/event-instance-get-parameter.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">float</span> <span class="nf">EventInstanceGetParameter</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span>
+  <span class="n">FName</span> <span class="n">Name</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+<dt>Name</dt>
+<dd>Name of parameter.</dd>
+</dl>
+<p>Will be deprecated in FMOD 2.01, use <a class="apilink" href="blueprint-reference-eventinstance.html#event-instance-get-parameter-value">Event Instance Get Parameter Value</a> instead.</p>
+<h2 api="function" id="event-instance-get-parameter-value"><a href="#event-instance-get-parameter-value">Event Instance Get Parameter Value</a></h2>
+<p>Get a parameter value on an FMOD Event Instance.</p>
+<p><img alt="Event Instance Get Parameter Value" src="images/event-instance-get-parameter-value.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceGetParameterValue</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span>
+  <span class="n">FName</span> <span class="n">Name</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="o">&amp;</span><span class="n">UserValue</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="o">&amp;</span><span class="n">FinalValue</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+<dt>Name</dt>
+<dd>Name of parameter.</dd>
+<dt>UserValue</dt>
+<dd>Parameter value as set from the public API.</dd>
+<dt>FinalValue</dt>
+<dd>Final combined parameter value.</dd>
+</dl>
+<h2 api="function" id="event-instance-is-valid"><a href="#event-instance-is-valid">Event Instance Is Valid</a></h2>
+<p>Return whether this FMOD Event Instance is valid. The instance will be invalidated when the sound stops.</p>
+<p><img alt="Event Instance Is Valid" src="images/event-instance-is-valid.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">bool</span> <span class="nf">EventInstanceIsValid</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+</dl>
+<p>The instance will be invalidated when the sound stops.</p>
+<h2 api="function" id="event-instance-key-off"><a href="#event-instance-key-off">Event Instance Key Off</a></h2>
+<p>Allow an FMOD Event Instance to continue past a sustain point.</p>
+<p><img alt="Event Instance Key Off" src="images/event-instance-key-off.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceKeyOff</span><span class="p">(</span><span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to resume past sustain point.</dd>
+</dl>
+<h2 api="function" id="event-instance-play"><a href="#event-instance-play">Event Instance Play</a></h2>
+<p>Play an FMOD Event Instance.</p>
+<p><img alt="Event Instance Play" src="images/event-instance-play.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstancePlay</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+</dl>
+<h2 api="function" id="event-instance-release"><a href="#event-instance-release">Event Instance Release</a></h2>
+<p>Release an FMOD Event Instance.</p>
+<p><img alt="Event Instance Release" src="images/event-instance-release.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceRelease</span><span class="p">(</span><span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to release.</dd>
+</dl>
+<h2 api="function" id="event-instance-set-parameter"><a href="#event-instance-set-parameter">Event Instance Set Parameter</a></h2>
+<p>Set a parameter on an FMOD Event Instance.</p>
+<p><img alt="Event Instance Set Parameter" src="images/event-instance-set-parameter.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceSetParameter</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span>
+  <span class="n">FName</span> <span class="n">Name</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="n">Value</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+<dt>Name</dt>
+<dd>Name of the parameter.</dd>
+<dt>Value</dt>
+<dd>Value to set the parameter to.</dd>
+</dl>
+<h2 api="function" id="event-instance-set-paused"><a href="#event-instance-set-paused">Event Instance Set Paused</a></h2>
+<p>Pause/Unpause an FMOD Event Instance.</p>
+<p><img alt="Event Instance Set Paused" src="images/event-instance-set-paused.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceSetPaused</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span>
+  <span class="kt">bool</span> <span class="n">Paused</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+<dt>Paused</dt>
+<dd>Paused value.</dd>
+</dl>
+<h2 api="function" id="event-instance-set-pitch"><a href="#event-instance-set-pitch">Event Instance Set Pitch</a></h2>
+<p>Set pitch on an FMOD Event Instance.</p>
+<p><img alt="Event Instance Set Pitch" src="images/event-instance-set-pitch.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceSetPitch</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="n">Pitch</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+<dt>Pitch</dt>
+<dd>Pitch value.</dd>
+</dl>
+<h2 api="function" id="event-instance-set-property"><a href="#event-instance-set-property">Event Instance Set Property</a></h2>
+<p>Set an FMOD event property on an FMOD Event Instance.</p>
+<p><img alt="Event Instance Set Property" src="images/event-instance-set-property.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceSetProperty</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span>
+  <span class="n">EFMODEventProperty</span><span class="o">::</span><span class="n">Type</span> <span class="n">Property</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="n">Value</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+<dt>Property</dt>
+<dd><a href="https://fmod.com/docs/2.02/api/studio-api-eventinstance.html#fmod_studio_event_property">EFMODEventProperty</a> to set.</dd>
+<dt>Value</dt>
+<dd>Value of property.</dd>
+</dl>
+<h2 api="function" id="event-instance-set-transform"><a href="#event-instance-set-transform">Event Instance Set Transform</a></h2>
+<p>Set 3D attributes on an FMOD Event Instance.</p>
+<p><img alt="Event Instance Set Transform" src="images/event-instance-set-transform.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceSetTransform</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">FTransform</span> <span class="o">&amp;</span><span class="n">Location</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to use.</dd>
+<dt>Location</dt>
+<dd>Location to place event.</dd>
+</dl>
+<h2 api="function" id="event-instance-set-volume"><a href="#event-instance-set-volume">Event Instance Set Volume</a></h2>
+<p>Set volume on an FMOD Event Instance.</p>
+<p><img alt="Event Instance Set Volume" src="images/event-instance-set-volume.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceSetVolume</span><span class="p">(</span>
+  <span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="n">Volume</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to set volume of.</dd>
+<dt>Volume</dt>
+<dd>Volume value to set.</dd>
+</dl>
+<h2 api="function" id="event-instance-stop"><a href="#event-instance-stop">Event Instance Stop</a></h2>
+<p>Mute/Unmute the bus.</p>
+<p><img alt="Event Instance Stop" src="images/event-instance-stop.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">EventInstanceStop</span><span class="p">(</span><span class="n">FFMODEventInstance</span> <span class="n">EventInstance</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">Release</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EventInstance</dt>
+<dd><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance">FFMODEventInstance</a> to stop.</dd>
+<dt>Release</dt>
+<dd>Whether to release the Event Instance</dd>
+</dl></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

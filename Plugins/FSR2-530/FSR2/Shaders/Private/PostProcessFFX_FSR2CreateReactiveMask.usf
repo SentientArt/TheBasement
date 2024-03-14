@@ -1,0 +1,184 @@
+// This file is part of the FidelityFX Super Resolution 2.2 Unreal Engine Plugin.
+//
+// Copyright (c) 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/ScreenPass.ush"
+#include "/Engine/Private/DeferredShadingCommon.ush"
+
+// =====================================================================================
+//
+// SHADER RESOURCES
+//
+// =====================================================================================
+Texture2D GBufferB;
+Texture2D GBufferD;
+Texture2D ReflectionTexture;
+Texture2D InputDepth;
+Texture2D SceneColor;
+Texture2D SceneColorPreAlpha;
+Texture2D LumenSpecular;
+Texture2D InputVelocity;
+RWTexture2D<float> ReactiveMask;
+RWTexture2D<float> CompositeMask;
+SamplerState Sampler;
+
+// =====================================================================================
+//
+// FIDELITYFX SETUP
+//
+// =====================================================================================
+float FurthestReflectionCaptureDistance;
+float ReactiveMaskReflectionScale;
+float ReactiveMaskRoughnessScale;
+float ReactiveMaskRoughnessBias;
+float ReactiveMaskReflectionLumaBias;
+float ReactiveHistoryTranslucencyBias;
+float ReactiveHistoryTranslucencyLumaBias;
+float ReactiveMaskTranslucencyBias;
+float ReactiveMaskTranslucencyLumaBias;
+float ReactiveMaskTranslucencyMaxDistance;
+float ForceLitReactiveValue;
+uint ReactiveShadingModelID;
+uint LumenSpecularCurrentFrame;
+
+// =====================================================================================
+//
+// ENTRY POINTS
+//
+// =====================================================================================
+[numthreads(THREADGROUP_SIZEX, THREADGROUP_SIZEY, THREADGROUP_SIZEZ)] 
+void MainCS(uint3 LocalThreadId : SV_GroupThreadID, uint3 WorkGroupId : SV_GroupID, uint3 DispatchThreadId : SV_DispatchThreadID)
+{
+	uint Width = View.ViewSizeAndInvSize.x;
+	uint Height = View.ViewSizeAndInvSize.y;
+	uint2 ThreadId = DispatchThreadId.xy + View.ViewRectMin.xy;
+
+	if (Width > DispatchThreadId.x && Height > DispatchThreadId.y)
+	{
+		float2 TexelUV = (float2(ThreadId.xy) + 0.5f) / (View.ViewSizeAndInvSize.xy + View.ViewRectMin.xy);
+		float2 ScreenPos = ViewportUVToScreenPos(TexelUV);
+		float4 Output = float4(0.f, 0.f, 0.f, 0.f);
+		float4 BufferB = GBufferB[ThreadId];
+		float4 BufferD = GBufferD[ThreadId];
+		float4 FullSceneColor = saturate(SceneColor[ThreadId]);
+		float4 SceneColorNoAlpha = saturate(SceneColorPreAlpha[ThreadId]);
+		float CurrentDepth = InputDepth[ThreadId].x;
+
+		TexelUV = (float2(ThreadId.xy) + 0.5f) / (View.BufferSizeAndInvSize.xy + View.ViewRectMin.xy);
+		float4 Reflection = ReflectionTexture.SampleLevel(Sampler, TexelUV, 0);
+
+		if (LumenSpecularCurrentFrame == 0)
+		{
+			float4 EncodedVelocity = InputVelocity[ThreadId];
+			{
+				float3 PosWithDepth = float3(ScreenPos.xy, CurrentDepth);
+				float4 CurrentClipPos = float4( PosWithDepth.xy, PosWithDepth.z, 1 );
+				float4 PrevClipPos = mul( CurrentClipPos, View.ClipToPrevClip );
+				float2 PrevScreenPos = PrevClipPos.xy / PrevClipPos.w;
+				float2 PosOffset = PosWithDepth.xy - PrevScreenPos;
+				bool bHasVelocity = EncodedVelocity.x > 0.0;
+				if (bHasVelocity)
+				{
+					PosOffset = DecodeVelocityFromTexture(EncodedVelocity).xy;
+				}
+				TexelUV = ScreenPosToViewportUV(ScreenPos.xy - PosOffset);
+			}
+		}
+		float4 Specular = LumenSpecular.SampleLevel(Sampler, TexelUV, 0);
+
+		float2 TranslucencyContribution = float2(0.f, 0.f);
+
+		FGBufferData GBuffer = DecodeGBufferData(float4(0.f, 0.f, 0.f, 0.f),
+													BufferB,
+													float4(0.f, 0.f, 0.f, 0.f),
+													BufferD,
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													float4(0.f, 0.f, 0.f, 0.f),
+													0.f,
+													0,
+													0.f,
+													false,
+													false);
+
+		float Roughness = GBuffer.Roughness;
+		float ForceReactive = 0.f;
+		if (GBuffer.ShadingModelID == SHADINGMODELID_CLEAR_COAT)
+		{
+			const float ClearCoat			= GBuffer.CustomData.x;
+			const float ClearCoatRoughness	= GBuffer.CustomData.y;
+
+			Roughness = lerp( Roughness, ClearCoatRoughness, ClearCoat );
+		}
+		else if (GBuffer.ShadingModelID == SHADINGMODELID_UNLIT)
+		{
+			Roughness = 1.0f;
+		}
+		
+		if (GBuffer.ShadingModelID == ReactiveShadingModelID)
+		{
+			ForceReactive = ForceLitReactiveValue > 0.f ? ForceLitReactiveValue : GBuffer.CustomData.x;
+		}
+
+		float3 Delta = abs(FullSceneColor - SceneColorNoAlpha).xyz;
+
+		float PreDOFTranslucency = 0.f;
+		float4 Translucency = float4(Delta, 1.f - Luminance(Delta));
+		
+		// Add a falloff for roughness based on the largest capture radius, this is a cheat as we aren't using the actual capture position
+		float WorldDepth = ConvertFromDeviceZ(CurrentDepth);
+		float4 SvPosition = float4(ThreadId.xy, CurrentDepth, WorldDepth);
+		float3 TranslatedWorldPosition = SvPositionToTranslatedWorld(SvPosition);
+		float NormalizedDistanceToCapture = saturate(length(TranslatedWorldPosition) / FurthestReflectionCaptureDistance);
+		Roughness = (FurthestReflectionCaptureDistance > 0.f) ? lerp(Roughness, 1.f, NormalizedDistanceToCapture) : Roughness;
+		
+		TranslucencyContribution.x = ((1.f - Translucency.w) * ReactiveMaskTranslucencyBias) + (ReactiveMaskTranslucencyLumaBias * saturate(Luminance(Translucency.xyz)) * Translucency.w);
+		TranslucencyContribution.y = ((1.f - Translucency.w) * ReactiveHistoryTranslucencyBias) + (ReactiveHistoryTranslucencyLumaBias * saturate(Luminance(Translucency.xyz)) * Translucency.w);
+
+		// Fall off translucency beyond a certain distance if required, as we want to remove the skybox/backplanes that are typically placed far away and then composed as post-DOF translucency
+		float NormalizedDistanceToSurface = saturate(length(TranslatedWorldPosition) / ReactiveMaskTranslucencyMaxDistance);
+		TranslucencyContribution = (ReactiveMaskTranslucencyMaxDistance > 0.f) ? lerp(TranslucencyContribution, 0.f, float2(NormalizedDistanceToSurface, NormalizedDistanceToSurface)) : TranslucencyContribution;
+
+		Output.z = saturate((1.f - Roughness) * ReactiveMaskRoughnessScale);
+
+		float ReflectionContribution = 0.f;
+		if ( Reflection.w > 0.f && ReactiveMaskReflectionScale > 0.f )
+		{
+			Output.w = Luminance(Reflection.xyz) * ReactiveMaskReflectionLumaBias;
+			ReflectionContribution = lerp((Reflection.w * ReactiveMaskReflectionScale), 1.f, Output.w);
+			ReflectionContribution += (max(Output.z - ReflectionContribution, 0.f) * ReactiveMaskRoughnessBias);
+		}
+		else if ( any(Specular.xyz) && ReactiveMaskReflectionScale > 0.f )
+		{
+			ReflectionContribution = saturate(Luminance(Specular.xyz)) * ReactiveMaskReflectionScale * (1.f - Roughness);
+			ReflectionContribution += (max(Output.z - ReflectionContribution, 0.f) * ReactiveMaskRoughnessBias);
+		}
+		else
+		{
+			ReflectionContribution = Output.z;
+		}
+
+		Output.x = saturate(TranslucencyContribution.x + ReflectionContribution);
+		Output.y = lerp(0.f, 1.f, TranslucencyContribution.y);
+
+		CompositeMask[DispatchThreadId.xy] = Output.x;
+		ReactiveMask[DispatchThreadId.xy] = max(ForceReactive, Output.y);
+	}
+}

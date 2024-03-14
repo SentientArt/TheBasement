@@ -1,0 +1,8 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.FSR2TemporalUpscalingVulkan.cpp.obj": [
+			"FSR2TemporalUpscalingVulkan.cpp.obj"
+		]
+	}
+}

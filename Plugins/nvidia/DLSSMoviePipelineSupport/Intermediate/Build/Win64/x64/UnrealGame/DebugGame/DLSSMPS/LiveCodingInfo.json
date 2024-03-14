@@ -1,0 +1,11 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.DLSSMPS.cpp.obj": [
+			"DLSSMoviePipelineSupport.init.gen.cpp.obj",
+			"MoviePipelineDLSSSetting.gen.cpp.obj",
+			"DLSSMoviePipelineSupportModule.cpp.obj",
+			"MoviePipelineDLSSSetting.cpp.obj"
+		]
+	}
+}

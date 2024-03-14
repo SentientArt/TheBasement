@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>Blueprint Reference | Structs</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="blueprint-reference.html">Blueprint Reference</a><ul class="subchapters"><li><a href="blueprint-reference-bus.html">Bus</a></li><li><a href="blueprint-reference-common.html">Common</a></li><li><a href="blueprint-reference-component.html">Component</a></li><li><a href="blueprint-reference-eventinstance.html">Event Instance</a></li><li><a href="blueprint-reference-asynchronous-loading.html">Asynchronous Loading</a></li><li><a href="blueprint-reference-enums.html">Enums</a></li><li class="manual-current-chapter manual-active-chapter"><a href="blueprint-reference-structs.html">Structs</a></li><li><a href="blueprint-reference-utilities.html">Utilities</a></li></ul></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>7. Blueprint Reference | Structs</h1>
+<p>Automatically generated methods for working with FMOD and Unreal Structs.</p>
+<p><strong>Methods</strong></p>
+<ul>
+<li><span><a class="apilink" href="blueprint-reference-structs.html#make-fmodattenuationdetails" title="Adds a node that creates an 'FMODAttenuationDetails' from its members.">Make FMODAttenuationDetails</a> Adds a node that creates an 'FMODAttenuationDetails' from its members.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-structs.html#make-fmodocclusiondetails" title="Adds a node that creates an 'FMODOcclusionDetails' from its members.">Make FMODOcclusionDetails</a> Adds a node that creates an 'FMODOcclusionDetails' from its members.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-structs.html#make-fmodeventinstance" title="Adds a node that creates an 'FMODEventInstance' from its members.">Make FMODEventInstance</a> Adds a node that creates an 'FMODEventInstance' from its members.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-structs.html#break-fmodocclusiondetails" title="Adds a node that breaks an 'FMODOcclusionDetails' into its member fields.">Break FMODOcclusionDetails</a> Adds a node that breaks an 'FMODOcclusionDetails' into its member fields.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-structs.html#break-fmodattenuationdetails" title="Adds a node that breaks an 'FMODAttenuationDetails` into its member fields.">Break FMODAttenuationDetails</a> Adds a node that breaks an 'FMODAttenuationDetails` into its member fields.</span></li>
+</ul>
+<h2 api="api" id="break-fmodattenuationdetails"><a href="#break-fmodattenuationdetails">Break FMODAttenuationDetails</a></h2>
+<p>Adds a node that breaks an 'FMODAttenuationDetails` into its member fields.</p>
+<p><img alt="FMOD Attenuation Details" src="images/break-fmod-attenuation-details.png" /><br />
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAttenuationDetails</span> <span class="nf">BreakFMODAttenuationDetails</span><span class="p">(</span>
+    <span class="n">FMODAttenuation</span> <span class="n">Details</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>FMODAttenuationDetails</dt>
+<dd><a href="api-reference-common.html#ffmodattenuationdetails">FMODAttenuationDetails</a> to break into its member fields.</dd>
+</dl>
+<h2 api="function" id="break-fmodocclusiondetails"><a href="#break-fmodocclusiondetails">Break FMODOcclusionDetails</a></h2>
+<p>Adds a node that breaks an 'FMODOcclusionDetails' into its member fields.</p>
+<p><img alt="FMOD Occlusion Details" src="images/break-fmod-attenuation-details.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODOcclusionDetails</span> <span class="n">BreakFMODOcclusionDetails</span><span class="p">(</span>
+    <span class="n">FMODOcclusion</span> <span class="n">Details</span>
+<span class="p">)</span>
+</pre></div>
+
+<dl>
+<dt>FMODOcclusionDetails</dt>
+<dd><a href="api-reference-common.html#ffmodocclusiondetails">FMODOcclusionDetails</a> to break into its member fields.</dd>
+</dl>
+<h2 api="function" id="make-fmodattenuationdetails"><a href="#make-fmodattenuationdetails">Make FMODAttenuationDetails</a></h2>
+<p>Adds a node that creates an 'FMODAttenuationDetails' from its members.</p>
+<p><img alt="Make FMODAttenuationDetails" src="images/make-fmod-attenuation-details.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAttenuationDetails</span> <span class="nf">MakeFMODAttenuationDetails</span><span class="p">(</span>
+    <span class="kt">bool</span> <span class="n">OverrideAttenuation</span><span class="p">,</span>
+    <span class="kt">float</span> <span class="n">MinimumDistance</span><span class="p">,</span>
+    <span class="kt">float</span> <span class="n">MaximumDistance</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>OverrideAttenuation</dt>
+<dd>True to use attenuation values set by editor, false to use values set in the Studio project.</dd>
+<dt>MinimumDistance</dt>
+<dd>Minimum 3D Distance. Value to use for the minimum attenuation distance if <code>OverrideAttenuation</code> is true.</dd>
+<dt>MaximumDistance</dt>
+<dd>Maximum 3D Distance. Value to use for the maximum attenuation distance if <code>OverrideAttenuation</code> is true.</dd>
+</dl>
+<p><strong>See Also:</strong> <a href="api-reference-common.html#ffmodattenuationdetails">FMODAttenuationDetails</a>.</p>
+<h2 api="function" id="make-fmodeventinstance"><a href="#make-fmodeventinstance">Make FMODEventInstance</a></h2>
+<p>Adds a node that creates an 'FMODEventInstance' from its members.</p>
+<p><img alt="FMOD Event Instance" src="images/make-fmod-event-instance.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEventInstance</span> <span class="nf">MakeFMODEventInstance</span><span class="p">();</span>
+</pre></div>
+
+<p><strong>See Also:</strong> <a href="blueprint-reference-eventinstance.html">Event Instance</a>.</p>
+<h2 api="function" id="make-fmodocclusiondetails"><a href="#make-fmodocclusiondetails">Make FMODOcclusionDetails</a></h2>
+<p>Adds a node that creates an 'FMODOcclusionDetails' from its members.</p>
+<p><img alt="FMODOcclusion Details" src="images/make-fmod-occlusion-details.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAttenuationDetails</span> <span class="nf">MakeFMODAttenuationDetails</span><span class="p">(</span>
+    <span class="kt">bool</span> <span class="n">EnableOcclusion</span><span class="p">,</span>
+    <span class="k">enum</span> <span class="n">OcclusionTraceChannel</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">UseComplexCollisionForOcclusion</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>EnableOcclusion</dt>
+<dd>True to enable occlusion settings, false to disable them.</dd>
+<dt>OcclusionTraceChannel</dt>
+<dd>Trace channel to use for audio occlusion checks.</dd>
+<dt>UseComplexCollisionForOcclusion</dt>
+<dd>True to enable complex geometry occlusion checks, false not to.</dd>
+</dl>
+<p><strong>See Also:</strong> <a href="api-reference-common.html#ffmodocclusiondetails">FMODOcclusionDetails</a>.</p></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

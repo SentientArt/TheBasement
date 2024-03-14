@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>Blueprint Reference | Bus</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="blueprint-reference.html">Blueprint Reference</a><ul class="subchapters"><li class="manual-current-chapter manual-active-chapter"><a href="blueprint-reference-bus.html">Bus</a></li><li><a href="blueprint-reference-common.html">Common</a></li><li><a href="blueprint-reference-component.html">Component</a></li><li><a href="blueprint-reference-eventinstance.html">Event Instance</a></li><li><a href="blueprint-reference-asynchronous-loading.html">Asynchronous Loading</a></li><li><a href="blueprint-reference-enums.html">Enums</a></li><li><a href="blueprint-reference-structs.html">Structs</a></li><li><a href="blueprint-reference-utilities.html">Utilities</a></li></ul></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>7. Blueprint Reference | Bus</h1>
+<p>Used for controlling mixer buses.</p>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><span><a class="apilink" href="blueprint-reference-bus.html#bus-set-mute" title="Mute/Unmute the bus.">Bus Set Mute</a> Mute/Unmute the bus.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-bus.html#bus-set-paused" title="Pause/Unpause all events going through the bus.">Bus Set Paused</a> Pause/Unpause all events going through the bus.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-bus.html#bus-set-volume" title="Set volume on a bus.">Bus Set Volume</a> Set volume on a bus.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-bus.html#bus-stop-all-events" title="Stop all EventInstances routed into the bus.">Bus Stop All Events</a> Stop all EventInstances routed into the bus.</span></li>
+</ul>
+<h2 api="function" id="bus-set-mute"><a href="#bus-set-mute">Bus Set Mute</a></h2>
+<p>Mute/Unmute the bus.</p>
+<p><img alt="Bus Set Mute" src="images/bus-set-mute.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">BusSetMute</span><span class="p">(</span>
+  <span class="k">class</span> <span class="nc">UFMODBus</span> <span class="o">*</span><span class="n">Bus</span><span class="p">,</span>
+  <span class="kt">bool</span> <span class="n">bMute</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Bus</dt>
+<dd><a class="apilink" href="api-reference-ufmodbus.html">UFMODBus</a> to use.</dd>
+<dt>bMute</dt>
+<dd>Mute value.</dd>
+</dl>
+<h2 api="function" id="bus-set-paused"><a href="#bus-set-paused">Bus Set Paused</a></h2>
+<p>Pause/Unpause all events going through the bus.</p>
+<p><img alt="Bus Set Paused" src="images/bus-set-paused.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">BusSetPaused</span><span class="p">(</span>
+  <span class="k">class</span> <span class="nc">UFMODBus</span> <span class="o">*</span><span class="n">Bus</span><span class="p">,</span>
+  <span class="kt">bool</span> <span class="n">bPaused</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Bus</dt>
+<dd><a class="apilink" href="api-reference-ufmodbus.html">UFMODBus</a> to use.</dd>
+<dt>bPaused</dt>
+<dd>Pause value.</dd>
+</dl>
+<h2 api="function" id="bus-set-volume"><a href="#bus-set-volume">Bus Set Volume</a></h2>
+<p>Set volume on a bus.</p>
+<p><img alt="Bus Set Volume" src="images/bus-set-volume.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">BusSetVolume</span><span class="p">(</span>
+  <span class="k">class</span> <span class="nc">UFMODBus</span> <span class="o">*</span><span class="n">Bus</span><span class="p">,</span>
+  <span class="kt">float</span> <span class="n">Volume</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Bus</dt>
+<dd><a class="apilink" href="api-reference-ufmodbus.html">UFMODBus</a> to use.</dd>
+<dt>Volume</dt>
+<dd>
+<p>Volume value.</p>
+<ul>
+<li><span class="label">Units:</span> Linear</li>
+<li><span class="label">Range:</span> [0, 1]</li>
+</ul>
+</dd>
+</dl>
+<h2 api="function" id="bus-stop-all-events"><a href="#bus-stop-all-events">Bus Stop All Events</a></h2>
+<p>Stop all EventInstances routed into the bus.</p>
+<p><img alt="Bus Stop All Events" src="images/bus-stop-all-events.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">BusStopAllEvents</span><span class="p">(</span>
+  <span class="k">class</span> <span class="nc">UFMODBus</span> <span class="o">*</span><span class="n">Bus</span><span class="p">,</span>
+  <span class="n">EFMOD_STUDIO_STOP_MODE</span> <span class="n">stopMode</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Bus</dt>
+<dd><a class="apilink" href="api-reference-ufmodbus.html">UFMODBus</a> to use.</dd>
+<dt>stopMode</dt>
+<dd>Desired stop mode.</dd>
+</dl>
+<p><strong>See Also:</strong> <a href="https://fmod.com/docs/2.02/api/studio-api-eventinstance.html#fmod_studio_stop_mode">FMOD_STUDIO_STOP_MODE</a></p></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

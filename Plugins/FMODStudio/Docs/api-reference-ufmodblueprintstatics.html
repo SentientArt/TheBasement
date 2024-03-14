@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>API Reference | UFMODBlueprintStatics</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="api-reference.html">API Reference</a><ul class="subchapters"><li><a href="api-reference-common.html">Common</a></li><li><a href="api-reference-ifmodstudiomodule.html">IFMODStudioModule</a></li><li class="manual-current-chapter manual-active-chapter"><a href="api-reference-ufmodblueprintstatics.html">UFMODBlueprintStatics</a></li><li><a href="api-reference-ufmodaudiocomponent.html">UFMODAudioComponent</a></li><li><a href="api-reference-afmodambientsound.html">AFMODAmbientSound</a></li><li><a href="api-reference-ufmodanimnotifyplay.html">UFMODAnimNotifyPlay</a></li><li><a href="api-reference-ufmodbank.html">UFMODBank</a></li><li><a href="api-reference-ufmodbus.html">UFMODBus</a></li><li><a href="api-reference-ufmodvca.html">UFMODVCA</a></li><li><a href="api-reference-ufmodevent.html">UFMODEvent</a></li><li><a href="api-reference-ufmodport.html">UFMODPort</a></li><li><a href="api-reference-ufmodsnapshot.html">UFMODSnapshot</a></li><li><a href="api-reference-ufmodsnapshotreverb.html">UFMODSnapshotReverb</a></li><li><a href="api-reference-ufmodasset.html">UFMODAsset</a></li><li><a href="api-reference-ufmodsettings.html">UFMODSettings</a></li></ul></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>6. API Reference | UFMODBlueprintStatics</h1>
+<p>This class inherits from <a href="https://api.unrealengine.com/INT/API/Runtime/Engine/Kismet/UBlueprintFunctionLibrary/index.html">UBlueprintFunctionLibrary</a></p>
+<p>Refer to <a href="blueprint-reference.html">Blueprint Reference</a>.</p>
+<p><strong>Defines:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-ufmodblueprintstatics.html#ffmodeventinstance" title="Wrapped FMOD::Studio::EventInstance for use in blueprints.">FFMODEventInstance</a> Wrapped FMOD::Studio::EventInstance for use in blueprints.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodblueprintstatics.html#efmod_studio_stop_mode" title="Studio stop mode enum for use in blueprints.">EFMOD_STUDIO_STOP_MODE</a> Studio stop mode enum for use in blueprints.</span></li>
+</ul>
+<h2 api="struct" id="efmod_studio_stop_mode"><a href="#efmod_studio_stop_mode">EFMOD_STUDIO_STOP_MODE</a></h2>
+<p>Studio stop mode enum for use in blueprints.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">enum</span> <span class="n">EFMOD_STUDIO_STOP_MODE</span><span class="p">{</span>
+  <span class="n">ALLOWFADEOUT</span><span class="p">,</span>
+  <span class="n">IMMEDIATE</span>
+<span class="p">}</span> <span class="n">EFMOD_STUDIO_STOP_MODE</span><span class="p">;</span>
+</pre></div>
+
+<dl>
+<dt id="efmod_studio_stop_mode_allowfadeout">ALLOWFADEOUT</dt>
+<dd>Allow AHDSR modulators to complete their release, and DSP effect tails to play out.</dd>
+<dt id="efmod_studio_stop_mode_immediate">IMMEDIATE</dt>
+<dd>Stop the event instance immediately.</dd>
+</dl>
+<p><strong>See Also:</strong> <a href="https://fmod.com/docs/2.02/api/studio-api-eventinstance.html#fmod_studio_stop_mode">FMOD_STUDIO_STOP_MODE</a></p>
+<h2 api="struct" id="ffmodeventinstance"><a href="#ffmodeventinstance">FFMODEventInstance</a></h2>
+<p>Wrapped FMOD::Studio::EventInstance for use in blueprints.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">struct</span> <span class="n">FFMODEventInstance</span><span class="p">{</span>
+  <span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">EventInstance</span> <span class="o">*</span><span class="n">Instance</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">FFMODEventInstance</span><span class="p">;</span>
+</pre></div>
+
+<dl>
+<dt id="ffmodeventinstance_instance">Instance</dt>
+<dd><a href="https://fmod.com/docs/2.02/api/studio-api-eventinstance.html">FMOD::Studio::EventInstance</a> to use.</dd>
+</dl></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

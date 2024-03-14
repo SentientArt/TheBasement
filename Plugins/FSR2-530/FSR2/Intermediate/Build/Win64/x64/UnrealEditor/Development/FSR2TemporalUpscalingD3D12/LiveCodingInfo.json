@@ -1,0 +1,8 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.FSR2TemporalUpscalingD3D12.cpp.obj": [
+			"FSR2TemporalUpscalingD3D12.cpp.obj"
+		]
+	}
+}

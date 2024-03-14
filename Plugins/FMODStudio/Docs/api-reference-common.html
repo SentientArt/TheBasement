@@ -1,0 +1,394 @@
+<html>
+<head>
+<title>API Reference | Common</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="api-reference.html">API Reference</a><ul class="subchapters"><li class="manual-current-chapter manual-active-chapter"><a href="api-reference-common.html">Common</a></li><li><a href="api-reference-ifmodstudiomodule.html">IFMODStudioModule</a></li><li><a href="api-reference-ufmodblueprintstatics.html">UFMODBlueprintStatics</a></li><li><a href="api-reference-ufmodaudiocomponent.html">UFMODAudioComponent</a></li><li><a href="api-reference-afmodambientsound.html">AFMODAmbientSound</a></li><li><a href="api-reference-ufmodanimnotifyplay.html">UFMODAnimNotifyPlay</a></li><li><a href="api-reference-ufmodbank.html">UFMODBank</a></li><li><a href="api-reference-ufmodbus.html">UFMODBus</a></li><li><a href="api-reference-ufmodvca.html">UFMODVCA</a></li><li><a href="api-reference-ufmodevent.html">UFMODEvent</a></li><li><a href="api-reference-ufmodport.html">UFMODPort</a></li><li><a href="api-reference-ufmodsnapshot.html">UFMODSnapshot</a></li><li><a href="api-reference-ufmodsnapshotreverb.html">UFMODSnapshotReverb</a></li><li><a href="api-reference-ufmodasset.html">UFMODAsset</a></li><li><a href="api-reference-ufmodsettings.html">UFMODSettings</a></li></ul></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>6. API Reference | Common</h1>
+<p><strong>Types:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-common.html#ffmodattenuationdetails" title="Override the attenuation values from FMOD Studio.">FFMODAttenuationDetails</a> Override the attenuation values from FMOD Studio.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#efmodeventproperty" title="These definitions describe built-in event properties.">EFMODEventProperty</a> These definitions describe built-in event properties.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#efmodsystemcontext" title="Which FMOD Studio system to use.">EFMODSystemContext</a> Which FMOD Studio system to use.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#ffmodocclusiondetails" title="Occlusion details.">FFMODOcclusionDetails</a> Occlusion details.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmod_vector_scale_default" title="This constant is used to convert unreal units to meters for FMOD Studio. The default value is appropriate for games that follow the Unreal Engine's convention of 1 unreal unit == 1cm; if your game world's scale uses a different length for unreal units, you can alter this value in FMODUtils.h.">FMOD_VECTOR_SCALE_DEFAULT</a> This constant is used to convert unreal units to meters for FMOD Studio. The default value is appropriate for games that follow the Unreal Engine's convention of 1 unreal unit == 1cm; if your game world's scale uses a different length for unreal units, you can alter this value in FMODUtils.h.</span></li>
+</ul>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_logerror" title="Helper function to debug FMOD function calls.">FMODUtils::LogError</a> Helper function to debug FMOD function calls.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_assign" title="Helper function to convert from UE world axis to FMOD axis.">FMODUtils::Assign</a> Helper function to convert from UE world axis to FMOD axis.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_convertworldvector" title="Helper function to convert from UE world vector to FMOD vector.">FMODUtils::ConvertWorldVector</a> Helper function to convert from UE world vector to FMOD vector.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_convertunitvector" title="Helper function for converting unit vector to be used by FMOD.">FMODUtils::ConvertUnitVector</a> Helper function for converting unit vector to be used by FMOD.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_distancetouescale" title="Helper function to convert from FMOD distance to UE scale.">FMODUtils::DistanceToUEScale</a> Helper function to convert from FMOD distance to UE scale.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_isworldaudible" title="Helper function to know if an object is audible in the world.">FMODUtils::IsWorldAudible</a> Helper function to know if an object is audible in the world.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_convertguid" title="Helper function to convert from UE GUID to FMOD Studio ID.">FMODUtils::ConvertGuid</a> Helper function to convert from UE GUID to FMOD Studio ID.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_getid" title="Helper function to get UE GUID from an FMOD instanced object.">FMODUtils::GetID</a> Helper function to get UE GUID from an FMOD instanced object.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_getpath" title="Helper function to get the path of an event.">FMODUtils::GetPath</a> Helper function to get the path of an event.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_lookupnamefromguid" title="Helper function to return the name of an event using its Guid.">FMODUtils::LookupNameFromGuid</a> Helper function to return the name of an event using its Guid.</span></li>
+<li><span><a class="apilink" href="api-reference-common.html#fmodutils_parametertypetostring" title="Helper function to return the FMOD Studio Parameter as a string.">FMODUtils::ParameterTypeToString</a> Helper function to return the FMOD Studio Parameter as a string.</span></li>
+</ul>
+<h2 api="type" id="ffmodattenuationdetails"><a href="#ffmodattenuationdetails">FFMODAttenuationDetails</a></h2>
+<p>Override the attenuation values from FMOD Studio.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">struct</span> <span class="n">FFMODAttenuationDetails</span>
+<span class="p">{</span>
+    <span class="n">uint32</span> <span class="n">bOverrideAttenuation</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">MinimumDistance</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">MaximumDistance</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<dl>
+<dt>bOverrideAttenuation</dt>
+<dd>Should we use attenuation set in Studio or be able to modify in Editor.</dd>
+<dt>MinimumDistance</dt>
+<dd>Override the event's 3D minimum distance.</dd>
+<dt>MaximumDistance</dt>
+<dd>Override the event's 3D maximum distance.</dd>
+</dl>
+<h2 api="type" id="efmodeventproperty"><a href="#efmodeventproperty">EFMODEventProperty</a></h2>
+<p>These definitions describe built-in event properties.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">enum</span> <span class="n">Type</span>
+<span class="p">{</span>
+    <span class="n">ChannelPriority</span><span class="p">,</span>
+    <span class="n">ScheduleDelay</span><span class="p">,</span>
+    <span class="n">ScheduleLookahead</span><span class="p">,</span>
+    <span class="n">MinimumDistance</span><span class="p">,</span>
+    <span class="n">MaximumDistance</span><span class="p">,</span>
+    <span class="n">Count</span>
+<span class="p">};</span>
+</pre></div>
+
+<dl>
+<dt>ChannelPriority</dt>
+<dd>
+<p>Priority to set on low-level channels created by this event instance.</p>
+<ul>
+<li><span class="label">Range:</span> [-1, 256]</li>
+<li><span class="label">Default:</span> -1</li>
+</ul>
+</dd>
+<dt>ScheduleDelay</dt>
+<dd>
+<p>Schedule delay to synchronized playback for multiple tracks in DSP clocks, or -1 for default.</p>
+<ul>
+<li><span class="label">Range:</span> -1, [0, inf]</li>
+<li><span class="label">Default:</span> -1</li>
+</ul>
+</dd>
+<dt>ScheduleLookahead</dt>
+<dd>
+<p>Schedule look-ahead on the timeline in DSP clocks, or -1 for default.</p>
+<ul>
+<li><span class="label">Range:</span> -1, [0, inf]</li>
+<li><span class="label">Default:</span> -1</li>
+</ul>
+</dd>
+<dt>MinimumDistance</dt>
+<dd>
+<p>Override the event's 3D minimum distance, or -1 for default.</p>
+<ul>
+<li><span class="label">Range:</span> -1, [0, inf]</li>
+<li><span class="label">Default:</span> -1</li>
+</ul>
+</dd>
+<dt>MaximumDistance</dt>
+<dd>
+<p>Override the event's 3D maximum distance, or -1 for default.</p>
+<ul>
+<li><span class="label">Range:</span> -1, [0, inf]</li>
+<li><span class="label">Default:</span> -1</li>
+</ul>
+</dd>
+<dt>Count</dt>
+<dd>Number of options.</dd>
+</dl>
+<h2 api="type" id="efmodsystemcontext"><a href="#efmodsystemcontext">EFMODSystemContext</a></h2>
+<p>Which FMOD Studio system to use.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">enum</span> <span class="n">Type</span>
+<span class="p">{</span>
+    <span class="n">Auditioning</span><span class="p">,</span>
+    <span class="n">Runtime</span><span class="p">,</span>
+    <span class="n">Editor</span><span class="p">,</span>
+    <span class="n">Max</span>
+<span class="p">};</span>
+</pre></div>
+
+<dl>
+<dt>Auditioning</dt>
+<dd>For use auditioning sounds within the editor.</dd>
+<dt>Runtime</dt>
+<dd>For use in PIE and in-game.</dd>
+<dt>Editor</dt>
+<dd>For use when playing events in an editor world (e.g. previewing a level sequence).</dd>
+<dt>Max</dt>
+<dd>Upper bound of types.</dd>
+</dl>
+<h2 api="type" id="ffmodocclusiondetails"><a href="#ffmodocclusiondetails">FFMODOcclusionDetails</a></h2>
+<p>Occlusion details.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="k">struct</span> <span class="n">FFMODOcclusionDetails</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">bEnableOcclusion</span><span class="p">;</span>
+    <span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="k">enum</span> <span class="n">ECollisionChannel</span><span class="o">&gt;</span> <span class="n">OcclusionTraceChannel</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">bUseComplexCollisionForOcclusion</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<dl>
+<dt>bEnableOcclusion</dt>
+<dd>Enable occlusion settings.</dd>
+<dt>OcclusionTraceChannel</dt>
+<dd>Which trace channel to use for audio occlusion checks.</dd>
+<dt>bUseComplexCollisionForOcclusion</dt>
+<dd>Whether or not to enable complex geometry occlusion checks.</dd>
+</dl>
+<h2 api="type" id="fmod_vector_scale_default"><a href="#fmod_vector_scale_default">FMOD_VECTOR_SCALE_DEFAULT</a></h2>
+<p>This constant is used to convert unreal units to meters for FMOD Studio. The default value is appropriate for games that follow the Unreal Engine's convention of 1 unreal unit == 1cm; if your game world's scale uses a different length for unreal units, you can alter this value in FMODUtils.h.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="cp">#define FMOD_VECTOR_SCALE_DEFAULT 0.01f</span>
+</pre></div>
+
+<h2 api="method" id="fmodutils_logerror"><a href="#fmodutils_logerror">FMODUtils::LogError</a></h2>
+<p>Helper function to debug FMOD function calls.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">LogError</span><span class="p">(</span>
+    <span class="n">FMOD_RESULT</span> <span class="n">result</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">function</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>result</dt>
+<dd>Result of an FMOD function call.</dd>
+<dt>function</dt>
+<dd>The function that is being checked.</dd>
+</dl>
+<h2 api="method" id="fmodutils_assign"><a href="#fmodutils_assign">FMODUtils::Assign</a></h2>
+<p>Helper function to convert from UE world axis to FMOD axis.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">Assign</span><span class="p">(</span>
+    <span class="n">FMOD_VECTOR</span> <span class="o">&amp;</span><span class="n">Dest</span>
+    <span class="k">const</span> <span class="n">FVector</span> <span class="o">&amp;</span><span class="n">Src</span>
+<span class="p">);</span>
+<span class="kt">void</span> <span class="nf">Assign</span><span class="p">(</span>
+    <span class="n">FMOD_3D_ATTRIBUTES</span> <span class="o">&amp;</span><span class="n">Dest</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">FTransform</span> <span class="o">&amp;</span><span class="n">Src</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Dest</dt>
+<dd>Returned FMOD vector.</dd>
+<dt>Src</dt>
+<dd>Unreal vector to be converted.</dd>
+</dl>
+<h2 api="method" id="fmodutils_convertworldvector"><a href="#fmodutils_convertworldvector">FMODUtils::ConvertWorldVector</a></h2>
+<p>Helper function to convert from UE world vector to FMOD vector.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMOD_VECTOR</span> <span class="nf">ConvertWorldVector</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">FVector</span> <span class="o">&amp;</span><span class="n">Src</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Src</dt>
+<dd>Source vector to be converted.</dd>
+</dl>
+<h2 api="method" id="fmodutils_convertunitvector"><a href="#fmodutils_convertunitvector">FMODUtils::ConvertUnitVector</a></h2>
+<p>Helper function for converting unit vector to be used by FMOD.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMOD_VECTOR</span> <span class="nf">ConvertUnitVector</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">FVector</span> <span class="o">&amp;</span><span class="n">Src</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Src</dt>
+<dd>Unit vector to be converted.</dd>
+</dl>
+<h2 api="method" id="fmodutils_distancetouescale"><a href="#fmodutils_distancetouescale">FMODUtils::DistanceToUEScale</a></h2>
+<p>Helper function to convert from FMOD distance to UE scale.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">float</span> <span class="nf">DistanceToUEScale</span><span class="p">(</span>
+    <span class="kt">float</span> <span class="n">FMODDistance</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>FMODDistance</dt>
+<dd>Distance in FMOD scale.</dd>
+</dl>
+<h2 api="method" id="fmodutils_isworldaudible"><a href="#fmodutils_isworldaudible">FMODUtils::IsWorldAudible</a></h2>
+<p>Helper function to know if an object is audible in the world.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">bool</span> <span class="nf">IsWorldAudible</span><span class="p">(</span>
+    <span class="n">UWorld</span> <span class="o">*</span><span class="n">World</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">AllowInEditor</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>World</dt>
+<dd>A pointer to the current world.</dd>
+<dt>AllowInEditor</dt>
+<dd>Whether editor world objects should be considered audible when determining audibility.</dd>
+</dl>
+<h2 api="method" id="fmodutils_convertguid"><a href="#fmodutils_convertguid">FMODUtils::ConvertGuid</a></h2>
+<p>Helper function to convert from UE GUID to FMOD Studio ID.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">ID</span> <span class="n">ConvertGuid</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">FGuid</span> <span class="o">&amp;</span><span class="n">UnrealGuid</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>UnrealGuid</dt>
+<dd>The GUID to be converted.</dd>
+</dl>
+<h2 api="method" id="fmodutils_getid"><a href="#fmodutils_getid">FMODUtils::GetID</a></h2>
+<p>Helper function to get UE GUID from an FMOD instanced object.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FGuid</span> <span class="nf">GetID</span><span class="p">(</span>
+    <span class="n">StudioType</span> <span class="o">*</span><span class="n">Instance</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Instance</dt>
+<dd>An instance of an FMOD object.</dd>
+</dl>
+<h2 api="method" id="fmodutils_getpath"><a href="#fmodutils_getpath">FMODUtils::GetPath</a></h2>
+<p>Helper function to get the path of an event.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="nf">GetPath</span><span class="p">(</span>
+    <span class="n">StudioType</span> <span class="o">*</span><span class="n">Instance</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Instance</dt>
+<dd>An instance of an FMOD object.</dd>
+</dl>
+<h2 api="method" id="fmodutils_lookupnamefromguid"><a href="#fmodutils_lookupnamefromguid">FMODUtils::LookupNameFromGuid</a></h2>
+<p>Helper function to return the name of an event using its Guid.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="nf">LookupNameFromGuid</span><span class="p">(</span>
+    <span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">System</span> <span class="o">*</span><span class="n">StudioSystem</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">FGuid</span> <span class="o">&amp;</span><span class="n">Guid</span>
+<span class="p">);</span>
+<span class="n">FString</span> <span class="nf">LookupNameFromGuid</span><span class="p">(</span>
+    <span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">System</span> <span class="o">*</span><span class="n">StudioSystem</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">FMOD</span><span class="o">::</span><span class="n">Studio</span><span class="o">::</span><span class="n">ID</span> <span class="o">&amp;</span><span class="n">Guid</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>studioSystem</dt>
+<dd>Current FMOD Studio System.</dd>
+<dt>Guid</dt>
+<dd>GUID to retrieve the name of.</dd>
+</dl>
+<h2 api="method" id="fmodutils_parametertypetostring"><a href="#fmodutils_parametertypetostring">FMODUtils::ParameterTypeToString</a></h2>
+<p>Helper function to return the FMOD Studio Parameter as a string.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FString</span> <span class="nf">ParameterTypeToString</span><span class="p">(</span>
+    <span class="n">FMOD_STUDIO_PARAMETER_TYPE</span> <span class="n">Type</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Type</dt>
+<dd>Helper function to return a parameter type as a string.</dd>
+</dl></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

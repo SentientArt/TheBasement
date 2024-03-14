@@ -1,0 +1,36 @@
+{
+	"FileVersion": 3,
+	"Version": 20,
+	"VersionName": "2.4.0b",
+	"FriendlyName": "Movie Render Queue DLSS/DLAA Support",
+	"Description": "Plugin that adds DLSS/DLAA support to Movie Render Queue.",
+	"Category": "Rendering",
+	"CreatedBy": "NVIDIA",
+	"CreatedByURL": "https://developer.nvidia.com/dlss",
+	"DocsURL": "",
+	"MarketplaceURL": "https://www.unrealengine.com/marketplace/en-US/product/nvidia-dlss",
+	"SupportURL": "mailto:DLSS-Support@nvidia.com",
+	"EngineVersion": "5.3.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "DLSSMoviePipelineSupport",
+			"Type": "Runtime",
+			"LoadingPhase": "PostEngineInit",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "MovieRenderPipeline",
+			"Enabled": true
+		},
+		{
+			"Name": "DLSS",
+			"Enabled": true
+		}
+	]
+}

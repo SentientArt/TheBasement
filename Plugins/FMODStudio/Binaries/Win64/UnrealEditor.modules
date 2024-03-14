@@ -1,0 +1,8 @@
+{
+	"BuildId": "27405482",
+	"Modules": 
+	{
+		"FMODStudio": "UnrealEditor-FMODStudio.dll",
+		"FMODStudioEditor": "UnrealEditor-FMODStudioEditor.dll"
+	}
+}

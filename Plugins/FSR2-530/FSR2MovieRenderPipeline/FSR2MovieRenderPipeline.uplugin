@@ -1,0 +1,39 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "2.2.1",
+	"FriendlyName": "FidelityFX Super Resolution 2.2 Movie Render Pipeline Support",
+	"Description": "Plugin that enables FidelityFX Super Resolution 2.2 within the Movie Render Pipeline.",
+	"Category": "Rendering",
+	"CreatedBy": "AMD",
+	"CreatedByURL": "https://gpuopen.com/unreal-engine/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EngineVersion": "5.3.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"SupportedTargetPlatforms": [
+		"Win64"
+	],
+	"Modules": [
+		{
+			"Name": "FSR2MovieRenderPipeline",
+			"Type": "Runtime",
+			"LoadingPhase": "PostEngineInit",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "MovieRenderPipeline",
+			"Enabled": true
+		},
+		{
+			"Name": "FSR2",
+			"Enabled": true
+		}
+	]
+}

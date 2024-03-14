@@ -1,0 +1,38 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\intermediate\\build\\win64\\x64\\unrealgame\\development\\dlssblueprint\\module.dlssblueprint.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\ifraude\\documents\\github\\city75\\intermediate\\build\\win64\\x64\\basement\\development\\engine\\sharedpch.engine.cpp17.h.pch",
+        "Includes": [
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\intermediate\\build\\win64\\x64\\unrealgame\\development\\dlssblueprint\\definitions.dlssblueprint.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\intermediate\\build\\win64\\unrealgame\\inc\\dlssblueprint\\uht\\dlssblueprint.init.gen.cpp",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\dlssblueprint\\private\\dlsslibrary.cpp",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\dlssblueprint\\public\\dlsslibrary.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\intermediate\\build\\win64\\unrealgame\\inc\\dlssblueprint\\uht\\dlsslibrary.generated.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\dlss\\public\\dlss.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\dlss\\public\\dlsssettings.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\intermediate\\build\\win64\\unrealgame\\inc\\dlss\\uht\\dlsssettings.generated.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\dlss\\public\\dlssupscaler.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\rendercore\\public\\customresourcepool.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\ngxrhi\\public\\ngxrhi.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_params.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_defs.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_helpers_dlssd.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_helpers.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_defs_dlssd.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_params_dlssd.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\interfaces\\ipluginmanager.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\plugindescriptor.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\custombuildsteps.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\localizationdescriptor.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\moduledescriptor.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\pluginreferencedescriptor.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\versescope.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\nvidia\\dlss\\intermediate\\build\\win64\\unrealgame\\inc\\dlssblueprint\\uht\\dlsslibrary.gen.cpp"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

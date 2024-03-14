@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Welcome to FMOD for Unreal | New in FMOD for Unreal 2.00</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="welcome.html">Welcome to FMOD for Unreal</a><ul class="subchapters"><li><a href="welcome-whats-new-202.html">New in FMOD for Unreal 2.02</a></li><li><a href="welcome-whats-new-201.html">New in FMOD for Unreal 2.01</a></li><li class="manual-current-chapter manual-active-chapter"><a href="welcome-whats-new-200.html">New in FMOD for Unreal 2.00</a></li></ul></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>1. Welcome to FMOD for Unreal | New in FMOD for Unreal 2.00</h1>
+<div class="toc">
+<ul>
+<li><a href="#whats-new-in-200">What's New in 2.00?</a><ul>
+<li><a href="#global-parameters">Global Parameters</a></li>
+<li><a href="#sample-data-encryption">Sample Data Encryption</a></li>
+<li><a href="#occlusion-ambient-changes">Occlusion &amp; Ambient Changes</a></li>
+<li><a href="#master-bank-default-name-changed">Master Bank Default Name Changed</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="whats-new-in-200"><a href="#whats-new-in-200">What's New in 2.00?</a></h2>
+<p>This section describes the major features introduced in the 2.00 release. See the <a href="https://fmod.com/docs/2.02/api/welcome-revision-history.html">Detailed Revision History</a> for information regarding each patch release.</p>
+<p>General runtime features and improvements, including any API changes relevant to scripting are documented in the <a href="https://fmod.com/docs/2.02/api/welcome-whats-new-200.html">API what's new</a> page.</p>
+<h3 id="global-parameters"><a href="#global-parameters">Global Parameters</a></h3>
+<p>The Studio API now supports global parameters. These parameters are controlled via the System parameter API and have a single value that is shared between all instances.</p>
+<p>See the <a href="https://fmod.com/docs/2.02/api/welcome-whats-new-200.html#global-parameters">Global Parameters</a> chapter of the <a href="https://fmod.com/docs/2.02/api">FMOD API User Manual</a> for more information.</p>
+<p>New blueprint nodes can be found for getting and setting Global Parameters:</p>
+<p><img alt="GetGlobalParameterByName" src="images/getglobalparameter.png" /> <img alt="SetGlobalParameterByName" src="images/setglobalparameter.png" /></p>
+<h3 id="sample-data-encryption"><a href="#sample-data-encryption">Sample Data Encryption</a></h3>
+<p>Bank sample data can now be encrypted using FMOD Studio. This implementation is an extension of the Core API FSB encryption feature.</p>
+<p>See the <a href="https://fmod.com/docs/2.02/api/welcome-whats-new-200.html#sample-data-encryption">Sample Data Encryption</a> chapter of the <a href="https://fmod.com/docs/2.02/api">FMOD API User Manual</a> for more information.</p>
+<p>To allow bank loading when used with the Studio API, set the key via <a href="https://fmod.com/docs/2.02/api/studio-api-system.html#fmod_studio_advancedsettings"><code>FMOD_STUDIO_ADVANCEDSETTINGS::encryptionkey</code></a>. Then if some banks are unencrypted you can use the <a href="https://fmod.com/docs/2.02/api/studio-api-system.html#fmod_studio_load_bank_flags"><code>FMOD_STUDIO_LOAD_BANK_UNENCRYPTED</code></a> load flag to ignore the given key.</p>
+<p>The FMOD for Unreal settings now have an added field for bank loading, <a href="settings.html#encryption-key">Bank Encryption Key</a>, which will set the <code>FMOD_STUDIO_ADVANCEDSETTINGS::encryptionkey</code> for you.</p>
+<p><img alt="Encryption Key" src="images/settings-encryption.png" /></p>
+<h3 id="occlusion-ambient-changes"><a href="#occlusion-ambient-changes">Occlusion &amp; Ambient Changes</a></h3>
+<p>The integration uses Parameters to pass <a href="user-guide.html#occlusion">Occlusion</a> &amp; <a href="user-guide.html#reverb-zones">Ambient</a> information to Studio. The Parameters can be specified in the FMOD for Unreal settings:</p>
+<ul>
+<li><a href="settings.html#occlusion-parameter">Occlusion Parameter</a></li>
+<li><a href="settings.html#ambient-volume-parameter">Ambient Volume Parameter</a></li>
+<li><a href="settings.html#ambient-lpf-parameter">Ambient LPF Parameter</a></li>
+</ul>
+<h3 id="master-bank-default-name-changed"><a href="#master-bank-default-name-changed">Master Bank Default Name Changed</a></h3>
+<p>The default Master Bank name has changed from "Master Bank.bank" to "Master.bank". If you are upgrading from an older version or you are using a different name, this will need to be updated in the <a href="settings.html#master-bank-name">Master Bank Name</a> field of the <a href="settings.html">FMOD Unreal Settings</a> so that the integration can find it.</p>
+<p><img alt="Master Bank Name" src="images/master-bank-name.png" /></p></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

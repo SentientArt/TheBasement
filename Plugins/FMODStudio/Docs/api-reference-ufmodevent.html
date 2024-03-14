@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>API Reference | UFMODEvent</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="api-reference.html">API Reference</a><ul class="subchapters"><li><a href="api-reference-common.html">Common</a></li><li><a href="api-reference-ifmodstudiomodule.html">IFMODStudioModule</a></li><li><a href="api-reference-ufmodblueprintstatics.html">UFMODBlueprintStatics</a></li><li><a href="api-reference-ufmodaudiocomponent.html">UFMODAudioComponent</a></li><li><a href="api-reference-afmodambientsound.html">AFMODAmbientSound</a></li><li><a href="api-reference-ufmodanimnotifyplay.html">UFMODAnimNotifyPlay</a></li><li><a href="api-reference-ufmodbank.html">UFMODBank</a></li><li><a href="api-reference-ufmodbus.html">UFMODBus</a></li><li><a href="api-reference-ufmodvca.html">UFMODVCA</a></li><li class="manual-current-chapter manual-active-chapter"><a href="api-reference-ufmodevent.html">UFMODEvent</a></li><li><a href="api-reference-ufmodport.html">UFMODPort</a></li><li><a href="api-reference-ufmodsnapshot.html">UFMODSnapshot</a></li><li><a href="api-reference-ufmodsnapshotreverb.html">UFMODSnapshotReverb</a></li><li><a href="api-reference-ufmodasset.html">UFMODAsset</a></li><li><a href="api-reference-ufmodsettings.html">UFMODSettings</a></li></ul></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>6. API Reference | UFMODEvent</h1>
+<p>This class inherits from <a class="apilink" href="api-reference-ufmodasset.html">UFMODAsset</a></p>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><span><a class="apilink" href="api-reference-ufmodbank.html#ufmodasset_assetguid" title="The unique Guid, which matches the one exported from FMOD Studio.">UFMODAsset::AssetGuid</a> The unique Guid, which matches the one exported from FMOD Studio.</span></li>
+<li><span><a class="apilink" href="api-reference-ufmodevent.html#ufmodevent_getparameterdescriptions" title="Get parameter descriptions for this event.">UFMODEvent::GetParameterDescriptions</a> Get parameter descriptions for this event.</span></li>
+</ul>
+<h2 api="struct" id="ufmodasset_assetguid"><a href="#ufmodasset_assetguid">UFMODAsset::AssetGuid</a></h2>
+<p>The unique Guid, which matches the one exported from FMOD Studio.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FGuid</span> <span class="n">AssetGuid</span><span class="p">;</span>
+</pre></div>
+
+<h2 api="method" id="ufmodevent_getparameterdescriptions"><a href="#ufmodevent_getparameterdescriptions">UFMODEvent::GetParameterDescriptions</a></h2>
+<p>Get parameter descriptions for this event.</p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="kt">void</span> <span class="nf">GetParameterDescriptions</span><span class="p">(</span>
+    <span class="n">TArray</span><span class="o">&lt;</span><span class="n">FMOD_STUDIO_PARAMETER_DESCRIPTION</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">Parameters</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Parameters</dt>
+<dd>Parameters to retrieve.</dd>
+</dl></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

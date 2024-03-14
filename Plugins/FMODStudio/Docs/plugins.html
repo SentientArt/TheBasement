@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Plugins</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li class="manual-current-chapter manual-active-chapter"><a href="plugins.html">Plugins</a><ul>
+<li><a href="#adding-plugins-to-the-project">Adding plugins to the project</a></li>
+<li><a href="#deploying-fmod-plugins">Deploying FMOD plugins</a></li>
+</ul>
+</li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>4. Plugins</h1>
+<p>FMOD Studio projects can be set up to use third party plugins. These can include custom DSP effects that are created in-house or commercial products that can be used with FMOD Studio.</p>
+<h2 id="adding-plugins-to-the-project"><a href="#adding-plugins-to-the-project">4.1 Adding plugins to the project</a></h2>
+<p>The plugins must be loaded at runtime so that they are there when loading the banks that need them. <a href="settings.html#plugin-files">Plugins</a> are set up in the project settings <a href="settings.html#advanced">Advanced</a> section.</p>
+<p><img alt="Plugins" src="images/plugins.png" /></p>
+<p>Each entry should be the filename of the plugin, without any extension. Any plugin files required should be added to the FMODStudio/Binaries/Platform/ directory.</p>
+<p>For example, to use fmod_gain.dll on Win64 builds, you should add the file here:</p>
+<div class="highlight language-text"><pre><span></span>FMODStudio/Binaries/Win64/fmod_gain.dll
+</pre></div>
+
+<h2 id="deploying-fmod-plugins"><a href="#deploying-fmod-plugins">4.2 Deploying FMOD plugins</a></h2>
+<p>You will need to make sure the plugins are deployed as well. Unreal deployment doesn't have access to the settings information so you will need to create an extra file that lists the plugins you want to deploy.</p>
+<p>Create a file "plugins.txt" in the FMODStudio/Binaries/Platform/ directory. The text file should contain the plugin names (just the name without file extension).</p>
+<p>For example, to deploy fmod_gain.dll on Win64 builds, create a file FMODStudio/Binaries/Win64/plugins.txt with the following contents:</p>
+<div class="highlight language-text"><pre><span></span>fmod_gain
+</pre></div>
+
+<p>Check the <a href="platform-specifics.html">Platform Specifics</a> for information relating to plugins on specific platforms.</p></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

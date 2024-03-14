@@ -1,0 +1,13 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.DLSS.cpp.obj": [
+			"DLSS.init.gen.cpp.obj",
+			"DLSSSettings.gen.cpp.obj",
+			"DLSS.cpp.obj",
+			"DLSSDenoiser.cpp.obj",
+			"DLSSUpscaler.cpp.obj",
+			"DLSSUpscalerHistory.cpp.obj"
+		]
+	}
+}

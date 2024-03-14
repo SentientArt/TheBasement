@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>Niagara Integration</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li class="manual-current-chapter manual-active-chapter"><a href="niagara.html">Niagara Integration</a><ul>
+<li><a href="#adding-fmod-events-to-niagara-system">Adding FMOD Events to Niagara system</a></li>
+<li><a href="#modules">Modules</a><ul>
+<li><a href="#playfmodevent">PlayFMODEvent</a></li>
+<li><a href="#fmodeventplayer">FMODEventPlayer</a></li>
+<li><a href="#playpersistentfmodevent">PlayPersistentFMODEvent</a></li>
+<li><a href="#updatepersistentfmodevent">UpdatePersistentFMODEvent</a></li>
+</ul>
+</li>
+<li><a href="#playing-a-one-shot">Playing a one shot</a></li>
+<li><a href="#playing-a-persistent-event">Playing a persistent event</a></li>
+<li><a href="#updating-a-persistent-event">Updating a persistent event</a></li>
+</ul>
+</li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>5. Niagara Integration</h1>
+<p><a href="https://docs.unrealengine.com/en-US/creating-visual-effects-in-niagara-for-unreal-engine/">Niagara</a> is Unreal Engines VFX System and this section explains how to use the FMOD Integration with it.</p>
+<p>In Niagara you are able to play one shot events, play persistent events and update parameters.</p>
+<h3 id="adding-fmod-events-to-niagara-system"><a href="#adding-fmod-events-to-niagara-system">5.0.1 Adding FMOD Events to Niagara system</a></h3>
+<p>To view the available FMOD Niagara <a class="apilink" href="#modules">Modules</a>, make sure to enable 'Plugins' in the Source Filtering options:</p>
+<table>
+<thead>
+<tr>
+<th>UE5</th>
+<th>UE4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="UE5 FMOD Niagara Modules" src="images/niagara-ue5-modules.png" /></td>
+<td><img alt="UE4 FMOD Niagara Modules" src="images/niagara-ue4-modules.png" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a class="apilink" href="#playfmodevent">PlayFMODEvent</a></li>
+<li><a class="apilink" href="#fmodeventplayer">FMODEventPlayer</a></li>
+<li><a class="apilink" href="#playpersistentfmodevent">PlayPersistentFMODEvent</a></li>
+<li><a class="apilink" href="#updatepersistentfmodevent">UpdatePersistentFMODEvent</a></li>
+</ul>
+<h3 id="modules"><a href="#modules">5.0.2 Modules</a></h3>
+<p>An FMOD Niagara module can be added to one or multiple <a href="https://docs.unrealengine.com/en-US/system-and-emitter-module-reference-for-niagara-effects-in-unreal-engine/">Unreal Niagara Modules</a> depending on the desired behavior.</p>
+<h4 id="playfmodevent"><a href="#playfmodevent">PlayFMODEvent</a></h4>
+<p>This can be added to the <a href="https://docs.unrealengine.com/en-US/system-spawn-group-reference-for-niagara-effects-in-unreal-engine/">System</a>, <a href="https://docs.unrealengine.com/en-US/emitter-spawn-group-reference-for-niagara-effects-in-unreal-engine/">Emitter</a> or <a href="https://docs.unrealengine.com/en-US/particle-spawn-group-reference-for-niagara-effects-in-unreal-engine/">Particle modules</a>.</p>
+<p>Plays a one shot event at the given location that cannot be controlled after being played.</p>
+<table>
+<thead>
+<tr>
+<th>UE5</th>
+<th>UE4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="UE5 AddFMODEvent" src="images/niagara-ue5-add-fmodevent.png" /></td>
+<td><img alt="UE4 AddFMODEvent" src="images/niagara-ue4-add-fmodevent.png" /></td>
+</tr>
+<tr>
+<td><img alt="UE5 Play FMOD Event" src="images/niagara-ue5-play-fmod-event.png" /></td>
+<td><img alt="UE4 Play FMOD Event" src="images/niagara-ue4-play-fmod-event.png" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="fmodeventplayer"><a href="#fmodeventplayer">FMODEventPlayer</a></h4>
+<p>This can be added to the System, Emitter or Particle modules.</p>
+<p>An FMODEvent reference that can be used with the play and update modules.<br />
+By assigning an Event to the FMOD Event Player, you can use it to play multiple one shots of the same event with the same settings or it can be used with persistance events that require updating over its lifetime.</p>
+<table>
+<thead>
+<tr>
+<th>UE5</th>
+<th>UE4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="UE5 Create FMOD Event Player" src="images/niagara-ue5-create-fmod-event-player.png" /></td>
+<td><img alt="UE4 Create FMOD Event Player" src="images/niagara-ue4-create-fmod-event-player.png" /></td>
+</tr>
+<tr>
+<td><img alt="UE5 FMODEventPlayer" src="images/niagara-ue5-fmod-event-player.png" /></td>
+<td>Found in UE editor window <br/> <img alt="UE4 FMODEventPlayer" src="images/niagara-ue4-fmod-event-player.png" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="playpersistentfmodevent"><a href="#playpersistentfmodevent">PlayPersistentFMODEvent</a></h4>
+<p>This can be added to the System, Emitter or Particle modules.</p>
+<p>Play an event from a reference that can later be used with <code>UpdatePersistentFMODEvent</code>.</p>
+<table>
+<thead>
+<tr>
+<th>UE5</th>
+<th>UE4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="UE5 PlayPersistentFMODEvent" src="images/niagara-ue5-playpersistentfmodevent.png" /></td>
+<td><img alt="UE4 PlayPersistentFMODEvent" src="images/niagara-ue4-playpersistentfmodevent.png" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="updatepersistentfmodevent"><a href="#updatepersistentfmodevent">UpdatePersistentFMODEvent</a></h4>
+<p>This can be added to the System, Emitter or Particle modules.</p>
+<p>Used to update information of an event referenced from <a class="apilink" href="#fmodeventplayer">FMODEventPlayer</a>.<br />
+You can have multiple of these if you need to control multiple parameters.</p>
+<p>FMOD Parameters need to be referenced by index from the <code>FMODEventPlayer</code>.</p>
+<table>
+<thead>
+<tr>
+<th>UE5</th>
+<th>UE4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="UE5 UpdatePersistentFMODEvent" src="images/niagara-ue5-updatepersistentfmodevent.png" /></td>
+<td><img alt="UE4 UpdatePersistentFMODEvent" src="images/niagara-ue4-updatepersistentfmodevent.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="playing-a-one-shot"><a href="#playing-a-one-shot">5.0.3 Playing a one shot</a></h3>
+<p>Basic example of how to add a one shot event to an emitter:<br />
+- Add a <a class="apilink" href="#playfmodevent">PlayFMODEvent</a> module to emitter.<br />
+- Assign an FMOD Event.<br />
+- Add your emitter to the scene and press play to hear it in action.</p>
+<h3 id="playing-a-persistent-event"><a href="#playing-a-persistent-event">5.0.4 Playing a persistent event</a></h3>
+<ul>
+<li>Add an <a class="apilink" href="#fmodeventplayer">FMODEventPlayer</a> module to the emitter and assign an FMOD Event.</li>
+<li>Add a <a class="apilink" href="#playpersistentfmodevent">PlayPersistentFMODEvent</a> module to emitter.</li>
+<li>With the <code>PlayPersistentFMODEvent</code> module selected, drag your <code>FMODEventPlayer</code> into the <code>FMOD Event Player</code> parameter.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>UE5</th>
+<th>UE4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Assign Player" src="images/niagara-ue5-play-assign-player.png" /></td>
+<td><img alt="UE4 PlayPersistentFMODEvent" src="images/niagara-ue4-play-assign-player.png" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If you are setting FMOD Parameters, they need to be referenced by index number from the <code>FMODEventPlayer</code>.</li>
+<li>Add your emitter to the scene and press play to hear it in action.</li>
+</ul>
+<h3 id="updating-a-persistent-event"><a href="#updating-a-persistent-event">5.0.5 Updating a persistent event</a></h3>
+<p>Continuing on from <a class="apilink" href="#playing-a-persistent-event">Playing a persistent event</a> as you will need both the event player and play modules.</p>
+<ul>
+<li>Add an <a class="apilink" href="#updatepersistentfmodevent">UpdatePersistentFMODEvent</a> module to the emitter.</li>
+<li>With the <code>UpdatePersistentFMODEvent</code> module selected, drag your <code>FMODEventPlayer</code> into the <code>FMOD Event Player</code> parameter.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>UE5</th>
+<th>UE4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="UE5 Assign Player" src="images/niagara-ue5-update-assign-player.png" /></td>
+<td><img alt="UE4 Assign Player" src="images/niagara-ue4-update-assign-player.png" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Select the UpdateType</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>UE5</th>
+<th>UE4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="UE5 Update Type" src="images/niagara-ue5-updatetype.png" /></td>
+<td><img alt="UE4 Update Type" src="images/niagara-ue4-updatetype.png" /></td>
+</tr>
+<tr>
+<td><img alt="UE5 Update Location" src="images/niagara-ue5-updatelocation.png" /></td>
+<td><img alt="UE4 Update Location" src="images/niagara-ue4-updatelocation.png" /></td>
+</tr>
+<tr>
+<td><img alt="UE5 Update Float Parameter" src="images/niagara-ue5-updatefloatparameter.png" /></td>
+<td><img alt="UE4 Update Float Parameter" src="images/niagara-ue4-updatefloatparameter.png" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Add your emitter to the scene and press play to hear it in action.</li>
+</ul></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

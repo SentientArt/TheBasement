@@ -1,0 +1,566 @@
+<html>
+<head>
+<title>Platform Specifics</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li class="manual-current-chapter manual-active-chapter"><a href="platform-specifics.html">Platform Specifics</a><ul>
+<li><a href="#android">Android</a><ul>
+<li><a href="#deployment-of-android-plugins">Deployment of Android plugins</a></li>
+<li><a href="#packaging">Packaging</a></li>
+<li><a href="#android-based-vr-devices">Android-based VR devices</a></li>
+</ul>
+</li>
+<li><a href="#game-core">Game Core</a><ul>
+<li><a href="#xbox-series-xs">Xbox Series X|S</a><ul>
+<li><a href="#enabling-live-update">Enabling Live Update</a></li>
+<li><a href="#packaging_1">Packaging</a></li>
+<li><a href="#disabling-the-unreal-audio-device">Disabling the Unreal Audio Device</a></li>
+</ul>
+</li>
+<li><a href="#xbox-one">Xbox One</a><ul>
+<li><a href="#enabling-live-update_1">Enabling Live Update</a></li>
+<li><a href="#packaging_2">Packaging</a><ul>
+<li><a href="#ue4x-ue50">UE4.X &amp; UE5.0</a></li>
+<li><a href="#ue51-onwards">UE5.1 onwards</a></li>
+</ul>
+</li>
+<li><a href="#disabling-the-unreal-audio-device_1">Disabling the Unreal Audio Device</a></li>
+</ul>
+</li>
+<li><a href="#desktop">Desktop</a><ul>
+<li><a href="#packaging_3">Packaging</a><ul>
+<li><a href="#ue4x-ue50_1">UE4.X &amp; UE5.0</a></li>
+<li><a href="#ue51-onwards_1">UE5.1 onwards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ios">iOS</a><ul>
+<li><a href="#packaging_4">Packaging</a><ul>
+<li><a href="#ue4x-ue50_2">UE4.X &amp; UE5.0</a></li>
+<li><a href="#ue51-onwards_2">UE5.1 onwards</a></li>
+</ul>
+</li>
+<li><a href="#disabling-the-unreal-audio-device_2">Disabling the Unreal Audio Device</a></li>
+<li><a href="#building-for-ios-on-windows">Building for iOS on Windows</a></li>
+</ul>
+</li>
+<li><a href="#tvos">tvOS</a><ul>
+<li><a href="#packaging_5">Packaging</a></li>
+<li><a href="#disabling-the-unreal-audio-device_3">Disabling the Unreal Audio Device</a></li>
+</ul>
+</li>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#macos">macOS</a></li>
+<li><a href="#ps4">PS4</a><ul>
+<li><a href="#packaging_6">Packaging</a></li>
+</ul>
+</li>
+<li><a href="#ps5">PS5</a><ul>
+<li><a href="#packaging_7">Packaging</a></li>
+<li><a href="#using-controller-vibration">Using Controller Vibration</a><ul>
+<li><a href="#unreal-engine-4">Unreal Engine 4</a></li>
+<li><a href="#unreal-engine-5">Unreal Engine 5</a></li>
+</ul>
+</li>
+<li><a href="#disabling-the-unreal-audio-device_4">Disabling the Unreal Audio Device</a></li>
+<li><a href="#enabling-built-in-unreal-audio-alongside-fmod">Enabling built-in Unreal audio alongside FMOD</a></li>
+</ul>
+</li>
+<li><a href="#switch">Switch</a><ul>
+<li><a href="#packaging_8">Packaging</a></li>
+</ul>
+</li>
+<li><a href="#xbox-one_1">Xbox One</a><ul>
+<li><a href="#enabling-xboxone-microphone-input">Enabling XboxOne Microphone Input</a></li>
+<li><a href="#enabling-live-update_2">Enabling Live Update</a></li>
+<li><a href="#packaging_9">Packaging</a></li>
+<li><a href="#disabling-the-unreal-audio-device_5">Disabling the Unreal Audio Device</a></li>
+<li><a href="#copying-dlls-to-build">Copying dll's to build</a></li>
+<li><a href="#submission-validator">Submission Validator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>8. Platform Specifics</h1>
+<p>Some platforms require some extra steps to run properly.</p>
+<h2 id="android"><a href="#android">8.1 Android</a></h2>
+<p>To deploy on Android, make sure FMODStudio is in your game's directory, not in the Engine plugins directory. When FMODStudio is in your game's plugin directory, the engine will rebuild the plugin for Android and deploy all the files properly.</p>
+<h3 id="deployment-of-android-plugins"><a href="#deployment-of-android-plugins">8.1.1 Deployment of Android plugins</a></h3>
+<p>FMOD supports DSP plugins, which will be stand-alone .so files that will need to be packaged into the build. Add the .so file into the <code>FMODStudio/Binaries/Android/{Architecture}</code> directory. Unreal will also need an APL file so it knows to package the .so file. To do this, you will need to write an APL file and drop it into the <code>FMODStudio/Binaries/Android</code> directory. The FMODStudio.build.cs file looks for any file ending with "_APL.xml" and will pass that along to the unreal build tool for packaging.</p>
+<p>The APL is a custom xml file format which is documented in the engine file AndroidPluginLanguage.cs. Here is a sample APL file for libovrfmod.so:</p>
+<div class="highlight language-xml"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="c">&lt;!--Plugin additions--&gt;</span>
+<span class="nt">&lt;root</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- init section is always evaluated once per architecture --&gt;</span>
+    <span class="nt">&lt;init&gt;</span>
+        <span class="nt">&lt;log</span> <span class="na">text=</span><span class="s">&quot;ovrfmod APL init&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/init&gt;</span>
+
+    <span class="c">&lt;!-- optional files or directories to copy to Intermediate/Android/APK --&gt;</span>
+    <span class="nt">&lt;resourceCopies&gt;</span>
+        <span class="nt">&lt;log</span> <span class="na">text=</span><span class="s">&quot;ovrfmod APL copying files for $S(Architecture)/&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;copyFile</span> <span class="na">src=</span><span class="s">&quot;$S(PluginDir)/$S(Architecture)/libovrfmod.so&quot;</span>
+                    <span class="na">dst=</span><span class="s">&quot;$S(BuildDir)/libs/$S(Architecture)/libovrfmod.so&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/resourceCopies&gt;</span>
+
+    <span class="c">&lt;!-- optional libraries to load in GameActivity.java before libUE4.so --&gt;</span>
+    <span class="nt">&lt;soLoadLibrary&gt;</span>
+        <span class="nt">&lt;log</span> <span class="na">text=</span><span class="s">&quot;ovrfmod APL adding loadLibrary references&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;loadLibrary</span> <span class="na">name=</span><span class="s">&quot;ovrfmod&quot;</span> <span class="na">failmsg=</span><span class="s">&quot;ovrfmod not loaded and required!&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/soLoadLibrary&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+
+<p>You only need to write this if you want to load a DSP plugin on Android.</p>
+<h3 id="packaging"><a href="#packaging">8.1.2 Packaging</a></h3>
+<p>Banks for Android are expected to be located in the <code>Mobile</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the Android banks add these lines to <code>Platforms\Android\Config\AndroidGame.ini</code>:</p>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Mobile&quot;)
+</pre></div>
+
+<div class="admonition warning">
+<p><strong>4.24</strong><br />
+The location of <code>AndroidGame.ini</code> is <code>Config\Android\AndroidGame.ini</code></p>
+</div>
+<h3 id="android-based-vr-devices"><a href="#android-based-vr-devices">8.1.3 Android-based VR devices</a></h3>
+<p>Any platform specific requirements for Android also apply to Android-based VR devices, such as Oculus Quest.</p>
+<h2 id="game-core"><a href="#game-core">8.2 Game Core</a></h2>
+<h3 id="xbox-series-xs"><a href="#xbox-series-xs">8.2.1 Xbox Series X|S</a></h3>
+<h4 id="enabling-live-update"><a href="#enabling-live-update">Enabling Live Update</a></h4>
+<p>To enable Live Update the Unreal XSX project settings must be modified to allow FMOD to open the Live Update port from the running game. Access the settings by opening the <strong>Project Settings</strong> editor from the <strong>Edit</strong> menu, then navigate to Xbox Series X|S platform settings. Under the <strong>Development</strong> category, add the following entry to the <strong>Debug Network Ports</strong> setting:<br />
+<img alt="Settings" src="images/gdk-enable-liveupdate.png" /></p>
+<h4 id="packaging_1"><a href="#packaging_1">Packaging</a></h4>
+<p>Banks for the Xbox Series X|S are expected to be located in the <code>Scarlett</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the Xbox Series X|S specific banks add the following lines to the appropriate Unreal config file from the table below e.g. <code>Platforms\XSX\Config\XSXGame.ini</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Unreal version</th>
+<th>FMOD Studio bank folder</th>
+<th>Unreal platform</th>
+<th>Unreal config file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.25</td>
+<td>Scarlett</td>
+<td>MPX</td>
+<td>Platforms\MPX\Config\MPXGame.ini</td>
+</tr>
+<tr>
+<td>4.25+ onwards</td>
+<td>Scarlett</td>
+<td>XSX</td>
+<td>Platforms\XSX\Config\XSXGame.ini</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Scarlett&quot;)
+</pre></div>
+
+<h4 id="disabling-the-unreal-audio-device"><a href="#disabling-the-unreal-audio-device">Disabling the Unreal Audio Device</a></h4>
+<p>FMOD will not work with inbuilt Unreal audio on Xbox Series X|S. You will need to disable the Unreal Audio Device by adding/editing the appropriate Unreal engine config file from the table below e.g. <code>Config\XSX\XSXEngine.ini</code> with the following section:</p>
+<table>
+<thead>
+<tr>
+<th>Unreal version</th>
+<th>Unreal engine config file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.25</td>
+<td>Config\MPX\MPXEngine.ini</td>
+</tr>
+<tr>
+<td>4.25+ onwards</td>
+<td>Config\XSX\XSXEngine.ini</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight language-text"><pre><span></span>[Audio]
+AudioDeviceModuleName=
+AudioMixerModuleName=
+</pre></div>
+
+<h3 id="xbox-one"><a href="#xbox-one">8.2.2 Xbox One</a></h3>
+<h4 id="enabling-live-update_1"><a href="#enabling-live-update_1">Enabling Live Update</a></h4>
+<p>To enable Live Update the Unreal Xbox One GDK project settings must be modified to allow FMOD to open the Live Update port from the running game. Access the settings by opening the <strong>Project Settings</strong> editor from the <strong>Edit</strong> menu, then navigate to Xbox One GDK platform settings. Under the <strong>Development</strong> category, add the following entry to the <strong>Debug Network Ports</strong> setting:<br />
+<img alt="Settings" src="images/gdk-enable-liveupdate.png" /></p>
+<h4 id="packaging_2"><a href="#packaging_2">Packaging</a></h4>
+<p>Banks for the Xbox One are expected to be located in the <code>XboxOne</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the Xbox One specific banks add the following lines to the appropriate Unreal config file from the table below e.g. <code>Platforms\XB1\Config\XB1Game.ini</code>, replacing <code>MyGame</code> with your project's name:</p>
+<table>
+<thead>
+<tr>
+<th>Unreal version</th>
+<th>FMOD Studio bank folder</th>
+<th>Unreal platform</th>
+<th>Unreal config file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.25</td>
+<td>XboxOne</td>
+<td>XboxOneAnvil</td>
+<td>Platforms\XboxOneAnvil\Config\XboxOneAnvilGame.ini</td>
+</tr>
+<tr>
+<td>4.25+, 4.26, 4.27</td>
+<td>XboxOne</td>
+<td>XboxOneGDK</td>
+<td>Platforms\XboxOneGDK\Config\XboxOneGDKGame.ini</td>
+</tr>
+<tr>
+<td>5.0 onwards</td>
+<td>XboxOne</td>
+<td>XB1</td>
+<td>Platforms\XB1\Config\XB1Game.ini</td>
+</tr>
+</tbody>
+</table>
+<h5 id="ue4x-ue50"><a href="#ue4x-ue50">UE4.X &amp; UE5.0</a></h5>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/XboxOne&quot;)
+
+[Staging]
++WhitelistDirectories=MyGame/Content/FMOD/XboxOne
+</pre></div>
+
+<h5 id="ue51-onwards"><a href="#ue51-onwards">UE5.1 onwards</a></h5>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/XboxOne&quot;)
+
+[Staging]
++AllowedDirectories=MyGame/Content/FMOD/XboxOne
+</pre></div>
+
+<h4 id="disabling-the-unreal-audio-device_1"><a href="#disabling-the-unreal-audio-device_1">Disabling the Unreal Audio Device</a></h4>
+<p>FMOD will not work with inbuilt Unreal audio on Xbox One. You will need to disable the Unreal Audio Device by adding/editing the appropriate Unreal engine config file from the table below e.g. <code>Config\XboxOneGDK\XboxOneGDKEngine.ini</code> with the following section:</p>
+<table>
+<thead>
+<tr>
+<th>Unreal version</th>
+<th>Unreal engine config file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.25</td>
+<td>Config\XboxOneAnvil\XboxOneAnvilEngine.ini</td>
+</tr>
+<tr>
+<td>4.25+, 4.26, 4.27</td>
+<td>Config\XboxOneGDK\XboxOneGDKEngine.ini</td>
+</tr>
+<tr>
+<td>5.0 onwards</td>
+<td>Config\XB1\XB1Engine.ini</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight language-text"><pre><span></span>[Audio]
+AudioDeviceModuleName=
+AudioMixerModuleName=
+</pre></div>
+
+<h3 id="desktop"><a href="#desktop">8.2.3 Desktop</a></h3>
+<h4 id="packaging_3"><a href="#packaging_3">Packaging</a></h4>
+<p>Banks for Game Core Desktop are expected to be located in the <code>Desktop</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>The Unreal Build Tool will block packaging of the <code>Desktop</code> directory unless it is explicitly whitelisted. To whitelist the directory add the following lines to the appropriate Unreal config file from the table below e.g. <code>Platforms\WinGDK\Config\WinGDKGame.ini</code>, replacing <code>MyGame</code> with your project's name:</p>
+<table>
+<thead>
+<tr>
+<th>Unreal version</th>
+<th>FMOD Studio bank folder</th>
+<th>Unreal platform</th>
+<th>Unreal config file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.25</td>
+<td>Desktop</td>
+<td>WinAnvil</td>
+<td>Platforms\WinAnvil\Config\WinAnvilGame.ini</td>
+</tr>
+<tr>
+<td>4.25+ onwards</td>
+<td>Desktop</td>
+<td>WinGDK</td>
+<td>Platforms\WinGDK\Config\WinGDKGame.ini</td>
+</tr>
+</tbody>
+</table>
+<h5 id="ue4x-ue50_1"><a href="#ue4x-ue50_1">UE4.X &amp; UE5.0</a></h5>
+<div class="highlight language-text"><pre><span></span>[Staging]
++WhitelistDirectories=MyGame/Content/FMOD/Desktop
+</pre></div>
+
+<h5 id="ue51-onwards_1"><a href="#ue51-onwards_1">UE5.1 onwards</a></h5>
+<div class="highlight language-text"><pre><span></span>[Staging]
++AllowedDirectories=MyGame/Content/FMOD/Desktop
+</pre></div>
+
+<h2 id="ios"><a href="#ios">8.3 iOS</a></h2>
+<h3 id="packaging_4"><a href="#packaging_4">8.3.1 Packaging</a></h3>
+<p>Banks for iOS are expected to be located in the <code>Mobile</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the iOS banks from the <code>Mobile</code> sub-directory, add these lines to <code>Platforms\IOS\Config\IOSGame.ini</code>:</p>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Mobile&quot;)
+</pre></div>
+
+<p>If you do insist on modifying the integration source code and using the <code>Desktop</code> sub-directory instead of the <code>Mobile</code> sub-directory, add these lines to <code>Platforms\IOS\Config\IOSGame.ini</code> instead, replacing <code>mygame</code> with your project's name:</p>
+<h4 id="ue4x-ue50_2"><a href="#ue4x-ue50_2">UE4.X &amp; UE5.0</a></h4>
+<div class="highlight language-text"><pre><span></span>[Staging]
++WhitelistDirectories=cookeddata/mygame/content/fmod/desktop
+</pre></div>
+
+<h4 id="ue51-onwards_2"><a href="#ue51-onwards_2">UE5.1 onwards</a></h4>
+<div class="highlight language-text"><pre><span></span>[Staging]
++AllowedDirectories=cookeddata/mygame/content/fmod/desktop
+</pre></div>
+
+<h3 id="disabling-the-unreal-audio-device_2"><a href="#disabling-the-unreal-audio-device_2">8.3.2 Disabling the Unreal Audio Device</a></h3>
+<p>FMOD will not work with inbuilt Unreal audio on iOS. You will need to disable the Unreal Audio Device by creating a new file <code>Config\IOS\IOSEngine.ini</code> with this section:</p>
+<div class="highlight language-text"><pre><span></span>[Audio]
+AudioDeviceModuleName=
+AudioMixerModuleName=
+</pre></div>
+
+<div class="admonition warning">
+<p><strong>4.24</strong><br />
+The location of <code>IOSGame.ini</code> is <code>Config\IOS\IOSGame.ini</code></p>
+</div>
+<h3 id="building-for-ios-on-windows"><a href="#building-for-ios-on-windows">8.3.3 Building for iOS on Windows</a></h3>
+<p>Using remote build to build for iOS on Windows using the FMOD Studio plugin requires some additional files to be copied to the remote Mac. To tell Unreal to copy the additional files add a file named <code>RsyncProject.txt</code> to the directory <code>&lt;ue_project_root&gt;/Build/Rsync</code> (you may need to create this directory). The <code>RsyncProject.txt</code> file needs to contain this line:</p>
+<div class="highlight language-text"><pre><span></span>+ /Plugins/FMODStudio/Binaries/IOS/**
+</pre></div>
+
+<h2 id="tvos"><a href="#tvos">8.4 tvOS</a></h2>
+<p>To build for tvOS, make sure FMODStudio is in your game's directory and not in the Engine plugins directory.</p>
+<h3 id="packaging_5"><a href="#packaging_5">8.4.1 Packaging</a></h3>
+<p>Banks for tvOS are expected to be located in the <code>Mobile</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the correct banks add these lines to <code>Platforms\TVOS\Config\TVOSGame.ini</code>:</p>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Mobile&quot;)
+</pre></div>
+
+<div class="admonition warning">
+<p><strong>4.24</strong><br />
+The location of <code>TVOSGame.ini</code> is <code>Config\TVOS\TVOSGame.ini</code></p>
+</div>
+<h3 id="disabling-the-unreal-audio-device_3"><a href="#disabling-the-unreal-audio-device_3">8.4.2 Disabling the Unreal Audio Device</a></h3>
+<p>FMOD will not work with inbuilt Unreal audio on tvOS. You will need to disable the Unreal Audio Device by creating a new file <code>Config\TVOS\TVOSEngine.ini</code> with this section:</p>
+<div class="highlight language-text"><pre><span></span>[Audio]
+AudioDeviceModuleName=
+AudioMixerModuleName=
+</pre></div>
+
+<h2 id="linux"><a href="#linux">8.5 Linux</a></h2>
+<p>To deploy on linux, you will need to rebuild the engine from source via github. For compiling linux from windows, see this <a href="https://docs.unrealengine.com/linux-development-requirements-for-unreal-engine">page</a> for instructions how to get up and running with Unreal. Then, add in both the fmodstudio linux .zip and windows .zip on top of each other into the engine plugins directory.</p>
+<p>The last thing you will need to do is to get the FMOD .so libraries into a directory that the executable can read them. The easiest way is to copy them from</p>
+<div class="highlight language-text"><pre><span></span>&lt;DeployedDir&gt;\Engine\Plugins\FMODStudio\Binaries\Linux\x86_64
+</pre></div>
+
+<p>to</p>
+<div class="highlight language-text"><pre><span></span>&lt;DeployedDir&gt;\&lt;GameName&gt;\Binaries\Linux
+</pre></div>
+
+<p>To see what directories the .so files can be located, look at LinuxToolChain.cs. Currently there are only a set of hard coded directories that are supported.</p>
+<h2 id="macos"><a href="#macos">8.6 macOS</a></h2>
+<p>To make a packaged build runnable on your local machine, execute the following command from the command shell :</p>
+<div class="highlight language-text"><pre><span></span>install_name_tool -add_rpath @executable_path/../Unreal/YourGame/Plugins/FMODStudio/Libs/Mac /Path/To/YourGame.app/Contents/MacOS/YourGame
+</pre></div>
+
+<h2 id="ps4"><a href="#ps4">8.7 PS4</a></h2>
+<h3 id="packaging_6"><a href="#packaging_6">8.7.1 Packaging</a></h3>
+<p>Banks for the PS4 are expected to be located in the <code>PS4</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the PS4 specific banks add these lines to <code>Platforms\PS4\Config\PS4Game.ini</code>:</p>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/PS4&quot;)
+</pre></div>
+
+<h2 id="ps5"><a href="#ps5">8.8 PS5</a></h2>
+<h3 id="packaging_7"><a href="#packaging_7">8.8.1 Packaging</a></h3>
+<p>Banks for the PS5 are expected to be located in the <code>PS5</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the PS5 specific banks add these lines to <code>Platforms\PS5\Config\PS5Game.ini</code>:</p>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/PS5&quot;)
+</pre></div>
+
+<h3 id="using-controller-vibration"><a href="#using-controller-vibration">8.8.2 Using Controller Vibration</a></h3>
+<p>To enable vibration for the PS5 controller add these lines to <code>Config\PS5\PS5Engine.ini</code>:</p>
+<h4 id="unreal-engine-4"><a href="#unreal-engine-4">Unreal Engine 4</a></h4>
+<div class="highlight language-text"><pre><span></span>[/Script/Engine.InputSettings]
+AdvancedVibrationMode=true
+</pre></div>
+
+<h4 id="unreal-engine-5"><a href="#unreal-engine-5">Unreal Engine 5</a></h4>
+<div class="highlight language-text"><pre><span></span>[SonyController]
+bAdvancedVibrationMode=true
+</pre></div>
+
+<h3 id="disabling-the-unreal-audio-device_4"><a href="#disabling-the-unreal-audio-device_4">8.8.3 Disabling the Unreal Audio Device</a></h3>
+<p>FMOD will not work with built-in Unreal audio on PS5 without some engine modification. In most cases you should disable the Unreal Audio Device by adding/editing <code>Config\PS5\PS5Engine.ini</code> with the following section:</p>
+<div class="highlight language-text"><pre><span></span>[Audio]
+AudioDeviceModuleName=
+AudioMixerModuleName=
+</pre></div>
+
+<h3 id="enabling-built-in-unreal-audio-alongside-fmod"><a href="#enabling-built-in-unreal-audio-alongside-fmod">8.8.4 Enabling built-in Unreal audio alongside FMOD</a></h3>
+<p>See this <a href="https://qa.fmod.com/t/unreal-video-playback-with-audio-on-ps5/16555">forum post</a> for details.</p>
+<h2 id="switch"><a href="#switch">8.9 Switch</a></h2>
+<h3 id="packaging_8"><a href="#packaging_8">8.9.1 Packaging</a></h3>
+<p>Banks for the Switch are expected to be located in the <code>Switch</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the Switch specific banks add these lines to <code>Platforms\Switch\Config\SwitchGame.ini</code>:</p>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Switch&quot;)
+</pre></div>
+
+<h2 id="xbox-one_1"><a href="#xbox-one_1">8.10 Xbox One</a></h2>
+<h3 id="enabling-xboxone-microphone-input"><a href="#enabling-xboxone-microphone-input">8.10.1 Enabling XboxOne Microphone Input</a></h3>
+<p>To enable FMOD Studio the use of any microphone input, including Kinect, on the Xbox One. The Engine ini file specific for the platform, located in <code>/Config/XboxOne/XboxOneEngine.ini</code>, needs to have the following lines added:</p>
+<div class="highlight language-xml"><pre><span></span>[AppxManifest]
+Package.Capabilities.mx:Capability[0].Name=kinectAudio
+Package.Capabilities.mx:Capability[1].Name=kinectGamechat
+</pre></div>
+
+<h3 id="enabling-live-update_2"><a href="#enabling-live-update_2">8.10.2 Enabling Live Update</a></h3>
+<p>To enable Live Update the Unreal Xbox One project settings must be modified to allow FMOD to open the Live Update port from the running game. Access the settings by opening the <strong>Project Settings</strong> editor from the <strong>Edit</strong> menu, then navigate to Xbox One platform settings. Under the <strong>Network</strong> category, add the following entries to the <strong>Secure Socket Descriptions</strong> and <strong>Secure Socket Associations</strong> settings:<br />
+<img alt="Settings" src="images/xboxone-enable-liveupdate.png" /></p>
+<h3 id="packaging_9"><a href="#packaging_9">8.10.3 Packaging</a></h3>
+<p>Banks for the Xbox One are expected to be located in the <code>XboxOne</code> sub-directory of the Studio built banks output directory. This sub-directory name is hardcoded in the integration so if you want to use a different location you would need to modify the integration source code.</p>
+<p>To package the Xbox One specific banks add these lines to <code>Platforms\XboxOne\Config\XboxOneGame.ini</code>:</p>
+<div class="highlight language-text"><pre><span></span>[/Script/UnrealEd.ProjectPackagingSettings]
+-DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/Desktop&quot;)
++DirectoriesToAlwaysStageAsNonUFS=(Path=&quot;FMOD/XboxOne&quot;)
+</pre></div>
+
+<h3 id="disabling-the-unreal-audio-device_5"><a href="#disabling-the-unreal-audio-device_5">8.10.4 Disabling the Unreal Audio Device</a></h3>
+<p>FMOD will not work with inbuilt Unreal audio on Xbox One. You will need to disable the Unreal Audio Device by creating a new file <code>Config\XboxOne\XboxOneEngine.ini</code> with this section:</p>
+<div class="highlight language-text"><pre><span></span>[Audio]
+AudioDeviceModuleName=
+AudioMixerModuleName=
+</pre></div>
+
+<h3 id="copying-dlls-to-build"><a href="#copying-dlls-to-build">8.10.5 Copying dll's to build</a></h3>
+<div class="admonition warning">
+<p>This has been solved in 2.01.07, you only need to follow these steps if you are using an older version.</p>
+</div>
+<p>Add the following to GetFilesToDeployOrStage in XboxOnePlatform.Automation.cs, before the end of the function:</p>
+<div class="highlight language-text"><pre><span></span>// FMOD code start
+DirectoryReference FMODDLLPath = null;
+if (Directory.Exists(Path.Combine(SC.ProjectRoot.ToString(), &quot;Plugins/FMODStudio&quot;)))
+{
+    FMODDLLPath = DirectoryReference.Combine(SC.ProjectRoot, &quot;Plugins/FMODStudio/Binaries/XBoxOne/&quot;);
+}
+else if (Directory.Exists(Path.Combine(SC.LocalRoot.ToString(), &quot;Engine/Plugins/FMODStudio&quot;)))
+{
+    FMODDLLPath = DirectoryReference.Combine(SC.LocalRoot, &quot;Engine/Plugins/FMODStudio/Binaries/XBoxOne/&quot;);
+}
+else
+{
+    LogError(&quot;Failed to find FMODStudio plugin in game or engine directory&quot;);
+}
+if (FMODDLLPath != null)
+{
+    Log.TraceInformation(&quot;Copying FMOD dlls to loose directory: &quot; + RelativeBinPath);
+    StagedDirectoryReference RelativeBinPathRef = new StagedDirectoryReference(RelativeBinPath);
+    StageFileIfExists(StagedFileType.NonUFS, FileReference.Combine(FMODDLLPath, &quot;fmod.dll&quot;), RelativeBinPathRef, SC);
+    StageFileIfExists(StagedFileType.NonUFS, FileReference.Combine(FMODDLLPath, &quot;fmodL.dll&quot;), RelativeBinPathRef, SC);
+    StageFileIfExists(StagedFileType.NonUFS, FileReference.Combine(FMODDLLPath, &quot;fmodstudio.dll&quot;), RelativeBinPathRef, SC);
+    StageFileIfExists(StagedFileType.NonUFS, FileReference.Combine(FMODDLLPath, &quot;fmodstudioL.dll&quot;), RelativeBinPathRef, SC);
+}
+// FMOD code end
+</pre></div>
+
+<p>Add the following to PrepTargetForDeployment in XboxOneDeploy.cs, in the same scope as 'DestDir':</p>
+<div class="highlight language-text"><pre><span></span>// FMOD code start
+string FMODDLLPath = null;
+if (Directory.Exists(Path.Combine(ProjectDirectory.FullName, &quot;Plugins/FMODStudio&quot;)))
+{
+    FMODDLLPath = Path.Combine(ProjectDirectory.FullName, &quot;Plugins/FMODStudio/Binaries/XBoxOne/&quot;);
+}
+else if (Directory.Exists(Path.Combine(RelativeEnginePath, &quot;Plugins/FMODStudio&quot;)))
+{
+    FMODDLLPath = Path.Combine(RelativeEnginePath, &quot;Plugins/FMODStudio/Binaries/XBoxOne/&quot;);
+}
+else
+{
+    Log.TraceWarning(&quot;Failed to find FMODStudio plugin in game or engine directory&quot;);
+}
+if (FMODDLLPath != null)
+{
+    Log.TraceInformation(&quot;...copying the FMOD dlls...&quot;);
+    string FMODDLLName = &quot;fmod.dll&quot;;
+    Log.TraceInformation(&quot;\tcopying &quot; + FMODDLLPath + FMODDLLName + &quot; to &quot; + DestDir + &quot;/&quot; + FMODDLLName);
+    CopyFile(FMODDLLPath + FMODDLLName, DestDir + &quot;/&quot; + FMODDLLName, true);
+    FMODDLLName = &quot;fmodL.dll&quot;;
+    Log.TraceInformation(&quot;\tcopying &quot; + FMODDLLPath + FMODDLLName + &quot; to &quot; + DestDir + &quot;/&quot; + FMODDLLName);
+    CopyFile(FMODDLLPath + FMODDLLName, DestDir + &quot;/&quot; + FMODDLLName, true);
+    FMODDLLName = &quot;fmodstudio.dll&quot;;
+    Log.TraceInformation(&quot;\tcopying &quot; + FMODDLLPath + FMODDLLName + &quot; to &quot; + DestDir + &quot;/&quot; + FMODDLLName);
+    CopyFile(FMODDLLPath + FMODDLLName, DestDir + &quot;/&quot; + FMODDLLName, true);
+    FMODDLLName = &quot;fmodstudioL.dll&quot;;
+    Log.TraceInformation(&quot;\tcopying &quot; + FMODDLLPath + FMODDLLName + &quot; to &quot; + DestDir + &quot;/&quot; + FMODDLLName);
+    CopyFile(FMODDLLPath + FMODDLLName, DestDir + &quot;/&quot; + FMODDLLName, true);
+}
+// FMOD code end
+</pre></div>
+
+<h3 id="submission-validator"><a href="#submission-validator">8.10.6 Submission Validator</a></h3>
+<p>The XboxOne validaition tool uses <code>_NT_SYMBOL_PATH</code> environment variable to know where to look for PDBs.<br />
+In 'XboxOnePlatform.Automation.cs' is where Unreal overrides _NT_SYMBOL_PATH:</p>
+<div class="highlight language-text"><pre><span></span>EnvironmentVariables.Add(&quot;_NT_SYMBOL_PATH&quot;, Params.GetProjectBinariesPathForPlatform(UnrealTargetPlatform.XboxOne).ToString());
+</pre></div>
+
+<p>We want to change this to add to it:</p>
+<div class="highlight language-text"><pre><span></span>string SymbolPath = Params.GetProjectBinariesPathForPlatform(UnrealTargetPlatform.XboxOne).ToString() + &quot;;&quot; + CommandUtils.GetEnvVar(&quot;_NT_SYMBOL_PATH&quot;);
+EnvironmentVariables.Add(&quot;_NT_SYMBOL_PATH&quot;, SymbolPath);
+</pre></div>
+
+<p>Now it keeps the original value as well as adding its own path.</p>
+<p>Then, on your build machine you need to set the value of <code>_NT_SYMBOL_PATH</code> to where the FMOD PDBs will be.<br />
+Eg. "[MyGame]\Plugins\FMODStudio\Binaries\XBoxOne" or "[MyGame]\Platforms\XboxOne\Plugins\FMODStudio\Binaries".</p></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

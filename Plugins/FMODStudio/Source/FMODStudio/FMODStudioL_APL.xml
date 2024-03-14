@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--GearVR plugin additions-->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- init section is always evaluated once per architecture -->
+	<init>
+		<log text="FMODStudio APL init (logging build)"/>
+		<setString result="ConfigSuffix" value="L"/>
+	</init>
+
+	<!-- optional additions to proguard -->
+	<proguardAdditions>
+		<insert>
+			-keep class org.fmod.** {
+			*;
+			}
+			-dontwarn org.fmod.**
+		</insert>
+	</proguardAdditions>
+
+	<!-- optional files or directories to copy to Intermediate/Android/APK -->
+	<resourceCopies>
+		<log text="FMODStudio APL copying files for $S(Architecture)"/>
+		<copyFile src="$S(PluginDir)/../../Binaries/Android/$S(Architecture)/libfmod$S(ConfigSuffix).so"
+					dst="$S(BuildDir)/libs/$S(Architecture)/libfmod$S(ConfigSuffix).so" />
+		<copyFile src="$S(PluginDir)/../../Binaries/Android/$S(Architecture)/libfmodstudio$S(ConfigSuffix).so"
+					dst="$S(BuildDir)/libs/$S(Architecture)/libfmodstudio$S(ConfigSuffix).so" />
+		<copyFile src="$S(PluginDir)/../../Binaries/Android/fmod.jar"
+					dst="$S(BuildDir)/libs/fmod.jar" />
+	</resourceCopies>
+
+	<!-- optional additions to GameActivity onCreate in GameActivity.java -->
+	<gameActivityOnCreateAdditions>
+		<insert>
+		// Initialize FMOD Studio jar file
+		org.fmod.FMOD.init(this);
+		</insert>
+	</gameActivityOnCreateAdditions>
+
+	<!-- optional additions to GameActivity onDestroy in GameActivity.java -->
+	<gameActivityOnDestroyAdditions>
+		<insert>
+		// Shutdown FMOD Studio jar file
+		org.fmod.FMOD.close();
+		</insert>
+	</gameActivityOnDestroyAdditions>
+
+	<!-- optional libraries to load in GameActivity.java before libUE4.so -->
+	<soLoadLibrary>
+		<log text="FMODStudio APL adding loadLibrary references"/>
+		<loadLibrary name="fmod$S(ConfigSuffix)" failmsg="libfmod$S(ConfigSuffix) not loaded and required!" />
+		<loadLibrary name="fmodstudio$S(ConfigSuffix)" failmsg="libfmodstudio$S(ConfigSuffix) not loaded and required!" />
+	</soLoadLibrary>
+</root>

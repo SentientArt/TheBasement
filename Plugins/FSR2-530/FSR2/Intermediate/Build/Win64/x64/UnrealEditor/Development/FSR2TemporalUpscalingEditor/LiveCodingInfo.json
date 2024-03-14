@@ -1,0 +1,9 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.FSR2TemporalUpscalingEditor.cpp.obj": [
+			"FSR2TemporalUpscalerEditor.cpp.obj",
+			"FSR2TemporalUpscalingEditor.cpp.obj"
+		]
+	}
+}

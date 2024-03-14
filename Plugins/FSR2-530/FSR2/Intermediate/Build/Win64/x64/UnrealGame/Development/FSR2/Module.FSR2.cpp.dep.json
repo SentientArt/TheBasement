@@ -1,0 +1,21 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\fsr2-530\\fsr2\\intermediate\\build\\win64\\x64\\unrealgame\\development\\fsr2\\module.fsr2.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\ifraude\\documents\\github\\city75\\intermediate\\build\\win64\\x64\\basement\\development\\engine\\sharedpch.engine.cpp17.h.pch",
+        "Includes": [
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\fsr2-530\\fsr2\\intermediate\\build\\win64\\x64\\unrealgame\\development\\fsr2\\definitions.fsr2.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\fsr2-530\\fsr2\\source\\fsr2\\private\\fsr2.cpp",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\fsr2-530\\fsr2\\source\\fsr2\\public\\fsr2.h",
+            "c:\\users\\ifraude\\documents\\github\\city75\\plugins\\fsr2-530\\fsr2\\source\\fsr2temporalupscaling\\public\\fsr2viewextension.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\sceneviewextension.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\sceneviewextensioncontext.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\sceneviewextensioncontext.generated.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\scenetexturesconfig.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\rendercore\\public\\gbufferinfo.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

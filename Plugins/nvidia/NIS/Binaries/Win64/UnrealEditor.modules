@@ -1,0 +1,9 @@
+{
+	"BuildId": "27405482",
+	"Modules": 
+	{
+		"NISBlueprint": "UnrealEditor-NISBlueprint.dll",
+		"NISCore": "UnrealEditor-NISCore.dll",
+		"NISShaders": "UnrealEditor-NISShaders.dll"
+	}
+}

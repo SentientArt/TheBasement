@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Blueprint Reference | Asynchronous Loading</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="blueprint-reference.html">Blueprint Reference</a><ul class="subchapters"><li><a href="blueprint-reference-bus.html">Bus</a></li><li><a href="blueprint-reference-common.html">Common</a></li><li><a href="blueprint-reference-component.html">Component</a></li><li><a href="blueprint-reference-eventinstance.html">Event Instance</a></li><li class="manual-current-chapter manual-active-chapter"><a href="blueprint-reference-asynchronous-loading.html">Asynchronous Loading</a></li><li><a href="blueprint-reference-enums.html">Enums</a></li><li><a href="blueprint-reference-structs.html">Structs</a></li><li><a href="blueprint-reference-utilities.html">Utilities</a></li></ul></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>7. Blueprint Reference | Asynchronous Loading</h1>
+<p>This is an Unreal Level Blueprint that demonstrates how to build a loading screen that can be used at the start of a game to load both FMOD Studio data and Unreal data without blocking the main thread. To make this work properly "Load All Banks" needs to be turned off in the FMOD Settings.</p>
+<p><img alt="Level Blueprint" src="images/blueprint-async-levelbp.png" /></p>
+<p><strong>Topics:</strong></p>
+<ul>
+<li><a class="apilink" href="blueprint-reference-asynchronous-loading.html#variables">Variables</a></li>
+<li><a class="apilink" href="blueprint-reference-asynchronous-loading.html#macros">Macros</a></li>
+</ul>
+<h2 id="variables"><a href="#variables">Variables</a></h2>
+<p><img alt="Variables" src="images/blueprint-async-variables.png" /></p>
+<dl>
+<dt>Banks</dt>
+<dd>List of banks to load</dd>
+<dt>Load Sample Data</dt>
+<dd>When enabled, the sample data from all FMOD bank files is loaded at startup. Only effective when <code>Load All Banks</code> is also disabled</dd>
+<dt>Done</dt>
+<dd>False, until all the banks have finished loading.</dd>
+<dt>Number of Banks Loaded</dt>
+<dd>Reference to how many banks have currently been loaded. Used as reference to check if loading has completed.</dd>
+<dt>Map Name</dt>
+<dd>The name of the map to be loaded when banks have completed loading.</dd>
+</dl>
+<h2 api="function" id="macros"><a href="#macros">Macros</a></h2>
+<dl>
+<dt><img alt="Macros" src="images/blueprint-async-loading-macros.png" /></dt>
+<dt>Make Array</dt>
+<dd>Using the Banks variable, define an array of banks to be loaded.<br />
+<img alt="Get Banks Array" src="images/blueprint-async-getbanks.png" /></dd>
+<dt>Load Banks</dt>
+<dd>Initializes the loading process for the banks. Called once on <code>Event Begin</code>, uses the <code>Load Sample Data</code> variable for the <code>Load Bank</code> node.<br />
+<img alt="Load Banks" src="images/blueprint-async-loadbanks.png" /></dd>
+<dt>Check Banks Load</dt>
+<dd>Checks the <code>Done</code> variable every tick. If it is still false, it will iterate through the array of banks incrementing the variable <code>Number of Loaded Banks</code>. Once <code>Number of Loaded Banks</code> is equal to the total number of banks in the array then the variable <code>Done</code> is set to true, and it is safe to load the playable Map.<br />
+<img alt="Check if Loaded" src="images/blueprint-async-checkifloaded.png" /></dd>
+</dl></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

@@ -1,0 +1,14 @@
+{
+	"BuildId": "27405482",
+	"Modules": 
+	{
+		"FFXFSR2Api": "UnrealEditor-FFXFSR2Api.dll",
+		"FFXFSR2D3D12": "UnrealEditor-FFXFSR2D3D12.dll",
+		"FFXFSR2Vulkan": "UnrealEditor-FFXFSR2Vulkan.dll",
+		"FSR2": "UnrealEditor-FSR2.dll",
+		"FSR2TemporalUpscaling": "UnrealEditor-FSR2TemporalUpscaling.dll",
+		"FSR2TemporalUpscalingD3D12": "UnrealEditor-FSR2TemporalUpscalingD3D12.dll",
+		"FSR2TemporalUpscalingEditor": "UnrealEditor-FSR2TemporalUpscalingEditor.dll",
+		"FSR2TemporalUpscalingVulkan": "UnrealEditor-FSR2TemporalUpscalingVulkan.dll"
+	}
+}

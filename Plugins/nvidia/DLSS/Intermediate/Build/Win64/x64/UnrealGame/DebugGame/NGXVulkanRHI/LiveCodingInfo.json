@@ -1,0 +1,8 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.NGXVulkanRHI.cpp.obj": [
+			"NGXVulkanRHI.cpp.obj"
+		]
+	}
+}

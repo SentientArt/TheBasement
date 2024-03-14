@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>AudioLink</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li><a href="blueprint-reference.html">Blueprint Reference</a></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li class="manual-current-chapter manual-active-chapter"><a href="audiolink.html">AudioLink</a><ul>
+<li><a href="#linking-with-your-studio-project">Linking with your Studio Project</a></li>
+<li><a href="#how-to-enabledisable-fmod-audiolink">How to Enable/Disable FMOD AudioLink</a></li>
+<li><a href="#settings">Settings</a></li>
+<li><a href="#what-can-audiolink-transmit">What Can AudioLink Transmit?</a><ul>
+<li><a href="#source">Source</a><ul>
+<li><a href="#attenuation-settings">Attenuation Settings</a></li>
+</ul>
+</li>
+<li><a href="#submix">Submix</a></li>
+<li><a href="#audiolink-component">AudioLink Component</a></li>
+</ul>
+</li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>10. AudioLink</h1>
+<p><a href="https://docs.unrealengine.com/en-US/audiolink/">AudioLink</a> is an API that connects Unreal Audio Engine to external software, allowing Audio to be passed from Unreal to FMOD. By using hardware abstraction, AudioLink bypasses the need for direct hardware access and provides the strengths of both Unreal Audio Engine and FMOD.</p>
+<p>This section will assume a basic understanding of the Unreal AudioLink system and will focus on the FMOD specific information.</p>
+<h3 id="linking-with-your-studio-project"><a href="#linking-with-your-studio-project">10.0.1 Linking with your Studio Project</a></h3>
+<p>The FMOD for Unreal AudioLink module assumes the Event linked contains a <a href="https://fmod.com/docs/2.02/studio/instrument-reference.html#programmer-instrument">Programmer Instrument</a>, this is what it uses to pass the sound data from Unreal to FMOD.</p>
+<p><img alt="Programmer sound event" src="images/audiolink-programmer-sound.png" /><br />
+<em>Generally you will want an Event that has a looping async programmer sound, because we may not know the length of the sounds being played from Unreal (ie. submixes are generally alive from startup to shutdown).</em></p>
+<h3 id="how-to-enabledisable-fmod-audiolink"><a href="#how-to-enabledisable-fmod-audiolink">10.0.2 How to Enable/Disable FMOD AudioLink</a></h3>
+<p>In the FMOD for Unreal <a href="settings.html">Settings</a>, you can choose to enable/disable AudioLink support. This will load/unload the appropriate modules when the editor is reloaded.</p>
+<p><img alt="FMOD Settings AudioLink" src="images/audiolink-settings.png" /></p>
+<h3 id="settings"><a href="#settings">10.0.3 Settings</a></h3>
+<p>The default FMOD AudioLink Settings can be found in the project settings, under 'Plugins &gt; FMOD AudioLink'. This is used in cases where the property has not been set, so it is unnecessary to pass it every time you create an AudioLink.<br />
+You can create multiple FMOD AudioLink Settings assets for different FMOD Events, allowing you to easily route different sounds to different events allowing for greater customization.<br />
+These settings are used to set up the FMOD Event:</p>
+<ul>
+<li><strong>Link Event</strong> - FMOD Studio Event to use with this settings asset.</li>
+<li><strong>Should Clear Buffer on Receipt</strong> - If this is set, the buffer will be cleared after it's read, so it's not rendered by Unreal. Only applies if running both renderers at once. Disable this if you want to use the audio data from Unreal Engine.</li>
+<li><strong>Producer to Consumer Buffer Ratio</strong> - This is the ratio of producer to consumer buffer size, a size too large can lead to latency, but too small can lead to buffer underruns. Typically, you should use a size at a 2:1 or higher ratio of the consumer's bitrate.</li>
+<li><strong>Initial Silence Fill Ratio</strong> - Ratio of initial buffer to fill with silence ahead of consumption. Adjusting this can resolve starvation at the cost of added latency.</li>
+</ul>
+<p><img alt="FMOD Settings AudioLink" src="images/audiolink-settings2.png" /></p>
+<h3 id="what-can-audiolink-transmit"><a href="#what-can-audiolink-transmit">10.0.4 What Can AudioLink Transmit?</a></h3>
+<p>FMOD supports AudioLink through three link types:</p>
+<ul>
+<li><a class="apilink" href="#source">Source</a> - eg. MetaSounds, Sound Cues, and Sound Waves.</li>
+<li><a class="apilink" href="#submix">Submix</a>.</li>
+<li><a class="apilink" href="#audiolink-component">AudioLink Component</a> - ie. <code>FMODAudioLink</code>.</li>
+</ul>
+<h4 id="source"><a href="#source">Source</a></h4>
+<p>MetaSounds, Sound Cues, and Sound Waves are classed as 'Sources', to play them through AudioLink you can use the <a class="apilink" href="#attenuation-settings">Attenuation Settings</a> or the <a class="apilink" href="#submix">Submix</a>.</p>
+<h5 id="attenuation-settings"><a href="#attenuation-settings">Attenuation Settings</a></h5>
+<p>In the source/component Details panel you will find the option to individually override or assign Attenuation settings:</p>
+<ul>
+<li><strong>Allow Spatialization</strong> - Overrides spatialization enablement in either the attenuation asset or on this audio component's attenuation settings override.</li>
+<li><strong>Override Attenuation</strong> - This breaks down the Attenuation settings in the details panel to override individual components.</li>
+<li><strong>Attenuation Settings</strong> - Here you can specify a settings asset that uses all the Attenuation settings you have already set.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Meta Sound</th>
+<th>Sound Cue</th>
+<th>Audio Component</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Meta Sound" src="images/audiolink-attenuation-meta.png" /></td>
+<td><img alt="Sound Cue" src="images/audiolink-attenuation-cue.png" /></td>
+<td><img alt="Audio Component" src="images/audiolink-attenuation-component.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>It is recommended to disable the <code>Attenuation (Spatialization)</code> option as FMOD needs to handle the spatialization.</p>
+<p>To send specific sounds to FMOD, use the settings under <code>Attenuation (AudioLink)</code>:</p>
+<ul>
+<li><strong>Enable Send to AudioLink</strong> - Enables/Disables AudioLink on all sources using this Attenuation.</li>
+<li><strong>AudioLink Settings Override</strong> - A predefined AudioLink Settings asset that can be used across multiple Attenuation settings, if this is empty then the default settings are used.</li>
+</ul>
+<p><img alt="Sound Attenuation" src="images/audiolink-attenuation-settings.png" /></p>
+<div class="admonition warning">
+<p>If you want to override the Attenuation Settings, either through an asset or in the details panel, but <em>not</em> use the <code>Enable Send to AudioLink</code> (ie. you want it to route through a specified submix instead) you need to make sure that the <code>Attenuation (Spatialization)</code> is disabled.</p>
+</div>
+<h4 id="submix"><a href="#submix">Submix</a></h4>
+<p>You can set the <code>Send to Audio Link</code> flag and the Audio Link Settings property in the submix's Details panel, under 'Audio Link'.</p>
+<p><img alt="Submix AudioLink" src="images/audiolink-submix2.png" /></p>
+<h4 id="audiolink-component"><a href="#audiolink-component">AudioLink Component</a></h4>
+<p>AudioLink Component support is included through the <code>FMOD AudioLink</code> Component, but is often unnecessary as sources are componentless by design, highly optimized for scale, and provide engine-level support.</p>
+<p><img alt="FMOD AudioLink Component" src="images/audiolink-component.png" /></p>
+<p>The AudioLink Component is then controlled through the API:</p>
+<ul>
+<li><code>PlayLink</code></li>
+<li><code>SetLinkSound</code></li>
+<li><code>StopLink</code></li>
+<li><code>IsLinkPlaying</code></li>
+</ul>
+<p><img alt="Play Link" src="images/audiolink-playlink.png" /></p>
+<div class="admonition warning">
+<p>In UE5.2 and UE5.3, two events will spawn when using the FMODAudioLinkComponent: one for the component (intended) and one for the sound source (not intended). This appears to be an engine bug.</p>
+<p>Workaround:<br />
+Create a new FMODAudioLinkSettings asset and leave the <code>Link Event</code> empty, then assign this to the sound source (through the <a class="apilink" href="#attenuation-settings">Attenuation Settings</a>).</p>
+</div>
+<h3 id="troubleshooting"><a href="#troubleshooting">10.0.5 Troubleshooting</a></h3>
+<ul>
+<li>Use the console command <code>log LogFMODAudioLink All</code> to output (a lot) more detailed information to the log. </li>
+<li>Ensure you enable the <code>Send to AudioLink</code> flag on the source or submix.</li>
+<li>Be careful with pairing a source and submix containing the same signal chain, as that can cause data duplication and result in loud and undesirable audio stacking.</li>
+<li>FMOD Studio Profiler can now be used to track and manage events using Live Update.</li>
+</ul></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>

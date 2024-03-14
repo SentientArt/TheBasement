@@ -1,0 +1,538 @@
+<html>
+<head>
+<title>Blueprint Reference | Utilities</title>
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/code_highlight.css">
+<script type="text/javascript" src="scripts/language-selector.js"></script></head>
+<body>
+<div class="docs-body">
+<div class="manual-toc">
+<p>Unreal Integration 2.02</p>
+<ul>
+<li><a href="welcome.html">Welcome to FMOD for Unreal</a></li>
+<li><a href="user-guide.html">User Guide</a></li>
+<li><a href="settings.html">Settings</a></li>
+<li><a href="plugins.html">Plugins</a></li>
+<li><a href="niagara.html">Niagara Integration</a></li>
+<li><a href="api-reference.html">API Reference</a></li>
+<li class="manual-current-chapter manual-inactive-chapter"><a href="blueprint-reference.html">Blueprint Reference</a><ul class="subchapters"><li><a href="blueprint-reference-bus.html">Bus</a></li><li><a href="blueprint-reference-common.html">Common</a></li><li><a href="blueprint-reference-component.html">Component</a></li><li><a href="blueprint-reference-eventinstance.html">Event Instance</a></li><li><a href="blueprint-reference-asynchronous-loading.html">Asynchronous Loading</a></li><li><a href="blueprint-reference-enums.html">Enums</a></li><li><a href="blueprint-reference-structs.html">Structs</a></li><li class="manual-current-chapter manual-active-chapter"><a href="blueprint-reference-utilities.html">Utilities</a></li></ul></li>
+<li><a href="platform-specifics.html">Platform Specifics</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="audiolink.html">AudioLink</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="manual-content api">
+<h1>7. Blueprint Reference | Utilities</h1>
+<p>Automatically generated methods for working with FMOD and Unreal Utilities.</p>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodambientsound" title="Access object as a class 'FMODAmbientSound' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODAmbientSound</a> Access object as a class 'FMODAmbientSound' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodambientsound-class" title="Access class 'FMODAmbientSound' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODAmbientSound Class</a> Access class 'FMODAmbientSound' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodanimnotifyplay" title="Access object as a class 'FMODAnimNotifyPlay' it may be an instance of. On failure the Cast Failed path will be taken.">Cast TO FMODAnimNotifyPlay</a> Access object as a class 'FMODAnimNotifyPlay' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodanimnotifyplay-class" title="Access class 'FMODAnimNotifyPlay' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast TO FMODAnimNotifyPlay Class</a> Access class 'FMODAnimNotifyPlay' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodasset" title="Access object as a class 'FMODAsset' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODAsset</a> Access object as a class 'FMODAsset' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodasset-class" title="Access class 'FMODAsset' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODAsset Class</a> Access class 'FMODAsset' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodaudiocomponent" title="Access object as a class 'FMODAudioComponent' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODAudioComponent</a> Access object as a class 'FMODAudioComponent' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodaudiocomponent-class" title="Access class 'FMODAudioComponent' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODAudioComponent Class</a> Access class 'FMODAudioComponent' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodbank" title="Access object as a class 'FMODBank' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODBank</a> Access object as a class 'FMODBank' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodbank-class" title="Access class 'FMODBank' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODBank class</a> Access class 'FMODBank' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodbus" title="Access object as a class 'FMODBus' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODBus</a> Access object as a class 'FMODBus' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodbus-class" title="Access class 'FMODBus' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODBus class</a> Access class 'FMODBus' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodevent" title="Access object as a class 'FMODEvent' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODEvent</a> Access object as a class 'FMODEvent' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodevent-class" title="Access class 'FMODEvent' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODEvent class</a> Access class 'FMODEvent' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodeventcontrolsection" title="Access object as a class 'FMODEventControlSection' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODEventControlSection</a> Access object as a class 'FMODEventControlSection' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodeventcontrolsection-class" title="Access class 'FMODEventControlSection' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODEventControlSection class</a> Access class 'FMODEventControlSection' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodeventparametertrack" title="Access object as a class 'FMODEventParameterTrack' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODEventParameterTrack</a> Access object as a class 'FMODEventParameterTrack' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodeventparametertrack-class" title="Access class 'FMODEventParameterTrack' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODEventParameterTrack class</a> Access class 'FMODEventParameterTrack' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodport" title="Access object as a class 'FMODPort' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODPort</a> Access object as a class 'FMODPort' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodport-class" title="Access class 'FMODPort' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODPort class</a> Access class 'FMODPort' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodsnapshot" title="Access object as a class 'FMODSnapshot' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODSnapshot</a> Access object as a class 'FMODSnapshot' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodsnapshot-class" title="Access class 'FMODSnapshot' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODSnapshot class</a> Access class 'FMODSnapshot' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodsnapshotreverb" title="Access object as a class 'FMODSnapshotReverb' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODSnapshotReverb</a> Access object as a class 'FMODSnapshotReverb' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodsnapshotreverb-class" title="Access class 'FMODSnapshotReverb' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODSnapshotReverb class</a> Access class 'FMODSnapshotReverb' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodvca" title="Access object as a class 'FMODVCA' it may be an instance of. On failure the Cast Failed path will be taken.">Cast To FMODVCA</a> Access object as a class 'FMODVCA' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+<li><span><a class="apilink" href="blueprint-reference-utilities.html#cast-to-fmodvca-class" title="Access class 'FMODVCA' as one it may inherit from. On failure the Cast Failed path will be taken.">Cast To FMODVCA class</a> Access class 'FMODVCA' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</span></li>
+</ul>
+<h2 api="function" id="cast-to-fmodambientsound"><a href="#cast-to-fmodambientsound">Cast To FMODAmbientSound</a></h2>
+<p>Access object as a class 'FMODAmbientSound' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODAmbientSound" src="images/cast-to-fmodambientsound.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAmbientSound</span> <span class="nf">CastToFMODAmbientSound</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-afmodambientsound.html">FMODAmbientSound</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodambientsound-class"><a href="#cast-to-fmodambientsound-class">Cast To FMODAmbientSound class</a></h2>
+<p>Access class 'FMODAmbientSound' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODAmbientSound Class" src="images/cast-to-fmodambientsound-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAmbientSound</span> <span class="nf">CastToFMODAmbientSoundclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-afmodambientsound.html">FMODAmbientSound</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodanimnotifyplay"><a href="#cast-to-fmodanimnotifyplay">Cast To FMODAnimNotifyPlay</a></h2>
+<p>Access object as a class 'FMODAnimNotifyPlay' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODAnimNotifyPlay" src="images/cast-to-fmodanimnotifyplay.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAnimNotifyPlay</span> <span class="nf">CastToFMODAnimNotifyPlay</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodanimnotifyplay.html">FMODAnimNotifyPlay</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodanimnotifyplay-class"><a href="#cast-to-fmodanimnotifyplay-class">Cast To FMODAnimNotifyPlay class</a></h2>
+<p>Access class 'FMODAnimNotifyPlay' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODAnimNotifyPlay Class" src="images/cast-to-fmodanimnotifyplay-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAnimNotifyPlay</span> <span class="nf">CastToFMODAnimNotifyPlayclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodanimnotifyplay.html">FMODAnimNotifyPlay</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodasset"><a href="#cast-to-fmodasset">Cast To FMODAsset</a></h2>
+<p>Access object as a class 'FMODAsset' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODAsset" src="images/cast-to-fmodasset.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAsset</span> <span class="nf">CastToFMODAsset</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodasset.html">FMODAsset</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodasset-class"><a href="#cast-to-fmodasset-class">Cast To FMODAsset class</a></h2>
+<p>Access class 'FMODAsset' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODAsset Class" src="images/cast-to-fmodasset-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAsset</span> <span class="nf">CastToFMODAssetclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodasset.html">FMODAsset</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodaudiocomponent"><a href="#cast-to-fmodaudiocomponent">Cast To FMODAudioComponent</a></h2>
+<p>Access object as a class 'FMODAudioComponent' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODAudioComponent" src="images/cast-to-fmodaudiocomponent.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAudioComponent</span> <span class="nf">CastToFMODAudioComponent</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodaudiocomponent.html">FMODAudioComponent</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodaudiocomponent-class"><a href="#cast-to-fmodaudiocomponent-class">Cast To FMODAudioComponent class</a></h2>
+<p>Access class 'FMODAudioComponent' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODAudioComponent Class" src="images/cast-to-fmodaudiocomponent-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODAudioComponent</span> <span class="nf">CastToFMODAudioComponentclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodaudiocomponent.html">FMODAudioComponent</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodbank"><a href="#cast-to-fmodbank">Cast To FMODBank</a></h2>
+<p>Access object as a class 'FMODBank' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODBank" src="images/cast-to-fmodbank.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODBank</span> <span class="nf">CastToFMODBank</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodbank.html">FMODBank</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodbank-class"><a href="#cast-to-fmodbank-class">Cast To FMODBank class</a></h2>
+<p>Access class 'FMODBank' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODBank Class" src="images/cast-to-fmodbank-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODBank</span> <span class="nf">CastToFMODBankclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodbank.html">FMODBank</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodbus"><a href="#cast-to-fmodbus">Cast To FMODBus</a></h2>
+<p>Access object as a class 'FMODBus' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODBus" src="images/cast-to-fmodbus.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODBus</span> <span class="nf">CastToFMODBus</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodbus.html">FMODBus</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodbus-class"><a href="#cast-to-fmodbus-class">Cast To FMODBus class</a></h2>
+<p>Access class 'FMODBus' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODBus Class" src="images/cast-to-fmodbus-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODBus</span> <span class="nf">CastToFMODBusclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodbus.html">FMODBus</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodevent"><a href="#cast-to-fmodevent">Cast To FMODEvent</a></h2>
+<p>Access object as a class 'FMODEvent' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODEvent" src="images/cast-to-fmodevent.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEvent</span> <span class="nf">CastToFMODEvent</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodevent.html">FMODEvent</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodevent-class"><a href="#cast-to-fmodevent-class">Cast To FMODEvent class</a></h2>
+<p>Access class 'FMODEvent' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODEvent Class" src="images/cast-to-fmodevent-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEvent</span> <span class="nf">CastToFMODEventclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodevent.html">FMODEvent</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodeventcontrolsection"><a href="#cast-to-fmodeventcontrolsection">Cast To FMODEventControlSection</a></h2>
+<p>Access object as a class 'FMODEventControlSection' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODEventControlSection" src="images/cast-to-fmodeventcontrolsection.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEventControlSection</span> <span class="nf">CastToFMODEventControlSection</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <span class="dead-link" href="api-reference-ufmodeventcontrolsection.html">FMODEventControlSection</span class="dead-link">.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodeventcontrolsection-class"><a href="#cast-to-fmodeventcontrolsection-class">Cast To FMODEventControlSection class</a></h2>
+<p>Access class 'FMODEventControlSection' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODEventControlSection Class" src="images/cast-to-fmodeventcontrolsection-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEventControlSection</span> <span class="nf">CastToFMODEventControlSectionclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <span class="dead-link" href="api-reference-ufmodeventcontrolsection.html">FMODEventControlSection</span class="dead-link">.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodeventcontroltrack"><a href="#cast-to-fmodeventcontroltrack">Cast To FMODEventControlTrack</a></h2>
+<p>Access object as a class 'FMODEventControlTrack' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODEventControlTrack" src="images/cast-to-fmodeventcontroltrack.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEventControlTrack</span> <span class="nf">CastToFMODEventControlTrack</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <span class="dead-link" href="api-reference-ufmodeventcontroltrack.html">FMODEventControlTrack</span class="dead-link">.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodeventcontroltrack-class"><a href="#cast-to-fmodeventcontroltrack-class">Cast To FMODEventControlTrack class</a></h2>
+<p>Access class 'FMODEventControlTrack' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODEventControlTrack Class" src="images/cast-to-fmodeventcontroltrack-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEventControlTrack</span> <span class="nf">CastToFMODEventControlTrackclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <span class="dead-link" href="api-reference-ufmodeventcontroltrack.html">FMODEventControlTrack</span class="dead-link">.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodeventparametertrack"><a href="#cast-to-fmodeventparametertrack">Cast To FMODEventParameterTrack</a></h2>
+<p>Access object as a class 'FMODEventParameterTrack' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODEventParameterTrack" src="images/cast-to-fmodeventparametertrack.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEventParameterTrack</span> <span class="nf">CastToFMODEventParameterTrack</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <span class="dead-link" href="api-reference-ufmodeventparametertrack.html">FMODEventParameterTrack</span class="dead-link">.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodeventparametertrack-class"><a href="#cast-to-fmodeventparametertrack-class">Cast To FMODEventParameterTrack class</a></h2>
+<p>Access class 'FMODEventParameterTrack' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODEventParameterTrack Class" src="images/cast-to-fmodeventparametertrack-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODEventParameterTrack</span> <span class="nf">CastToFMODEventParameterTrackclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <span class="dead-link" href="api-reference-ufmodeventparametertrack.html">FMODEventParameterTrack</span class="dead-link">.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodport"><a href="#cast-to-fmodport">Cast To FMODPort</a></h2>
+<p>Access object as a class 'FMODPort' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODPort" src="images/cast-to-fmodport.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODPort</span> <span class="nf">CastToFMODPort</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodport.html">FMODPort</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodport-class"><a href="#cast-to-fmodport-class">Cast To FMODPort class</a></h2>
+<p>Access class 'FMODPort' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODPort Class" src="images/cast-to-fmodport-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODPort</span> <span class="nf">CastToFMODPortclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodport.html">FMODPort</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodsnapshot"><a href="#cast-to-fmodsnapshot">Cast To FMODSnapshot</a></h2>
+<p>Access object as a class 'FMODSnapshot' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODSnapshot" src="images/cast-to-fmodsnapshot.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODSnapshot</span> <span class="nf">CastToFMODSnapshot</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodsnapshot.html">FMODSnapshot</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodsnapshot-class"><a href="#cast-to-fmodsnapshot-class">Cast To FMODSnapshot class</a></h2>
+<p>Access class 'FMODSnapshot' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODSnapshot Class" src="images/cast-to-fmodsnapshot-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODSnapshot</span> <span class="nf">CastToFMODSnapshotclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodsnapshot.html">FMODSnapshot</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodsnapshotreverb"><a href="#cast-to-fmodsnapshotreverb">Cast To FMODSnapshotReverb</a></h2>
+<p>Access object as a class 'FMODSnapshotReverb' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODSnapshotReverb" src="images/cast-to-fmodsnapshotreverb.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODSnapshotReverb</span> <span class="nf">CastToFMODSnapshotReverb</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodsnapshotreverb.html">FMODSnapshotReverb</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodsnapshotreverb-class"><a href="#cast-to-fmodsnapshotreverb-class">Cast To FMODSnapshotReverb class</a></h2>
+<p>Access class 'FMODSnapshotReverb' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODSnapshotReverb Class" src="images/cast-to-fmodsnapshotreverb-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODSnapshotReverb</span> <span class="nf">CastToFMODSnapshotReverbclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodsnapshotreverb.html">FMODSnapshotReverb</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodvca"><a href="#cast-to-fmodvca">Cast To FMODVCA</a></h2>
+<p>Access object as a class 'FMODVCA' it may be an instance of. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODVCA" src="images/cast-to-fmodvca.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODVCA</span> <span class="nf">CastToFMODVCA</span><span class="p">(</span>
+    <span class="n">Object</span> <span class="n">Object</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Object</dt>
+<dd>Object to cast to an <a href="api-reference-ufmodvca.html">FMODVCA</a>.</dd>
+</dl>
+<h2 api="function" id="cast-to-fmodvca-class"><a href="#cast-to-fmodvca-class">Cast To FMODVCA class</a></h2>
+<p>Access class 'FMODVCA' as one it may inherit from. On failure the <code>Cast Failed</code> path will be taken.</p>
+<p><img alt="Cast To FMODVCA Class" src="images/cast-to-fmodvca-class.png" /></p>
+<p>
+<div class="language-selector">
+<div class="language-tab" data-language="language-cpp">C++</div>
+</div>
+</p>
+<div class="highlight language-cpp"><pre><span></span><span class="n">FMODVCA</span> <span class="nf">CastToFMODVCAclass</span><span class="p">(</span>
+    <span class="n">ObjectClassReference</span> <span class="n">Class</span>
+<span class="p">);</span>
+</pre></div>
+
+<dl>
+<dt>Class</dt>
+<dd>Class to cast to an <a href="api-reference-ufmodvca.html">FMODVCA</a>.</dd>
+</dl></div>
+
+<p class="manual-footer">Unreal Integration 2.02.20 (2023-12-14). &copy; 2023 Firelight Technologies Pty Ltd.</p>
+</body>
+</html>
+
+</div>
