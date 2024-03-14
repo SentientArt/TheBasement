@@ -1,13 +1,18 @@
 # Barney's Basement
 
 Hello and Welcome to the project Barney's Basement.
+
+**This is the developer version of the project, the Demo is available [Here](https://drive.google.com/file/d/1gsVNnXIprNSPVxAvGX9uzUpOJpbXd6J2/view?usp=drive_link)**
+** Please be aware that this project is still under development!**
+
+## About us
+
 This project is being developped by Sentient Art and its team. If you would like to know more about us, check us out on our socials and website:
 
 [Website](https://www.sentient-art.xyz),
 [Artstation](https://www.artstation.com/sentient-art),
 [X(Twitter)](https://twitter.com/sentient_art)
 
-**This is the developer version of the project, the Demo is available [Here](https://drive.google.com/file/d/1gsVNnXIprNSPVxAvGX9uzUpOJpbXd6J2/view?usp=drive_link)**
 
 ## What is Barney's Basement (The Basement)?
 
