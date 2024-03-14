@@ -1,0 +1,60 @@
+/*
+* Copyright (c) 2022 - 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+*
+* NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+* property and proprietary rights in and to this material, related
+* documentation and any modifications thereto. Any use, reproduction,
+* disclosure or distribution of this material and related documentation
+* without an express license agreement from NVIDIA CORPORATION or
+* its affiliates is strictly prohibited.
+*/
+
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/FastMath.ush"
+#include "/Engine/Private/ScreenPass.ush"
+
+#ifndef THREADGROUP_SIZEX
+#define THREADGROUP_SIZEX		8
+#endif
+#ifndef THREADGROUP_SIZEY
+#define THREADGROUP_SIZEY		8
+#endif
+#define THREADGROUP_TOTALSIZE	(THREADGROUP_SIZEX * THREADGROUP_SIZEY)
+
+
+
+float AlphaThreshold;
+Texture2D Backbuffer;
+//SamplerState VelocityTextureSampler;
+//SCREEN_PASS_TEXTURE_VIEWPORT(Velocity)
+
+//Texture2D DepthTexture;
+//SamplerState DepthTextureSampler;
+
+RWTexture2D<float4> OutUIHintTexture;
+//SCREEN_PASS_TEXTURE_VIEWPORT(CombinedVelocity)
+
+
+[numthreads(THREADGROUP_SIZEX, THREADGROUP_SIZEY, 1)]
+void UIHintExtractionMain(
+	uint2 GroupId : SV_GroupID,
+	uint2 DispatchThreadId : SV_DispatchThreadID,
+	uint2 GroupThreadId : SV_GroupThreadID,
+	uint GroupIndex : SV_GroupIndex)
+{
+	
+	
+	//uint2 PixelPos = min(DispatchThreadId + Velocity_ViewportMin, Velocity_ViewportMax - 1);
+	
+	
+	//uint2 OutputPixelPos = CombinedVelocity_ViewportMin + DispatchThreadId;
+	
+	
+	// TODO viewrects
+	uint2 PixelPos = DispatchThreadId;
+	uint2 OutPixelPos = DispatchThreadId;
+	float4 ColorAlpha = Backbuffer[PixelPos];
+	
+	OutUIHintTexture[OutPixelPos] = (ColorAlpha.a > AlphaThreshold) ? ColorAlpha : float4(0.0, 0.0, 0.0, 0.0);
+	
+}

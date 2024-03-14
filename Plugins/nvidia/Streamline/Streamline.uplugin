@@ -1,0 +1,63 @@
+{
+	"FileVersion": 3,
+	"Version": 108,
+	"VersionName": "1.1.0-SL2.2.0",
+	"FriendlyName": "NVIDIA DLSS Frame Generation",
+	"Description": "NVIDIA DLSS Frame Generation and Reflex (Streamline)",
+	"Category": "Rendering",
+	"CreatedBy": "NVIDIA",
+	"CreatedByURL": "https://developer.nvidia.com/rtx/streamline",
+	"DocsURL": "",
+	"MarketplaceURL": "https://www.unrealengine.com/marketplace/en-US/product/nvidia-dlss",
+	"SupportURL": "mailto:DLSS-Support@nvidia.com",
+	"EngineVersion": "5.3.0",
+	"CanContainContent": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "StreamlineShaders",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "StreamlineCore",
+			"Type": "Runtime",
+			"LoadingPhase": "PostEngineInit",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "StreamlineBlueprint",
+			"Type": "Runtime",
+			"LoadingPhase": "PostEngineInit"
+		},
+		{
+			"Name": "StreamlineRHI",
+			"Type": "Runtime",
+			"LoadingPhase": "PostSplashScreen",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "StreamlineD3D11RHI",
+			"Type": "Runtime",
+			"LoadingPhase": "None",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "StreamlineD3D12RHI",
+			"Type": "Runtime",
+			"LoadingPhase": "None",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	]
+}
