@@ -4,7 +4,7 @@ Hello and Welcome to the project Barney's Basement.
 
 **This is the developer version of the project, the Demo is available [Here](https://drive.google.com/file/d/1gsVNnXIprNSPVxAvGX9uzUpOJpbXd6J2/view?usp=drive_link)**
 
-** Please be aware that this project is still under development!**
+**Please be aware that this project is still under development!**
 
 ## About us
 
