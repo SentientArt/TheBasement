@@ -1,0 +1,11 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.StreamlineCore.cpp.obj": [
+			"StreamlineCore.cpp.obj",
+			"StreamlineDLSSG.cpp.obj",
+			"StreamlineReflex.cpp.obj",
+			"StreamlineViewExtension.cpp.obj"
+		]
+	}
+}

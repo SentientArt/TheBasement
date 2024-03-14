@@ -1,0 +1,10 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.StreamlineShaders.cpp.obj": [
+			"StreamlineShaders.cpp.obj",
+			"UIHintExtractionPass.cpp.obj",
+			"VelocityCombinePass.cpp.obj"
+		]
+	}
+}

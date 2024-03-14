@@ -1,0 +1,8 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.StreamlineD3D12RHI.cpp.obj": [
+			"StreamlineD3D12RHI.cpp.obj"
+		]
+	}
+}

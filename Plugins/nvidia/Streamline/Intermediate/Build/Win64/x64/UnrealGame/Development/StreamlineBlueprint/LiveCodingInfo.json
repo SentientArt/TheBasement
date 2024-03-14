@@ -1,0 +1,14 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.StreamlineBlueprint.cpp.obj": [
+			"StreamlineBlueprint.init.gen.cpp.obj",
+			"StreamlineLibrary.gen.cpp.obj",
+			"StreamlineLibraryDLSSG.gen.cpp.obj",
+			"StreamlineLibraryReflex.gen.cpp.obj",
+			"StreamlineLibrary.cpp.obj",
+			"StreamlineLibraryDLSSG.cpp.obj",
+			"StreamlineLibraryReflex.cpp.obj"
+		]
+	}
+}
