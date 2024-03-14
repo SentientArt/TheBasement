@@ -7,7 +7,7 @@ This project is being developped by Sentient Art and its team. If you would like
 [Artstation](https://www.artstation.com/sentient-art),
 [X(Twitter)](https://twitter.com/sentient_art)
 
-This is the developer version of the project, the Demo is available [Here](https://drive.google.com/file/d/1gsVNnXIprNSPVxAvGX9uzUpOJpbXd6J2/view?usp=drive_link)
+**This is the developer version of the project, the Demo is available [Here](https://drive.google.com/file/d/1gsVNnXIprNSPVxAvGX9uzUpOJpbXd6J2/view?usp=drive_link)**
 
 ## What is Barney's Basement (The Basement)?
 
